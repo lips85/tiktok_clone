@@ -9,6 +9,7 @@ class SignUpScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: const SafeArea(
+        bottom: false,
         child: Padding(
           padding: EdgeInsets.symmetric(
             horizontal: Sizes.size40,
