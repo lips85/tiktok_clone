@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:tiktok_clone/constants/gaps.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
+import 'package:tiktok_clone/features/authentication/login_screen.dart';
+import 'package:tiktok_clone/features/authentication/widgets/auth_button.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class SignUpScreen extends StatelessWidget {
+  const SignUpScreen({super.key});
+
+  void onLoginTap(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (context) => const LoginScreen(),
+    ));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +26,7 @@ class LoginScreen extends StatelessWidget {
             children: [
               Gaps.v80,
               Text(
-                'Log in to TikTok',
+                'Sign up for TikTok',
                 style: TextStyle(
                   fontSize: Sizes.size24,
                   fontWeight: FontWeight.w700,
@@ -32,7 +40,15 @@ class LoginScreen extends StatelessWidget {
                   color: Colors.black45,
                 ),
                 textAlign: TextAlign.center,
-              )
+              ),
+              Gaps.v40,
+              AuthButton(
+                text: "Sign up with Google",
+              ),
+              Gaps.v10,
+              AuthButton(
+                text: "Sign up with Apple",
+              ),
             ],
           ),
         ),
@@ -41,19 +57,24 @@ class LoginScreen extends StatelessWidget {
         color: Colors.grey[200],
         elevation: 3,
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: Sizes.size10),
+          padding: const EdgeInsets.only(
+            top: Sizes.size10,
+          ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text(
-                "Don't have an account?",
+                "Already have an account?",
               ),
               Gaps.h5,
-              Text(
-                "Sign up",
-                style: TextStyle(
-                  color: Theme.of(context).primaryColor,
-                  fontWeight: FontWeight.w600,
+              GestureDetector(
+                onTap: () => onLoginTap(context),
+                child: Text(
+                  "Log in",
+                  style: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ),
             ],
