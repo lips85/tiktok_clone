@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tiktok_clone/constants/gaps.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
-import 'package:tiktok_clone/features/authentication/sign_up_screen.dart';
+import 'package:tiktok_clone/features/authentication/email_screen.dart';
+import 'package:tiktok_clone/features/authentication/widgets/form_button.dart';
 
 class UsernameScreen extends StatefulWidget {
   const UsernameScreen({super.key});
@@ -25,21 +26,27 @@ class _UsernameScreenState extends State<UsernameScreen> {
     });
   }
 
-  void onSignUpTap(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(
-      builder: (context) => const SignUpScreen(),
-    ));
+  @override
+  void dispose() {
+    _usernameController.dispose();
+    super.dispose();
+  }
+
+  void _onNextTap() {
+    if (_username.isEmpty) return;
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => const EmailScreen(),
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: GestureDetector(
-          onTap: () => onSignUpTap(context),
-          child: const Text(
-            'Sign up',
-          ),
+        title: const Text(
+          "Sign up",
         ),
       ),
       body: Padding(
@@ -51,7 +58,7 @@ class _UsernameScreenState extends State<UsernameScreen> {
           children: [
             Gaps.v40,
             const Text(
-              'Create username',
+              "Create username",
               style: TextStyle(
                 fontSize: Sizes.size24,
                 fontWeight: FontWeight.w700,
@@ -59,54 +66,35 @@ class _UsernameScreenState extends State<UsernameScreen> {
             ),
             Gaps.v8,
             const Text(
-              'You can always change this later.',
+              "You can always change this later.",
               style: TextStyle(
                 fontSize: Sizes.size16,
                 color: Colors.black54,
-                fontWeight: FontWeight.w600,
               ),
             ),
             Gaps.v16,
             TextField(
               controller: _usernameController,
-              cursorColor: Colors.pink,
               decoration: InputDecoration(
-                hintText: 'Username',
+                hintText: "Username",
                 enabledBorder: UnderlineInputBorder(
                   borderSide: BorderSide(
-                    color: Colors.grey.shade300,
+                    color: Colors.grey.shade400,
                   ),
                 ),
                 focusedBorder: UnderlineInputBorder(
                   borderSide: BorderSide(
-                    color: Colors.grey.shade300,
+                    color: Colors.grey.shade400,
                   ),
                 ),
               ),
+              cursorColor: Theme.of(context).primaryColor,
             ),
-            Gaps.v16,
-            FractionallySizedBox(
-              widthFactor: 1,
-              child: AnimatedContainer(
-                duration: const Duration(milliseconds: 300),
-                padding: const EdgeInsets.symmetric(vertical: Sizes.size16),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(Sizes.size5),
-                  color: _username.isEmpty
-                      ? Colors.grey.shade300
-                      : Theme.of(context).primaryColor,
-                ),
-                child: const Text(
-                  'Next',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: Sizes.size16,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
-            )
+            Gaps.v28,
+            GestureDetector(
+              onTap: _onNextTap,
+              child: FormButton(disabled: _username.isEmpty),
+            ),
           ],
         ),
       ),
