@@ -2,8 +2,6 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktok_clone/constants/gaps.dart';
@@ -83,6 +81,51 @@ class LoginPageTweet extends StatelessWidget {
                 const LoginFormButton(
                   text: "Create account",
                   white: false,
+                ),
+                Gaps.v20,
+                const Text.rich(
+                  TextSpan(
+                    text: 'By signing up, you agree to our ',
+                    children: [
+                      TextSpan(
+                        text: 'Terms',
+                        style: TextStyle(color: Colors.blue),
+// 클릭 시 처리 코드 추가 가능
+                      ),
+                      TextSpan(text: ', '),
+                      TextSpan(
+                        text: 'Privacy Policy',
+                        style: TextStyle(color: Colors.blue),
+// 클릭 시 처리 코드 추가 가능
+                      ),
+                      TextSpan(text: ', and '),
+                      TextSpan(
+                        text: 'Cookie Use',
+                        style: TextStyle(color: Colors.blue),
+// 클릭 시 처리 코드 추가 가능
+                      ),
+                    ],
+                  ),
+                  textAlign: TextAlign.start,
+                ),
+                Gaps.v60,
+                const Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text.rich(
+                      textAlign: TextAlign.start,
+                      TextSpan(
+                        text: 'Have an account already? ',
+                        children: [
+                          TextSpan(
+                            text: 'Log in                                  ',
+                            style: TextStyle(color: Colors.blue),
+                          )
+                        ],
+                        // 클릭 시 처리 코드 추가 가능]
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
