@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
+
+import 'package:tiktok_clone/02_tweeter/features/authentication/login_page_tweet.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
-import 'package:tiktok_clone/features/onboarding/interests_screen.dart';
 
 void main() {
-  runApp(const TikTokApp());
+  runApp(const Myapp());
 }
 
-class TikTokApp extends StatelessWidget {
-  const TikTokApp({super.key});
+class Myapp extends StatelessWidget {
+  const Myapp({super.key});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'TikTok Clone',
+      title: 'Tweets',
       theme: ThemeData(
         useMaterial3: false,
         scaffoldBackgroundColor: Colors.white,
-        primaryColor: const Color(0xFFE9435A),
+        primaryColor: const Color(0xff4E98E9),
         appBarTheme: const AppBarTheme(
           backgroundColor: Colors.white,
           foregroundColor: Colors.black,
@@ -29,7 +30,7 @@ class TikTokApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const InterestsScreen(),
+      home: const LoginPageTweet(),
     );
   }
 }
