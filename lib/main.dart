@@ -16,7 +16,6 @@ class Myapp extends StatelessWidget {
     return MaterialApp(
       title: 'Tweets',
       theme: ThemeData(
-        useMaterial3: false,
         scaffoldBackgroundColor: Colors.white,
         primaryColor: const Color(0xff4E98E9),
         appBarTheme: const AppBarTheme(
