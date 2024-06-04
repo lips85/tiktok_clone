@@ -64,6 +64,10 @@ flutter:
   assets:
     - assets/images/google.svg
     - assets/images/apple.svg
+    - assets/fonts/HelveticaNeueHeavy.otf
+    - assets/fonts/HelveticaNeueLight.otf
+    - assets/fonts/HelveticaNeueMedium.otf
+
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
