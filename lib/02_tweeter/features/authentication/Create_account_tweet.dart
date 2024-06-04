@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tiktok_clone/02_tweeter/features/authentication/term_page_tweet.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
 
 class CreateAccountTweet extends StatelessWidget {
@@ -10,6 +11,12 @@ class CreateAccountTweet extends StatelessWidget {
   final TextEditingController _birthdayController = TextEditingController();
 
   CreateAccountTweet({super.key});
+
+  void _onTermsTap(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (context) => const TermsPageScreen(),
+    ));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -93,26 +100,28 @@ class CreateAccountTweet extends StatelessWidget {
               cursorColor: Theme.of(context).primaryColor,
             ),
             Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 FractionallySizedBox(
                   widthFactor: 1,
                   child: Container(),
                 ),
-                Container(
-                  alignment: Alignment.center,
-                  width: 60,
-                  height: 40,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
-                    color: Colors.grey,
-                  ),
-                  child: Text(
-                    "Next",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.grey[200],
+                GestureDetector(
+                  onTap: () => _onTermsTap(context),
+                  child: Container(
+                    alignment: Alignment.center,
+                    width: 60,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      color: Colors.grey,
+                    ),
+                    child: Text(
+                      "Next",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.grey[200],
+                      ),
                     ),
                   ),
                 ),

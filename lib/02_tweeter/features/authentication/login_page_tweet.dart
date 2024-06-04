@@ -156,6 +156,7 @@ class LoginPageTweet extends StatelessWidget {
                         style: TextStyle(
                           color: Colors.blue,
                           fontSize: Sizes.size16,
+                          fontFamily: "Helvetica Neue light",
                         ),
                         children: [
                           TextSpan(
