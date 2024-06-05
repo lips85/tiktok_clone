@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tiktok_clone/02_tweeter/features/authentication/login_page_2.dart';
 import 'package:tiktok_clone/02_tweeter/features/authentication/login_page_tweet.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
 
@@ -23,6 +22,7 @@ class Myapp extends StatelessWidget {
           foregroundColor: Colors.black,
           elevation: 0,
           titleTextStyle: TextStyle(
+            fontFamily: "Helvetica Neue",
             color: Colors.black,
             fontSize: Sizes.size16 + Sizes.size2,
             fontWeight: FontWeight.w600,
@@ -30,6 +30,7 @@ class Myapp extends StatelessWidget {
         ),
       ),
       home: const LoginPageTweet(),
+      // home: const SignUpScreen(),
     );
   }
 }
