@@ -25,6 +25,11 @@ class BirthdayScreenState extends State<BirthdayScreen> {
     );
   }
 
+  void _setTextFieldDate(DateTime date) {
+    final textDate = date.toString().split(" ").first;
+    _birthdayController.value = TextEditingValue(text: textDate);
+  }
+
   @override
   void dispose() {
     _birthdayController.dispose();
@@ -37,11 +42,6 @@ class BirthdayScreenState extends State<BirthdayScreen> {
         builder: (context) => const InterestsScreen(),
       ),
     );
-  }
-
-  void _setTextFieldDate(DateTime date) {
-    final textDate = date.toString().split(" ").first;
-    _birthdayController.value = TextEditingValue(text: textDate);
   }
 
   @override

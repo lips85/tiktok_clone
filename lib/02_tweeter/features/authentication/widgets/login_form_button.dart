@@ -6,21 +6,22 @@ import 'package:tiktok_clone/constants/sizes.dart';
 class LoginFormButton extends StatelessWidget {
   final String? assetPath;
   final String text;
-  final bool white;
+  final bool validate;
 
   const LoginFormButton({
     super.key,
     this.assetPath,
     required this.text,
-    required this.white,
+    required this.validate,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 300),
       height: Sizes.size48,
       decoration: BoxDecoration(
-        color: white ? Colors.white : Colors.black,
+        color: validate ? Colors.black : Colors.white,
         border: Border.all(
           color: Colors.grey.shade300,
           width: 1,
@@ -38,13 +39,23 @@ class LoginFormButton extends StatelessWidget {
               height: Sizes.size24,
             ),
           if (assetPath != null) Gaps.h24,
-          Text(
-            text,
+          AnimatedDefaultTextStyle(
+            duration: const Duration(milliseconds: 300),
             style: TextStyle(
+              fontSize: Sizes.size16,
+              fontFamily: "Helvetica Neue medium",
+              fontWeight: FontWeight.w800,
+              color: validate ? Colors.white : Colors.black,
+            ),
+            child: Text(
+              text,
+              style: TextStyle(
                 fontSize: Sizes.size16,
                 fontFamily: "Helvetica Neue medium",
                 fontWeight: FontWeight.w800,
-                color: white ? Colors.black : Colors.white),
+                color: validate ? Colors.white : Colors.black,
+              ),
+            ),
           )
         ],
       ),

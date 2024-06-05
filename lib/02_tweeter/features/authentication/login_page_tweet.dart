@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:tiktok_clone/02_tweeter/features/authentication/create_account_tweet.dart';
-import 'package:tiktok_clone/02_tweeter/features/widgets/login_form_button.dart';
+
+import 'package:tiktok_clone/02_tweeter/features/authentication/tweet_create_account.dart';
+import 'package:tiktok_clone/02_tweeter/features/authentication/widgets/login_form_button.dart';
 import 'package:tiktok_clone/constants/gaps.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
 
@@ -10,7 +11,7 @@ class LoginPageTweet extends StatelessWidget {
 
   void _onCreateUserTap(BuildContext context) {
     Navigator.of(context).push(MaterialPageRoute(
-      builder: (context) => CreateAccountTweet(),
+      builder: (context) => const TweetCreateAccount(),
     ));
   }
 
@@ -72,13 +73,13 @@ class LoginPageTweet extends StatelessWidget {
                   const LoginFormButton(
                     assetPath: 'assets/images/google.svg',
                     text: "Continue with Google",
-                    white: true,
+                    validate: false,
                   ),
                   Gaps.v20,
                   const LoginFormButton(
                     assetPath: 'assets/images/apple.svg',
                     text: "Continue with Apple",
-                    white: true,
+                    validate: false,
                   ),
                   Gaps.v20,
                   Row(
@@ -110,7 +111,7 @@ class LoginPageTweet extends StatelessWidget {
                     onTap: () => _onCreateUserTap(context),
                     child: const LoginFormButton(
                       text: "Create account",
-                      white: false,
+                      validate: true,
                     ),
                   ),
                 ],
