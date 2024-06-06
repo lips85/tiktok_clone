@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tiktok_clone/02_tweeter/features/authentication/confirmation_code_screen_tweet.dart';
 import 'package:tiktok_clone/02_tweeter/features/authentication/widgets/confirm_button.dart';
 import 'package:tiktok_clone/02_tweeter/models/user_data.dart';
 import 'package:tiktok_clone/constants/gaps.dart';
@@ -121,6 +122,12 @@ class _TweetCreateAccountSignState extends State<TweetCreateAccountSign> {
     return _isAllFieldValidate() && widget.isSwitched;
   }
 
+  void _onConfirmationTap(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (context) => const ConfirmationCodeScreenTweet(),
+    ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -192,9 +199,14 @@ class _TweetCreateAccountSignState extends State<TweetCreateAccountSign> {
                     ),
                   ),
                 Gaps.v20,
-                ConfirmButton(
-                  validate: _isAllFieldValidate(),
-                  allValidate: _isFinalvalid(),
+                GestureDetector(
+                  onTap: _isFinalvalid()
+                      ? () => _onConfirmationTap(context)
+                      : () {},
+                  child: ConfirmButton(
+                    validate: _isAllFieldValidate(),
+                    allValidate: _isFinalvalid(),
+                  ),
                 ),
               ],
             ),
