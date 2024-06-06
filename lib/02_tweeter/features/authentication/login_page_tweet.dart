@@ -28,7 +28,7 @@ class LoginPageTweet extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(
-          horizontal: Sizes.size32,
+          horizontal: Sizes.size40,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,

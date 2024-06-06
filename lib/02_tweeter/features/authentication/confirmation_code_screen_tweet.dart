@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/services.dart';
+import 'package:tiktok_clone/02_tweeter/features/authentication/password_creen_tweet.dart';
 
-import 'package:tiktok_clone/02_tweeter/features/authentication/tweet_create_account.dart';
+import 'package:tiktok_clone/02_tweeter/features/authentication/widgets/common_button.dart';
 import 'package:tiktok_clone/constants/gaps.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
 import 'package:tiktok_clone/constants/textstyle/style_guide.dart';
@@ -33,9 +34,9 @@ class _ConfirmationCodeScreenTweetState
     super.dispose();
   }
 
-  void _onCreateUserTap(BuildContext context) {
+  void _onPasswordTap(BuildContext context) {
     Navigator.of(context).push(MaterialPageRoute(
-      builder: (context) => const TweetCreateAccount(),
+      builder: (context) => const PasswordScreenTweet(),
     ));
   }
 
@@ -89,6 +90,7 @@ class _ConfirmationCodeScreenTweetState
                   focusNodes: _focusNodes,
                   onChanged: _checkCodeComplete,
                 ),
+                Gaps.v16,
                 if (_isCodeComplete)
                   const Center(
                     child: Icon(
@@ -98,27 +100,22 @@ class _ConfirmationCodeScreenTweetState
                     ),
                   ),
                 Gaps.v16,
-                TextButton(
-                  onPressed: () {},
-                  child: const Text(
-                    "Didn't receive email?",
-                    style: TextStyle(color: Colors.blue),
-                  ),
-                ),
                 const Spacer(),
-                ElevatedButton(
-                  onPressed: () => _onCreateUserTap(context),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.grey, // 버튼 색상
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                    padding: const EdgeInsets.symmetric(vertical: 12.0),
-                  ),
-                  child: Text(
-                    'Next',
-                    style: StyleGuide.buttonTextStyle(),
-                  ),
+                const Text(
+                  "Didn't receive email?",
+                  style: TextStyle(color: Colors.blue),
+                ),
+                Gaps.v16,
+                Center(
+                  child: GestureDetector(
+                      onTap: _isCodeComplete
+                          ? () => _onPasswordTap(context)
+                          : null,
+                      child: CommonButton(
+                        textChange: false,
+                        colorChange: false,
+                        validate: _isCodeComplete,
+                      )),
                 ),
               ],
             ),
