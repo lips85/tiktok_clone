@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktok_clone/02_tweeter/features/authentication/widgets/common_button.dart';
+import 'package:tiktok_clone/constants/sizes.dart';
+import 'package:tiktok_clone/constants/textstyle/style_guide.dart';
 
 class InterestsScreenTweet extends StatefulWidget {
   const InterestsScreenTweet({super.key});
@@ -62,44 +64,67 @@ class _InterestsScreenTweetState extends State<InterestsScreenTweet> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const SizedBox(height: 20),
-              const Text(
+              Text(
                 "What do you want to see on Twitter?",
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
-                textAlign: TextAlign.center,
+                style: StyleGuide.titleStyle(),
+                textAlign: TextAlign.start,
               ),
               const SizedBox(height: 16),
-              const Text(
+              Text(
                 "Select at least 3 interests to personalize your Twitter experience. They will be visible on your profile.",
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.grey,
-                ),
-                textAlign: TextAlign.center,
+                style: StyleGuide.explainStyle(),
+                textAlign: TextAlign.start,
               ),
               const SizedBox(height: 20),
               Expanded(
-                child: SingleChildScrollView(
-                  child: Wrap(
-                    spacing: 8,
-                    runSpacing: 8,
-                    children: interests.map((interest) {
-                      final isSelected = selectedInterests.contains(interest);
-                      return ChoiceChip(
-                        label: Text(interest),
-                        selected: isSelected,
-                        onSelected: (_) => _toggleInterest(interest),
-                        selectedColor: Colors.blue,
-                        backgroundColor: Colors.grey[200],
-                        labelStyle: TextStyle(
-                          color: isSelected ? Colors.white : Colors.black,
+                child: GridView.count(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: Sizes.size10,
+                  mainAxisSpacing: Sizes.size10,
+                  childAspectRatio: 4 / 2,
+                  children: interests.map((interest) {
+                    final isSelected = selectedInterests.contains(interest);
+                    return GestureDetector(
+                      onTap: () => _toggleInterest(interest),
+                      child: AnimatedContainer(
+                        duration: const Duration(milliseconds: 300),
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: isSelected ? Colors.blue : Colors.grey[200],
+                          borderRadius: BorderRadius.circular(16),
+                          border: Border.all(
+                            color: isSelected ? Colors.blue : Colors.grey[400]!,
+                            width: 1,
+                          ),
                         ),
-                      );
-                    }).toList(),
-                  ),
+                        child: Stack(
+                          children: [
+                            Align(
+                              alignment: Alignment.bottomLeft,
+                              child: Text(
+                                interest,
+                                style: TextStyle(
+                                  color:
+                                      isSelected ? Colors.white : Colors.black,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            if (isSelected)
+                              const Align(
+                                alignment: Alignment.topRight,
+                                child: Icon(
+                                  Icons.check_circle,
+                                  color: Colors.white,
+                                  size: 20,
+                                ),
+                              ),
+                          ],
+                        ),
+                      ),
+                    );
+                  }).toList(),
                 ),
               ),
               Text(
