@@ -34,10 +34,12 @@ class _ConfirmationCodeScreenTweetState
     super.dispose();
   }
 
-  void _onPasswordTap(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(
-      builder: (context) => const PasswordScreenTweet(),
-    ));
+  void _onPasswordTap() {
+    if (_isCodeComplete) {
+      Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => const PasswordScreenTweet(),
+      ));
+    }
   }
 
   void _checkCodeComplete() {
@@ -107,15 +109,12 @@ class _ConfirmationCodeScreenTweetState
                 ),
                 Gaps.v16,
                 Center(
-                  child: GestureDetector(
-                      onTap: _isCodeComplete
-                          ? () => _onPasswordTap(context)
-                          : null,
-                      child: CommonButton(
-                        textChange: false,
-                        colorChange: false,
-                        validate: _isCodeComplete,
-                      )),
+                  child: CommonButton(
+                    textChange: false,
+                    colorChange: false,
+                    validate: _isCodeComplete,
+                    onPressed: _onPasswordTap,
+                  ),
                 ),
               ],
             ),
@@ -167,12 +166,14 @@ class OTPInput extends StatelessWidget {
               textAlign: TextAlign.center,
               keyboardType: TextInputType.number,
               inputFormatters: [
-                LengthLimitingTextInputFormatter(1), // 입력 길이를 1자로 제한
-                FilteringTextInputFormatter.digitsOnly, // 숫자만 입력 가능
+                LengthLimitingTextInputFormatter(1),
+                FilteringTextInputFormatter.digitsOnly,
               ],
               onChanged: (value) {
                 if (value.isNotEmpty && index < 5) {
                   FocusScope.of(context).nextFocus();
+                } else if (value.isEmpty && index > 0) {
+                  FocusScope.of(context).previousFocus();
                 }
                 onChanged();
               },

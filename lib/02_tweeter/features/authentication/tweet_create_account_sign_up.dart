@@ -1,11 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:gap/gap.dart';
 import 'package:tiktok_clone/02_tweeter/features/authentication/confirmation_code_screen_tweet.dart';
 import 'package:tiktok_clone/02_tweeter/features/authentication/widgets/confirm_button.dart';
 import 'package:tiktok_clone/02_tweeter/models/user_data.dart';
-import 'package:tiktok_clone/constants/gaps.dart';
-import 'package:tiktok_clone/constants/sizes.dart';
 
 class TweetCreateAccountSign extends StatefulWidget {
   final bool isSwitched;
@@ -135,7 +134,7 @@ class _TweetCreateAccountSignState extends State<TweetCreateAccountSign> {
         centerTitle: true,
         title: const FaIcon(
           FontAwesomeIcons.twitter,
-          size: Sizes.size28,
+          size: 28,
           color: Color(0xff4E98E9),
         ),
       ),
@@ -143,7 +142,7 @@ class _TweetCreateAccountSignState extends State<TweetCreateAccountSign> {
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(
-              Sizes.size40,
+              40,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -153,11 +152,11 @@ class _TweetCreateAccountSignState extends State<TweetCreateAccountSign> {
                   textAlign: TextAlign.start,
                   style: TextStyle(
                     fontFamily: "Helvetica Neue Heavy",
-                    fontSize: Sizes.size28 + Sizes.size2,
+                    fontSize: 30,
                     fontWeight: FontWeight.w800,
                   ),
                 ),
-                Gaps.v20,
+                const Gap(20),
                 TextField(
                   controller: _usernameController,
                   onTap: _onNameTap,
@@ -167,7 +166,7 @@ class _TweetCreateAccountSignState extends State<TweetCreateAccountSign> {
                   cursorColor: Theme.of(context).primaryColor,
                   style: _txfieldStyle(context),
                 ),
-                Gaps.v20,
+                const Gap(20),
                 TextField(
                   controller: _phoneOrEmailController,
                   onTap: _onEmailTap,
@@ -177,7 +176,7 @@ class _TweetCreateAccountSignState extends State<TweetCreateAccountSign> {
                   cursorColor: Theme.of(context).primaryColor,
                   style: _txfieldStyle(context),
                 ),
-                Gaps.v20,
+                const Gap(20),
                 TextField(
                   controller: _birthdayController,
                   onTap: _onBirthdayTap,
@@ -187,18 +186,16 @@ class _TweetCreateAccountSignState extends State<TweetCreateAccountSign> {
                   cursorColor: Theme.of(context).primaryColor,
                   style: _txfieldStyle(context),
                 ),
-                Gaps.v96,
-                Gaps.v60,
-                Gaps.v96,
+                const Gap(250),
                 if (_isFinalvalid())
                   Text(
                     "By signing up, you agree to the Terms of Service and Privacy Policy, including Cookie Use. Twitter may use your contact information, including your email address and phone number for purposes outlined in our Privacy Policy, like keeping your account secure and personalizing our services, including ads. Learn more. Others will be able to find you by email or phone number, when provided, unless you choose otherwise here.",
                     style: TextStyle(
                       color: Colors.grey.shade600,
-                      fontSize: Sizes.size12,
+                      fontSize: 16,
                     ),
                   ),
-                Gaps.v20,
+                const Gap(20),
                 GestureDetector(
                   onTap: _isFinalvalid()
                       ? () => _onConfirmationTap(context)

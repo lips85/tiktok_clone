@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:tiktok_clone/02_tweeter/features/authentication/confirmation_code_screen_tweet.dart';
-import 'package:tiktok_clone/02_tweeter/features/authentication/interests_screen_tweet.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
 
 void main() {
@@ -30,7 +29,7 @@ class Myapp extends StatelessWidget {
           ),
         ),
       ),
-      home: const InterestsScreenTweet(),
+      home: const ConfirmationCodeScreenTweet(),
       // home: const SignUpScreen(),
     );
   }

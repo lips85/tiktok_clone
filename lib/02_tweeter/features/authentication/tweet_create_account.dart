@@ -1,11 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:gap/gap.dart';
 import 'package:tiktok_clone/02_tweeter/features/authentication/term_page_tweet.dart';
 import 'package:tiktok_clone/02_tweeter/features/authentication/widgets/confirm_button.dart';
 import 'package:tiktok_clone/02_tweeter/models/user_data.dart';
-import 'package:tiktok_clone/constants/gaps.dart';
-import 'package:tiktok_clone/constants/sizes.dart';
 
 class TweetCreateAccount extends StatefulWidget {
   const TweetCreateAccount({
@@ -133,7 +132,7 @@ class _TweetCreateAccountState extends State<TweetCreateAccount> {
         centerTitle: true,
         title: const FaIcon(
           FontAwesomeIcons.twitter,
-          size: Sizes.size28,
+          size: 28,
           color: Color(0xff4E98E9),
         ),
       ),
@@ -141,7 +140,7 @@ class _TweetCreateAccountState extends State<TweetCreateAccount> {
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(
-              Sizes.size40,
+              40,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -151,11 +150,11 @@ class _TweetCreateAccountState extends State<TweetCreateAccount> {
                   "Create your account",
                   style: TextStyle(
                     fontFamily: "Helvetica Neue Heavy",
-                    fontSize: Sizes.size28 + Sizes.size2,
+                    fontSize: 30,
                     fontWeight: FontWeight.w800,
                   ),
                 ),
-                Gaps.v20,
+                const Gap(20),
                 TextField(
                   controller: _usernameController,
                   onTap: _onNameTap,
@@ -165,7 +164,7 @@ class _TweetCreateAccountState extends State<TweetCreateAccount> {
                   cursorColor: Theme.of(context).primaryColor,
                   style: _txfieldStyle(context),
                 ),
-                Gaps.v20,
+                const Gap(20),
                 TextField(
                   controller: _phoneOrEmailController,
                   onTap: _onEmailTap,
@@ -175,7 +174,7 @@ class _TweetCreateAccountState extends State<TweetCreateAccount> {
                   cursorColor: Theme.of(context).primaryColor,
                   style: _txfieldStyle(context),
                 ),
-                Gaps.v20,
+                const Gap(20),
                 TextField(
                   controller: _birthdayController,
                   onTap: _onBirthdayTap,
@@ -185,7 +184,7 @@ class _TweetCreateAccountState extends State<TweetCreateAccount> {
                   cursorColor: Theme.of(context).primaryColor,
                   style: _txfieldStyle(context),
                 ),
-                Gaps.v20,
+                const Gap(20),
                 GestureDetector(
                   onTap: _isAllFieldValidate()
                       ? () => _onTermsTap(context)

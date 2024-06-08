@@ -22,7 +22,8 @@ class StyleGuide {
   // 서브타이틀 스타일
   static TextStyle subtitleStyle() {
     return baseStyle().copyWith(
-      fontSize: 16.0,
+      fontSize: Sizes.size20,
+      fontWeight: FontWeight.w800,
     );
   }
 

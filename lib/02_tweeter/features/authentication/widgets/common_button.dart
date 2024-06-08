@@ -22,35 +22,37 @@ class CommonButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Expanded(
-          flex: validate ? (falseWidthFactor ?? 1) : (trueWidthFactor ?? 1),
-          child: AnimatedContainer(
-            alignment: Alignment.center,
-            duration: const Duration(milliseconds: 300),
-            height: Sizes.size48,
-            decoration: BoxDecoration(
-              color: validate
-                  ? (colorChange ? Colors.black : (changeColor ?? Colors.black))
-                  : Colors.grey[500],
-              border: Border.all(
-                color: Colors.grey.shade300,
-                width: 1,
-              ),
-              borderRadius: BorderRadius.circular(Sizes.size40),
-            ),
-            child: AnimatedDefaultTextStyle(
+    return GestureDetector(
+      onTap: validate ? onPressed : null,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Expanded(
+            flex: validate ? (falseWidthFactor ?? 1) : (trueWidthFactor ?? 1),
+            child: AnimatedContainer(
+              alignment: Alignment.center,
               duration: const Duration(milliseconds: 300),
-              style: TextStyle(
-                fontSize: Sizes.size16,
-                fontFamily: "Helvetica Neue medium",
-                fontWeight: FontWeight.w800,
-                color: validate ? Colors.black : Colors.white,
+              height: Sizes.size48,
+              decoration: BoxDecoration(
+                color: validate
+                    ? (colorChange
+                        ? Colors.black
+                        : (changeColor ?? Colors.black))
+                    : Colors.grey[500],
+                border: Border.all(
+                  color: Colors.grey.shade300,
+                  width: 1,
+                ),
+                borderRadius: BorderRadius.circular(Sizes.size40),
               ),
-              child: TextButton(
-                onPressed: validate ? onPressed : null,
+              child: AnimatedDefaultTextStyle(
+                duration: const Duration(milliseconds: 300),
+                style: TextStyle(
+                  fontSize: Sizes.size16,
+                  fontFamily: "Helvetica Neue medium",
+                  fontWeight: FontWeight.w800,
+                  color: validate ? Colors.black : Colors.white,
+                ),
                 child: Text(
                   textChange ? "Next" : (text ?? "Next"),
                   style: TextStyle(
@@ -63,8 +65,8 @@ class CommonButton extends StatelessWidget {
               ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

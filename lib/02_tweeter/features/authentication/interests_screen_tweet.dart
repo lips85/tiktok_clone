@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:tiktok_clone/02_tweeter/features/authentication/widgets/common_button.dart';
+import 'package:tiktok_clone/02_tweeter/features/authentication/interests_second_screen.dart';
+
+import 'package:tiktok_clone/02_tweeter/features/authentication/widgets/form_button.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
 import 'package:tiktok_clone/constants/textstyle/style_guide.dart';
 
@@ -8,10 +10,10 @@ class InterestsScreenTweet extends StatefulWidget {
   const InterestsScreenTweet({super.key});
 
   @override
-  _InterestsScreenTweetState createState() => _InterestsScreenTweetState();
+  InterestsScreenTweetState createState() => InterestsScreenTweetState();
 }
 
-class _InterestsScreenTweetState extends State<InterestsScreenTweet> {
+class InterestsScreenTweetState extends State<InterestsScreenTweet> {
   final List<String> interests = [
     "Fashion & beauty",
     "Outdoors",
@@ -39,7 +41,7 @@ class _InterestsScreenTweetState extends State<InterestsScreenTweet> {
   void _onNextTap() {
     if (selectedInterests.length >= 3) {
       Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) => const InterestsPartTwoScreen(),
+        builder: (context) => const InterestsSecondScreen(),
       ));
     }
   }
@@ -74,6 +76,10 @@ class _InterestsScreenTweetState extends State<InterestsScreenTweet> {
                 "Select at least 3 interests to personalize your Twitter experience. They will be visible on your profile.",
                 style: StyleGuide.explainStyle(),
                 textAlign: TextAlign.start,
+              ),
+              const Divider(
+                thickness: 0.3,
+                color: Colors.grey,
               ),
               const SizedBox(height: 20),
               Expanded(
@@ -135,35 +141,36 @@ class _InterestsScreenTweetState extends State<InterestsScreenTweet> {
                 ),
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 20),
-              CommonButton(
-                textChange: false,
-                validate: selectedInterests.length >= 3,
-                colorChange: true,
-                changeColor: Colors.black,
-                text: "Next",
-                onPressed: _onNextTap,
-              ),
-              const SizedBox(height: 20),
             ],
           ),
         ),
       ),
-    );
-  }
-}
-
-class InterestsPartTwoScreen extends StatelessWidget {
-  const InterestsPartTwoScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Interests Part Two"),
-      ),
-      body: const Center(
-        child: Text("Interests Part Two Screen"),
+      bottomNavigationBar: Container(
+        decoration: const BoxDecoration(
+          border: Border(
+            top: BorderSide(
+              color: Colors.grey,
+              width: 0.5,
+            ),
+          ),
+        ),
+        child: BottomAppBar(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                GestureDetector(
+                  onTap: _onNextTap,
+                  child: FormButton(
+                    isLarge: false,
+                    disabled: (selectedInterests.length < 3),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }

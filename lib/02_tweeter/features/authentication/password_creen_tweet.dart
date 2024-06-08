@@ -29,6 +29,12 @@ class PasswordScreenTweetState extends State<PasswordScreenTweet> {
     });
   }
 
+  void _onNextTap() {
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (context) => const InterestsScreenTweet(),
+    ));
+  }
+
   @override
   void dispose() {
     _passwordController.dispose();
@@ -94,17 +100,11 @@ class PasswordScreenTweetState extends State<PasswordScreenTweet> {
                 ),
               ),
               const Spacer(),
-              GestureDetector(
-                onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const InterestsScreenTweet(),
-                  ));
-                },
-                child: CommonButton(
-                  validate: _isPasswordValid,
-                  textChange: false,
-                  colorChange: false,
-                ),
+              CommonButton(
+                validate: _isPasswordValid,
+                textChange: false,
+                colorChange: false,
+                onPressed: _onNextTap,
               ),
               Gaps.v20,
             ],

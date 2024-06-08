@@ -1,11 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:gap/gap.dart';
 import 'package:tiktok_clone/02_tweeter/features/authentication/tweet_create_account_sign_up.dart';
 import 'package:tiktok_clone/02_tweeter/features/authentication/widgets/login_form_button.dart';
 import 'package:tiktok_clone/02_tweeter/models/user_data.dart';
-import 'package:tiktok_clone/constants/gaps.dart';
-import 'package:tiktok_clone/constants/sizes.dart';
 
 class TermsPageScreen extends StatefulWidget {
   const TermsPageScreen({
@@ -35,24 +34,24 @@ class _TermsPageScreenState extends State<TermsPageScreen> {
         centerTitle: true,
         title: const FaIcon(
           FontAwesomeIcons.twitter,
-          size: Sizes.size28,
+          size: 28,
           color: Color(0xff4E98E9),
         ),
       ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(
-            horizontal: Sizes.size32,
+            horizontal: 32,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Gaps.v24,
+              const Gap(24),
               const Text(
                 "Customize your",
                 style: TextStyle(
                   fontFamily: "Helvetica Neue hevie",
-                  fontSize: Sizes.size28 + Sizes.size2,
+                  fontSize: 30,
                   fontWeight: FontWeight.w800,
                 ),
               ),
@@ -60,16 +59,16 @@ class _TermsPageScreenState extends State<TermsPageScreen> {
                 "experience",
                 style: TextStyle(
                   fontFamily: "Helvetica Neue hevie",
-                  fontSize: Sizes.size28 + Sizes.size2,
+                  fontSize: 18,
                   fontWeight: FontWeight.w800,
                 ),
               ),
-              Gaps.v20,
+              const Gap(20),
               const Text(
                 "Track where you see Twitter",
                 style: TextStyle(
                   fontFamily: "Helvetica Neue hevie",
-                  fontSize: Sizes.size16 + Sizes.size2,
+                  fontSize: 18,
                   fontWeight: FontWeight.w800,
                 ),
               ),
@@ -77,11 +76,11 @@ class _TermsPageScreenState extends State<TermsPageScreen> {
                 "content across the web",
                 style: TextStyle(
                   fontFamily: "Helvetica Neue hevie",
-                  fontSize: Sizes.size16 + Sizes.size2,
+                  fontSize: 18,
                   fontWeight: FontWeight.w800,
                 ),
               ),
-              Gaps.v12,
+              const Gap(12),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -92,7 +91,7 @@ class _TermsPageScreenState extends State<TermsPageScreen> {
                         "Twitter uses this data to",
                         style: TextStyle(
                           fontFamily: "Helvetica Neue light",
-                          fontSize: Sizes.size16 + Sizes.size1,
+                          fontSize: 17,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -100,7 +99,7 @@ class _TermsPageScreenState extends State<TermsPageScreen> {
                         "personalize your experience. This",
                         style: TextStyle(
                           fontFamily: "Helvetica Neue light",
-                          fontSize: Sizes.size16 + Sizes.size1,
+                          fontSize: 17,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -108,7 +107,7 @@ class _TermsPageScreenState extends State<TermsPageScreen> {
                         "web browsing history will never be",
                         style: TextStyle(
                           fontFamily: "Helvetica Neue light",
-                          fontSize: Sizes.size16 + Sizes.size1,
+                          fontSize: 17,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -116,7 +115,7 @@ class _TermsPageScreenState extends State<TermsPageScreen> {
                         "stored with your name, email, or",
                         style: TextStyle(
                           fontFamily: "Helvetica Neue light",
-                          fontSize: Sizes.size16 + Sizes.size1,
+                          fontSize: 17,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -124,7 +123,7 @@ class _TermsPageScreenState extends State<TermsPageScreen> {
                         "phone number.",
                         style: TextStyle(
                           fontFamily: "Helvetica Neue light",
-                          fontSize: Sizes.size16 + Sizes.size1,
+                          fontSize: 17,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -140,12 +139,12 @@ class _TermsPageScreenState extends State<TermsPageScreen> {
                   )
                 ],
               ),
-              Gaps.v24,
+              const Gap(24),
               const Text.rich(
                 TextSpan(
                   text: 'By signing up, you agree to our ',
                   style: TextStyle(
-                    fontSize: Sizes.size14 + Sizes.size1,
+                    fontSize: 15,
                     fontFamily: "Helvetica Neue light",
                     fontWeight: FontWeight.w300,
                   ),
