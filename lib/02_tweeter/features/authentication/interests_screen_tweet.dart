@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:gap/gap.dart';
 import 'package:tiktok_clone/02_tweeter/features/authentication/interests_second_screen.dart';
 
 import 'package:tiktok_clone/02_tweeter/features/authentication/widgets/form_button.dart';
@@ -60,80 +61,87 @@ class InterestsScreenTweetState extends State<InterestsScreenTweet> {
         elevation: 0,
       ),
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              const SizedBox(height: 20),
-              Text(
-                "What do you want to see on Twitter?",
-                style: StyleGuide.titleStyle(),
-                textAlign: TextAlign.start,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                children: [
+                  const Gap(20),
+                  Text(
+                    "What do you want to see on Twitter?",
+                    style: StyleGuide.titleStyle(),
+                    textAlign: TextAlign.start,
+                  ),
+                  const Gap(20),
+                  Text(
+                    "Select at least 3 interests to personalize your Twitter experience. They will be visible on your profile.",
+                    style: StyleGuide.explainStyle(),
+                    textAlign: TextAlign.start,
+                  ),
+                ],
               ),
-              const SizedBox(height: 16),
-              Text(
-                "Select at least 3 interests to personalize your Twitter experience. They will be visible on your profile.",
-                style: StyleGuide.explainStyle(),
-                textAlign: TextAlign.start,
-              ),
-              const Divider(
-                thickness: 0.3,
-                color: Colors.grey,
-              ),
-              const SizedBox(height: 20),
-              Expanded(
-                child: GridView.count(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: Sizes.size10,
-                  mainAxisSpacing: Sizes.size10,
-                  childAspectRatio: 4 / 2,
-                  children: interests.map((interest) {
-                    final isSelected = selectedInterests.contains(interest);
-                    return GestureDetector(
-                      onTap: () => _toggleInterest(interest),
-                      child: AnimatedContainer(
-                        duration: const Duration(milliseconds: 300),
-                        padding: const EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          color: isSelected ? Colors.blue : Colors.grey[200],
-                          borderRadius: BorderRadius.circular(16),
-                          border: Border.all(
-                            color: isSelected ? Colors.blue : Colors.grey[400]!,
-                            width: 1,
-                          ),
-                        ),
-                        child: Stack(
-                          children: [
-                            Align(
-                              alignment: Alignment.bottomLeft,
-                              child: Text(
-                                interest,
-                                style: TextStyle(
-                                  color:
-                                      isSelected ? Colors.white : Colors.black,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            if (isSelected)
-                              const Align(
-                                alignment: Alignment.topRight,
-                                child: Icon(
-                                  Icons.check_circle,
-                                  color: Colors.white,
-                                  size: 20,
-                                ),
-                              ),
-                          ],
+            ),
+            const Divider(
+              thickness: 0.3,
+              color: Colors.grey,
+            ),
+            const Gap(20),
+            Expanded(
+              child: GridView.count(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                crossAxisCount: 2,
+                crossAxisSpacing: Sizes.size10,
+                mainAxisSpacing: Sizes.size10,
+                childAspectRatio: 4 / 2,
+                children: interests.map((interest) {
+                  final isSelected = selectedInterests.contains(interest);
+                  return GestureDetector(
+                    onTap: () => _toggleInterest(interest),
+                    child: AnimatedContainer(
+                      duration: const Duration(milliseconds: 300),
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: isSelected ? Colors.blue : Colors.grey[200],
+                        borderRadius: BorderRadius.circular(16),
+                        border: Border.all(
+                          color: isSelected ? Colors.blue : Colors.grey[400]!,
+                          width: 1,
                         ),
                       ),
-                    );
-                  }).toList(),
-                ),
+                      child: Stack(
+                        children: [
+                          Align(
+                            alignment: Alignment.bottomLeft,
+                            child: Text(
+                              interest,
+                              style: TextStyle(
+                                color: isSelected ? Colors.white : Colors.black,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          if (isSelected)
+                            const Align(
+                              alignment: Alignment.topRight,
+                              child: Icon(
+                                Icons.check_circle,
+                                color: Colors.white,
+                                size: 20,
+                              ),
+                            ),
+                        ],
+                      ),
+                    ),
+                  );
+                }).toList(),
               ),
-              Text(
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Text(
                 "${selectedInterests.length} of 3 selected",
                 style: const TextStyle(
                   fontSize: 16,
@@ -141,8 +149,8 @@ class InterestsScreenTweetState extends State<InterestsScreenTweet> {
                 ),
                 textAlign: TextAlign.center,
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
       bottomNavigationBar: Container(
