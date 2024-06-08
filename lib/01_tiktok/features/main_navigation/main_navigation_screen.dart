@@ -1,6 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:gap/gap.dart';
+import 'package:tiktok_clone/01_tiktok/features/main_navigation/stf_screen.dart';
+import 'package:tiktok_clone/01_tiktok/features/main_navigation/widgets/nav_tap.dart';
+import 'package:tiktok_clone/01_tiktok/features/main_navigation/widgets/post_video_button.dart';
 
 class MainNavigationScreen extends StatefulWidget {
   const MainNavigationScreen({super.key});
@@ -12,21 +18,19 @@ class MainNavigationScreen extends StatefulWidget {
 class _MainNavigationScreenState extends State<MainNavigationScreen> {
   int _selectedIndex = 0;
 
-  final screens = const [
-    Center(
-      child: Text('Home'),
+  final screens = [
+    StfScreen(
+      key: GlobalKey(),
     ),
-    Center(
-      child: Text('Search'),
+    StfScreen(
+      key: GlobalKey(),
     ),
-    Center(
-      child: Text('Home'),
+    Container(),
+    StfScreen(
+      key: GlobalKey(),
     ),
-    Center(
-      child: Text('Search'),
-    ),
-    Center(
-      child: Text('Home'),
+    StfScreen(
+      key: GlobalKey(),
     ),
   ];
 
@@ -36,22 +40,81 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     });
   }
 
+  void _onPostVideoButtonTap() {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => Container(),
+        fullscreenDialog: true,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return CupertinoTabScaffold(
-      tabBar: CupertinoTabBar(
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.house),
-            label: 'Home',
+    return Scaffold(
+      body: Stack(
+        children: [
+          Offstage(
+            offstage: _selectedIndex != 0,
+            child: const StfScreen(),
           ),
-          BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.search),
-            label: 'Search',
+          Offstage(
+            offstage: _selectedIndex != 1,
+            child: const StfScreen(),
           ),
+          Offstage(
+            offstage: _selectedIndex != 3,
+            child: const StfScreen(),
+          ),
+          Offstage(
+            offstage: _selectedIndex != 4,
+            child: const StfScreen(),
+          )
         ],
       ),
-      tabBuilder: (context, index) => screens[index],
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.black,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            NavTap(
+              icon: FontAwesomeIcons.house,
+              selectedIcon: FontAwesomeIcons.house,
+              text: "Home",
+              isSelected: _selectedIndex == 0,
+              onTap: () => _onTap(0),
+            ),
+            NavTap(
+              text: "Discover",
+              icon: FontAwesomeIcons.compass,
+              selectedIcon: FontAwesomeIcons.solidCompass,
+              isSelected: _selectedIndex == 1,
+              onTap: () => _onTap(1),
+            ),
+            const Gap(24),
+            GestureDetector(
+              onTap: _onPostVideoButtonTap,
+              child: const PostVideoButton(),
+            ),
+            const Gap(24),
+            NavTap(
+              text: "Inbox",
+              icon: FontAwesomeIcons.message,
+              selectedIcon: FontAwesomeIcons.solidMessage,
+              isSelected: _selectedIndex == 3,
+              onTap: () => _onTap(3),
+            ),
+            NavTap(
+              text: "Profile",
+              icon: FontAwesomeIcons.user,
+              selectedIcon: FontAwesomeIcons.solidUser,
+              isSelected: _selectedIndex == 4,
+              onTap: () => _onTap(4),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
