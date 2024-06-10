@@ -5,14 +5,12 @@ import 'package:gap/gap.dart';
 class NavTap extends StatelessWidget {
   const NavTap({
     super.key,
-    required this.text,
     required this.icon,
     required this.isSelected,
     required this.onTap,
     required this.selectedIcon,
   });
 
-  final String text;
   final IconData icon;
   final IconData selectedIcon;
   final bool isSelected;
@@ -24,22 +22,16 @@ class NavTap extends StatelessWidget {
       child: GestureDetector(
         onTap: onTap,
         child: Container(
-          color: Colors.black,
+          color: Colors.white,
           child: AnimatedOpacity(
             duration: const Duration(milliseconds: 300),
             opacity: isSelected ? 1 : 0.5,
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 FaIcon(
                   isSelected ? selectedIcon : icon,
-                  color: Colors.white,
-                ),
-                const Gap(5),
-                Text(
-                  text,
-                  style: const TextStyle(
-                    color: Colors.white,
-                  ),
+                  color: Colors.black,
                 ),
               ],
             ),

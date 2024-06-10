@@ -65,6 +65,11 @@ flutter:
   assets:
     - assets/images/google.svg
     - assets/images/apple.svg
+    - assets/images/threads.svg
+    - assets/images/nerd.jpg
+    - assets/images/square.jpg
+    - assets/images/widthfull.jpg
+    - assets/images/heightfull.jpg
     - assets/fonts/HelveticaNeueHeavy.otf
     - assets/fonts/HelveticaNeueLight.otf
     - assets/fonts/HelveticaNeueMedium.otf

@@ -27,7 +27,7 @@ class StyleGuide {
     );
   }
 
-  // 서브타이틀 스타일
+  // 설명 스타일
   static TextStyle explainStyle() {
     return baseStyle().copyWith(
       fontSize: 16.0,
@@ -35,21 +35,24 @@ class StyleGuide {
     );
   }
 
-  // 커스텀 스타일 예시
-  static TextStyle customStyle(
-      Color color, double fontSize, FontWeight fontWeight) {
+  // thread 타이틀 스타일
+  static TextStyle threadTitleStyle() {
     return baseStyle().copyWith(
-      fontSize: fontSize,
-      color: color,
-      fontWeight: fontWeight,
+      fontSize: Sizes.size16 + Sizes.size2,
+      fontWeight: FontWeight.w800,
     );
   }
 
-  static TextStyle buttonTextStyle() {
+  static TextStyle threadBodyStyle() {
     return baseStyle().copyWith(
-      fontSize: 16.0,
-      color: Colors.white,
-      fontWeight: FontWeight.bold,
+      fontSize: Sizes.size16 + Sizes.size2,
+    );
+  }
+
+  static TextStyle threadRepliesLikeStyle() {
+    return baseStyle().copyWith(
+      fontSize: Sizes.size16 + Sizes.size2,
+      color: Colors.grey[600],
     );
   }
 }
