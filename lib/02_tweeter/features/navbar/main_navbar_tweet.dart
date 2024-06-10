@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
-import 'package:tiktok_clone/01_tiktok/features/main_navigation/stf_screen.dart';
-import 'package:tiktok_clone/01_tiktok/features/main_navigation/widgets/nav_tap.dart';
-import 'package:tiktok_clone/01_tiktok/features/main_navigation/widgets/post_video_button.dart';
+import 'package:tiktok_clone/02_tweeter/features/navbar/stf_screen.dart';
 
-class MainNavigationScreen extends StatefulWidget {
-  const MainNavigationScreen({super.key});
+import 'package:tiktok_clone/02_tweeter/features/navbar/widgets/nav_tap.dart';
+import 'package:tiktok_clone/02_tweeter/features/navbar/widgets/post_video_button.dart';
+
+class MainNavbarTweetScreen extends StatefulWidget {
+  const MainNavbarTweetScreen({super.key});
 
   @override
-  State<MainNavigationScreen> createState() => _MainNavigationScreenState();
+  State<MainNavbarTweetScreen> createState() => _MainNavbarTweetScreenState();
 }
 
-class _MainNavigationScreenState extends State<MainNavigationScreen> {
+class _MainNavbarTweetScreenState extends State<MainNavbarTweetScreen> {
   int _selectedIndex = 0;
 
   final screens = [
@@ -83,7 +84,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             NavTap(
-              icon: FontAwesomeIcons.house,
+              icon: Icons.home_filled,
               selectedIcon: FontAwesomeIcons.house,
               text: "Home",
               isSelected: _selectedIndex == 0,

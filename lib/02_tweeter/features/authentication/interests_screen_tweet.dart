@@ -5,7 +5,7 @@ import 'package:tiktok_clone/02_tweeter/features/authentication/interests_second
 
 import 'package:tiktok_clone/02_tweeter/features/authentication/widgets/form_button.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
-import 'package:tiktok_clone/constants/textstyle/style_guide.dart';
+import 'package:tiktok_clone/02_tweeter/textstyle/style_guide.dart';
 
 class InterestsScreenTweet extends StatefulWidget {
   const InterestsScreenTweet({super.key});

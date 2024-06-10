@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tiktok_clone/01_tiktok/features/authentication/sign_up_screen.dart';
 import 'package:tiktok_clone/01_tiktok/features/main_navigation/main_navigation_screen.dart';
-import 'package:tiktok_clone/01_tiktok/features/onboarding/interests_screen.dart';
 import 'package:tiktok_clone/02_tweeter/features/authentication/confirmation_code_screen_tweet.dart';
+import 'package:tiktok_clone/02_tweeter/features/navbar/main_navbar_tweet.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
 
 void main() {
@@ -32,7 +31,7 @@ class Myapp extends StatelessWidget {
           ),
         ),
       ),
-      home: const MainNavigationScreen(),
+      home: const MainNavbarTweetScreen(),
     );
   }
 }

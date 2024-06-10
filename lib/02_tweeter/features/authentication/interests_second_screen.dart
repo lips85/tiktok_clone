@@ -3,7 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
 import 'package:tiktok_clone/02_tweeter/features/authentication/widgets/form_button.dart';
 import 'package:tiktok_clone/02_tweeter/features/authentication/widgets/interest_button.dart';
-import 'package:tiktok_clone/constants/textstyle/style_guide.dart';
+import 'package:tiktok_clone/02_tweeter/textstyle/style_guide.dart';
 
 const musics = [
   "Rap",
