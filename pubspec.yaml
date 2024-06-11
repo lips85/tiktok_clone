@@ -40,6 +40,8 @@ dependencies:
   sign_in_button: ^3.0.0
   gap: ^3.0.1
   faker: ^2.1.0
+  universal_io: ^2.0.4
+  faker_dart: ^0.2.2
 
 dev_dependencies:
   flutter_test:

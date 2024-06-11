@@ -1,4 +1,3 @@
-import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -6,25 +5,37 @@ import 'package:gap/gap.dart';
 import 'package:tiktok_clone/02_tweeter/features/navbar/widgets/image_viewer.dart';
 import 'package:tiktok_clone/02_tweeter/textstyle/style_guide.dart';
 
-class PostBasicForm extends StatelessWidget {
+class PostBasicForm extends StatefulWidget {
   final String userIcon;
-
   final String userName;
-
   final String postText;
-
   final String postTime;
+  final bool isImageUse;
+  final List<String> postImages;
+  final int repNum, likeNum;
 
-  PostBasicForm({
+  final String avator1, avator2, avator3;
+
+  const PostBasicForm({
     super.key,
+    required this.postImages,
     required this.userIcon,
     required this.userName,
     required this.postText,
     required this.postTime,
+    required this.isImageUse,
+    required this.repNum,
+    required this.likeNum,
+    required this.avator1,
+    required this.avator2,
+    required this.avator3,
   });
 
-  final faker = Faker();
+  @override
+  State<PostBasicForm> createState() => _PostBasicFormState();
+}
 
+class _PostBasicFormState extends State<PostBasicForm> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -48,7 +59,7 @@ class PostBasicForm extends StatelessWidget {
                                 backgroundColor: null,
                                 radius: 20,
                                 backgroundImage: NetworkImage(
-                                  userIcon,
+                                  widget.userIcon,
                                 ),
                               ),
                               const Positioned(
@@ -66,11 +77,11 @@ class PostBasicForm extends StatelessWidget {
                             ],
                           ),
                           const Gap(5),
-                          const Expanded(
+                          Expanded(
                             child: SizedBox(
-                              width: 2,
+                              width: 3,
                               child: ColoredBox(
-                                color: Colors.grey,
+                                color: Colors.grey.shade300,
                               ),
                             ),
                           ),
@@ -90,7 +101,7 @@ class PostBasicForm extends StatelessWidget {
                                     crossAxisAlignment: CrossAxisAlignment.end,
                                     children: [
                                       Text(
-                                        userName,
+                                        widget.userName,
                                         style: StyleGuide.threadTitleStyle(),
                                       ),
                                       const Gap(10),
@@ -105,7 +116,7 @@ class PostBasicForm extends StatelessWidget {
                                   Row(
                                     children: [
                                       Text(
-                                        postTime,
+                                        widget.postTime,
                                         style:
                                             StyleGuide.threadRepliesLikeStyle(),
                                       ),
@@ -119,25 +130,30 @@ class PostBasicForm extends StatelessWidget {
                               ),
                               const Gap(3),
                               Text(
-                                postText,
+                                widget.postText,
                                 style: StyleGuide.threadBodyStyle(),
                               ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 10),
-                                child: SizedBox(
-                                  height:
-                                      MediaQuery.of(context).size.width * 0.5,
-                                  child: ListView(
-                                    scrollDirection: Axis.horizontal,
-                                    children: [
-                                      const Gap(10),
-                                      TweetImageViewer(
-                                          assetPath: faker.image.image()),
-                                    ],
+                              if (widget.isImageUse)
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 10),
+                                  child: SizedBox(
+                                    height:
+                                        MediaQuery.of(context).size.width * 0.5,
+                                    child: ListView(
+                                      scrollDirection: Axis.horizontal,
+                                      children: [
+                                        if (widget.isImageUse)
+                                          for (var i = 0;
+                                              i < widget.postImages.length;
+                                              i++)
+                                            TweetImageViewer(
+                                                assetPath:
+                                                    widget.postImages[i]),
+                                      ],
+                                    ),
                                   ),
                                 ),
-                              ),
                               const Gap(6),
                               const Row(
                                 children: [
@@ -170,21 +186,68 @@ class PostBasicForm extends StatelessWidget {
                   ),
                 ),
                 const Gap(8),
-                const Row(
+                Row(
                   children: [
-                    Icon(
-                      FontAwesomeIcons.apple,
-                      size: 40,
+                    Stack(
+                      children: [
+                        Container(
+                          width: 40,
+                          height: 40,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                              color: Colors.white,
+                              width: 2,
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          left: 0,
+                          top: 10,
+                          child: CircleAvatar(
+                            backgroundColor: null,
+                            radius: 7,
+                            backgroundImage: NetworkImage(
+                              widget.avator1,
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          right: 0,
+                          top: 0,
+                          child: CircleAvatar(
+                            backgroundColor: null,
+                            radius: 10,
+                            backgroundImage: NetworkImage(
+                              widget.avator2,
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          right: 10,
+                          bottom: 0,
+                          child: CircleAvatar(
+                            backgroundColor: null,
+                            radius: 7,
+                            backgroundImage: NetworkImage(
+                              widget.avator3,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                     Padding(
-                      padding: EdgeInsets.only(left: 10),
+                      padding: const EdgeInsets.only(left: 10),
                       child: Row(
                         children: [
-                          Text("36 relies"),
-                          Gap(10),
-                          Icon(FontAwesomeIcons.solidCircleDot),
-                          Gap(10),
-                          Text("36 relies"),
+                          Text(
+                            "${widget.repNum} relies ",
+                            style: StyleGuide.threadRepliesLikeStyle(),
+                          ),
+                          Text(
+                            "• ${widget.likeNum} likes",
+                            style: StyleGuide.threadRepliesLikeStyle(),
+                          ),
                         ],
                       ),
                     ),
