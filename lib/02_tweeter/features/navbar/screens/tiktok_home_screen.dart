@@ -66,9 +66,28 @@ class PostBasicForm extends StatelessWidget {
                     children: [
                       const Column(
                         children: [
-                          Icon(
-                            Icons.circle_notifications_outlined,
-                            size: 40,
+                          Stack(
+                            children: [
+                              CircleAvatar(
+                                backgroundColor: null,
+                                radius: 20,
+                                backgroundImage: AssetImage(
+                                  "assets/images/nerd.jpg",
+                                ),
+                              ),
+                              Positioned(
+                                right: -1,
+                                bottom: -1,
+                                child: CircleAvatar(
+                                  backgroundColor: Colors.white,
+                                  radius: 9,
+                                  child: Icon(
+                                    FontAwesomeIcons.circlePlus,
+                                    size: 15,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                           Expanded(
                             child: SizedBox(
@@ -91,14 +110,17 @@ class PostBasicForm extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   Row(
+                                    crossAxisAlignment: CrossAxisAlignment.end,
                                     children: [
                                       Text(
                                         "pubity",
                                         style: StyleGuide.threadTitleStyle(),
                                       ),
                                       const Gap(10),
-                                      const Icon(
-                                        Icons.access_time_filled_sharp,
+                                      SvgPicture.asset(
+                                        alignment: Alignment.bottomCenter,
+                                        "assets/images/Twitter_Verified_Badge.svg",
+                                        width: 20,
                                       ),
                                     ],
                                   ),
@@ -123,20 +145,27 @@ class PostBasicForm extends StatelessWidget {
                                 "Vine after seeing the Threads logo unveiled",
                                 style: StyleGuide.threadBodyStyle(),
                               ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 10),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(
-                                      20,
+                              SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Row(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 10),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(
+                                            20,
+                                          ),
+                                        ),
+                                        clipBehavior: Clip.hardEdge,
+                                        child: Image.asset(
+                                          "assets/images/widthfull.jpg",
+                                          fit: BoxFit.fill,
+                                        ),
+                                      ),
                                     ),
-                                  ),
-                                  clipBehavior: Clip.hardEdge,
-                                  child: Image.asset(
-                                    "assets/images/widthfull.jpg",
-                                    fit: BoxFit.fill,
-                                  ),
+                                  ],
                                 ),
                               ),
                               const Gap(6),

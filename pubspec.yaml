@@ -39,6 +39,7 @@ dependencies:
   flutter_svg: ^2.0.10+1
   sign_in_button: ^3.0.0
   gap: ^3.0.1
+  faker: ^2.1.0
 
 dev_dependencies:
   flutter_test:
@@ -70,6 +71,7 @@ flutter:
     - assets/images/square.jpg
     - assets/images/widthfull.jpg
     - assets/images/heightfull.jpg
+    - assets/images/Twitter_Verified_Badge.svg
     - assets/fonts/HelveticaNeueHeavy.otf
     - assets/fonts/HelveticaNeueLight.otf
     - assets/fonts/HelveticaNeueMedium.otf
