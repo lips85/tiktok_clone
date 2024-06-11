@@ -21,21 +21,21 @@ class _MainNavbarTweetScreenState extends State<MainNavbarTweetScreen> {
     });
   }
 
-  void _onPostVideoButtonTap() {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => Scaffold(
-          appBar: AppBar(
-            title: const Text("Record Video"),
-          ),
-          body: const Center(
-            child: Text("Post Video"),
-          ),
-        ),
-        fullscreenDialog: true,
-      ),
-    );
-  }
+  // void _onPostVideoButtonTap() {
+  //   Navigator.of(context).push(
+  //     MaterialPageRoute(
+  //       builder: (context) => Scaffold(
+  //         appBar: AppBar(
+  //           title: const Text("Record Video"),
+  //         ),
+  //         body: const Center(
+  //           child: Text("Post Video"),
+  //         ),
+  //       ),
+  //       fullscreenDialog: true,
+  //     ),
+  //   );
+  // }
 
   final List screens = [
     "Home",

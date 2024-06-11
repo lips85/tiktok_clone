@@ -1,8 +1,12 @@
+library faker.example;
+
+import 'dart:nativewrappers/_internal/vm/lib/ffi_allocation_patch.dart';
+
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
-import 'package:tiktok_clone/02_tweeter/textstyle/style_guide.dart';
+import 'package:tiktok_clone/02_tweeter/features/navbar/widgets/post_basic_form.dart';
 
 class TiktokHomeScreen extends StatefulWidget {
   final String text;
@@ -13,6 +17,8 @@ class TiktokHomeScreen extends StatefulWidget {
 }
 
 class _TiktokHomeScreenState extends State<TiktokHomeScreen> {
+  final faker = Faker();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -28,204 +34,14 @@ class _TiktokHomeScreenState extends State<TiktokHomeScreen> {
               ),
             ),
             const Gap(20),
-            const PostBasicForm(),
-            const PostBasicForm(),
-            const PostBasicForm(),
-            const PostBasicForm(),
-            const PostBasicForm(),
-            const PostBasicForm(),
-            const PostBasicForm(),
-            const PostBasicForm(),
-            const PostBasicForm(),
+            PostBasicForm(
+              userIcon: faker.image.image(keywords: ['people', 'avatar']),
+              postText: faker.lorem.sentence(),
+              postTime: faker.date.call().toString(),
+              userName: faker.internet.userName(),
+            ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class PostBasicForm extends StatelessWidget {
-  const PostBasicForm({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 10),
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 8, right: 10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                IntrinsicHeight(
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Column(
-                        children: [
-                          Stack(
-                            children: [
-                              CircleAvatar(
-                                backgroundColor: null,
-                                radius: 20,
-                                backgroundImage: AssetImage(
-                                  "assets/images/nerd.jpg",
-                                ),
-                              ),
-                              Positioned(
-                                right: -1,
-                                bottom: -1,
-                                child: CircleAvatar(
-                                  backgroundColor: Colors.white,
-                                  radius: 9,
-                                  child: Icon(
-                                    FontAwesomeIcons.circlePlus,
-                                    size: 15,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          Expanded(
-                            child: SizedBox(
-                              width: 3,
-                              child: ColoredBox(
-                                color: Colors.grey,
-                              ),
-                            ),
-                          ),
-                          Gap(5),
-                        ],
-                      ),
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 10),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: [
-                                      Text(
-                                        "pubity",
-                                        style: StyleGuide.threadTitleStyle(),
-                                      ),
-                                      const Gap(10),
-                                      SvgPicture.asset(
-                                        alignment: Alignment.bottomCenter,
-                                        "assets/images/Twitter_Verified_Badge.svg",
-                                        width: 20,
-                                      ),
-                                    ],
-                                  ),
-                                  const Spacer(),
-                                  Row(
-                                    children: [
-                                      Text(
-                                        "2m",
-                                        style:
-                                            StyleGuide.threadRepliesLikeStyle(),
-                                      ),
-                                      const Gap(10),
-                                      const Icon(
-                                        Icons.menu,
-                                      )
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              const Gap(3),
-                              Text(
-                                "Vine after seeing the Threads logo unveiled",
-                                style: StyleGuide.threadBodyStyle(),
-                              ),
-                              SingleChildScrollView(
-                                scrollDirection: Axis.horizontal,
-                                child: Row(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 10),
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(
-                                            20,
-                                          ),
-                                        ),
-                                        clipBehavior: Clip.hardEdge,
-                                        child: Image.asset(
-                                          "assets/images/widthfull.jpg",
-                                          fit: BoxFit.fill,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              const Gap(6),
-                              const Row(
-                                children: [
-                                  Icon(
-                                    FontAwesomeIcons.heart,
-                                    size: 20,
-                                  ),
-                                  Gap(10),
-                                  Icon(
-                                    FontAwesomeIcons.comment,
-                                    size: 20,
-                                  ),
-                                  Gap(10),
-                                  Icon(
-                                    FontAwesomeIcons.repeat,
-                                    size: 20,
-                                  ),
-                                  Gap(10),
-                                  Icon(
-                                    FontAwesomeIcons.paperPlane,
-                                    size: 20,
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const Gap(8),
-                const Row(
-                  children: [
-                    Icon(
-                      FontAwesomeIcons.apple,
-                      size: 40,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 10),
-                      child: Row(
-                        children: [
-                          Text("36 relies"),
-                          Gap(10),
-                          Icon(FontAwesomeIcons.solidCircleDot),
-                          Gap(10),
-                          Text("36 relies"),
-                        ],
-                      ),
-                    ),
-                  ],
-                )
-              ],
-            ),
-          ),
-          const Gap(10),
-          const Divider()
-        ],
       ),
     );
   }
