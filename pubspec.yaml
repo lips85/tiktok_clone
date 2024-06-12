@@ -42,6 +42,7 @@ dependencies:
   faker: ^2.1.0
   universal_io: ^2.0.4
   faker_dart: ^0.2.2
+  video_player: 2.4.10
 
 dev_dependencies:
   flutter_test:
@@ -66,18 +67,9 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/google.svg
-    - assets/images/apple.svg
-    - assets/images/threads.svg
-    - assets/images/three-dots-svgrepo-com.svg
-    - assets/images/nerd.jpg
-    - assets/images/square.jpg
-    - assets/images/widthfull.jpg
-    - assets/images/heightfull.jpg
-    - assets/images/Twitter_Verified_Badge.svg
-    - assets/fonts/HelveticaNeueHeavy.otf
-    - assets/fonts/HelveticaNeueLight.otf
-    - assets/fonts/HelveticaNeueMedium.otf
+    - assets/images/
+    - assets/videos/
+    - assets/fonts/
 
   #   - images/a_dot_ham.jpeg
 
