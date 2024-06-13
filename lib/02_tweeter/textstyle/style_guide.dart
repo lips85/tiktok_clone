@@ -55,4 +55,11 @@ class StyleGuide {
       color: Colors.grey[600],
     );
   }
+
+  static TextStyle reportStyle() {
+    return baseStyle().copyWith(
+      fontSize: Sizes.size16 + Sizes.size2,
+      fontWeight: FontWeight.w600,
+    );
+  }
 }

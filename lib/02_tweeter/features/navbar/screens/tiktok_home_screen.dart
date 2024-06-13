@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:faker_dart/faker_dart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -58,7 +56,6 @@ class _TiktokHomeScreenState extends State<TiktokHomeScreen> {
   @override
   Widget build(BuildContext context) {
     final post1 = _makeFakerData(2);
-    final post1Text = _makeFakerData(2)['postText'];
     final post2 = _makeFakerData(7);
     final post3 = _makeFakerData(11);
     final post4 = _makeFakerData(14);

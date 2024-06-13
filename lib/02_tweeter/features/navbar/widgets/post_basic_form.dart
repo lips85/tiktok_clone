@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
 import 'package:tiktok_clone/02_tweeter/features/navbar/widgets/image_viewer.dart';
+import 'package:tiktok_clone/02_tweeter/features/thread/screens/thread_coments.dart';
 import 'package:tiktok_clone/02_tweeter/textstyle/style_guide.dart';
 
 class PostBasicForm extends StatefulWidget {
@@ -36,6 +37,13 @@ class PostBasicForm extends StatefulWidget {
 }
 
 class _PostBasicFormState extends State<PostBasicForm> {
+  void _onThreadTap() async {
+    await showModalBottomSheet(
+      context: context,
+      builder: (context) => const ThreadComments(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -121,8 +129,12 @@ class _PostBasicFormState extends State<PostBasicForm> {
                                             StyleGuide.threadRepliesLikeStyle(),
                                       ),
                                       const Gap(10),
-                                      const Icon(
-                                        Icons.menu,
+                                      GestureDetector(
+                                        onTap: _onThreadTap,
+                                        child: SvgPicture.asset(
+                                          "assets/images/three-dots-svgrepo-com.svg",
+                                          width: 20,
+                                        ),
                                       )
                                     ],
                                   ),

@@ -4,6 +4,7 @@ import 'package:tiktok_clone/02_tweeter/features/navbar/screens/other_screen.dar
 import 'package:tiktok_clone/02_tweeter/features/navbar/screens/tiktok_home_screen.dart';
 
 import 'package:tiktok_clone/02_tweeter/features/navbar/widgets/nav_tap.dart';
+import 'package:tiktok_clone/02_tweeter/features/thread/screens/write_screen.dart';
 
 class MainNavbarTweetScreen extends StatefulWidget {
   const MainNavbarTweetScreen({super.key});
@@ -14,13 +15,24 @@ class MainNavbarTweetScreen extends StatefulWidget {
 
 class _MainNavbarTweetScreenState extends State<MainNavbarTweetScreen> {
   int _selectedIndex = 0;
-
+  bool isSelected = false;
   void _onTap(int index) {
     setState(() {
       _selectedIndex = index;
     });
   }
 
+  void _onWriteTap() {
+    showModalBottomSheet(
+      isScrollControlled: true,
+      context: context,
+      builder: (context) => const WriteScreen(),
+    );
+
+    setState(() {
+      isSelected = !isSelected;
+    });
+  }
   // void _onPostVideoButtonTap() {
   //   Navigator.of(context).push(
   //     MaterialPageRoute(
@@ -49,7 +61,6 @@ class _MainNavbarTweetScreenState extends State<MainNavbarTweetScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: _selectedIndex == 0 ? Colors.black : Colors.white,
       body: Stack(
         children: [
           Offstage(
@@ -59,10 +70,6 @@ class _MainNavbarTweetScreenState extends State<MainNavbarTweetScreen> {
           Offstage(
             offstage: _selectedIndex != 1,
             child: OtherScreen(text: screens[1]),
-          ),
-          Offstage(
-            offstage: _selectedIndex != 2,
-            child: OtherScreen(text: screens[2]),
           ),
           Offstage(
             offstage: _selectedIndex != 3,
@@ -92,11 +99,28 @@ class _MainNavbarTweetScreenState extends State<MainNavbarTweetScreen> {
               isSelected: _selectedIndex == 1,
               onTap: () => _onTap(1),
             ),
-            NavTap(
-              icon: FontAwesomeIcons.penToSquare,
-              selectedIcon: FontAwesomeIcons.solidPenToSquare,
-              isSelected: _selectedIndex == 2,
-              onTap: () => _onTap(2),
+            Expanded(
+              child: GestureDetector(
+                onTap: _onWriteTap,
+                child: Container(
+                  color: Colors.white,
+                  child: AnimatedOpacity(
+                    duration: const Duration(milliseconds: 300),
+                    opacity: isSelected ? 1 : 0.5,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        FaIcon(
+                          isSelected
+                              ? FontAwesomeIcons.solidPenToSquare
+                              : FontAwesomeIcons.penToSquare,
+                          color: Colors.black,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
             ),
             NavTap(
               icon: FontAwesomeIcons.heart,
