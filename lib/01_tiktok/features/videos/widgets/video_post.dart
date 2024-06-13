@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:gap/gap.dart';
+import 'package:tiktok_clone/01_tiktok/features/videos/widgets/video_button.dart';
+import 'package:tiktok_clone/01_tiktok/features/videos/widgets/video_comments.dart';
+import 'package:tiktok_clone/02_tweeter/textstyle/style_guide.dart';
 import 'package:video_player/video_player.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
@@ -43,7 +47,9 @@ class _VideoPostState extends State<VideoPost>
   }
 
   void _onVisibilityChanged(VisibilityInfo info) {
-    if (info.visibleFraction == 1 && !_videoPlayerController.value.isPlaying) {
+    if (info.visibleFraction == 1 &&
+        !_isPaused &&
+        !_videoPlayerController.value.isPlaying) {
       _videoPlayerController.play();
     }
   }
@@ -74,9 +80,17 @@ class _VideoPostState extends State<VideoPost>
       value: 1.5,
       duration: _duration,
     );
-    _animationController.addListener(() {
-      setState(() {});
-    });
+  }
+
+  void _onCommentTap(BuildContext context) async {
+    if (_videoPlayerController.value.isPlaying) {
+      _onTogglePause();
+    }
+    await showModalBottomSheet(
+      isScrollControlled: true,
+      context: context,
+      builder: (context) => const VideoComments(),
+    );
   }
 
   @override
@@ -107,8 +121,14 @@ class _VideoPostState extends State<VideoPost>
           Positioned.fill(
             child: IgnorePointer(
               child: Center(
-                child: Transform.scale(
-                  scale: _animationController.value,
+                child: AnimatedBuilder(
+                  animation: _animationController,
+                  builder: (context, child) {
+                    return Transform.scale(
+                      scale: _animationController.value,
+                      child: child,
+                    );
+                  },
                   child: AnimatedOpacity(
                     opacity: _isPaused ? 1 : 0,
                     duration: _duration,
@@ -121,7 +141,60 @@ class _VideoPostState extends State<VideoPost>
                 ),
               ),
             ),
-          )
+          ),
+          Positioned(
+            bottom: 30,
+            left: 30,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "재욱",
+                  style: StyleGuide.titleStyle(),
+                ),
+                const Gap(10),
+                Text(
+                  "this is mine",
+                  style: StyleGuide.explainStyle(),
+                )
+              ],
+            ),
+          ),
+          Positioned(
+            bottom: 20,
+            right: 10,
+            child: Column(
+              children: [
+                const CircleAvatar(
+                  radius: 25,
+                  backgroundColor: Colors.black,
+                  foregroundColor: Colors.white,
+                  foregroundImage: NetworkImage(
+                    "https://avatars.githubusercontent.com/u/88703915",
+                  ),
+                  child: Text("user"),
+                ),
+                const Gap(24),
+                const VideoButton(
+                  icon: FontAwesomeIcons.solidHeart,
+                  text: "2.9M",
+                ),
+                const Gap(24),
+                GestureDetector(
+                  onTap: () => {_onCommentTap(context)},
+                  child: const VideoButton(
+                    icon: FontAwesomeIcons.solidComment,
+                    text: "33K",
+                  ),
+                ),
+                const Gap(24),
+                const VideoButton(
+                  icon: FontAwesomeIcons.share,
+                  text: "Share",
+                )
+              ],
+            ),
+          ),
         ],
       ),
     );
