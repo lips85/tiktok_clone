@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tiktok_clone/02_tweeter/features/activity/activity_screen_tweet.dart';
 import 'package:tiktok_clone/02_tweeter/features/navbar/screens/other_screen.dart';
 import 'package:tiktok_clone/02_tweeter/features/navbar/screens/tiktok_home_screen.dart';
 
@@ -74,7 +75,7 @@ class _MainNavbarTweetScreenState extends State<MainNavbarTweetScreen> {
           ),
           Offstage(
             offstage: _selectedIndex != 3,
-            child: OtherScreen(text: screens[3]),
+            child: const ActivityScreenTweet(),
           ),
           Offstage(
               offstage: _selectedIndex != 4,

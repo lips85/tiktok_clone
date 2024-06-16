@@ -7,10 +7,10 @@ class SearchScreenTweet extends StatefulWidget {
   const SearchScreenTweet({super.key});
 
   @override
-  State<SearchScreenTweet> createState() => _DiscoverScreenState();
+  State<SearchScreenTweet> createState() => _SearchScreenTweetState();
 }
 
-class _DiscoverScreenState extends State<SearchScreenTweet> {
+class _SearchScreenTweetState extends State<SearchScreenTweet> {
   final TextEditingController _textEditingController = TextEditingController();
 
   final fakerData = generateFakeData(20, 123);
