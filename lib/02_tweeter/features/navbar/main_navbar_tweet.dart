@@ -4,6 +4,7 @@ import 'package:tiktok_clone/02_tweeter/features/navbar/screens/other_screen.dar
 import 'package:tiktok_clone/02_tweeter/features/navbar/screens/tiktok_home_screen.dart';
 
 import 'package:tiktok_clone/02_tweeter/features/navbar/widgets/nav_tap.dart';
+import 'package:tiktok_clone/02_tweeter/features/search/search_screen_tweet.dart';
 import 'package:tiktok_clone/02_tweeter/features/thread/screens/write_screen.dart';
 
 class MainNavbarTweetScreen extends StatefulWidget {
@@ -14,7 +15,7 @@ class MainNavbarTweetScreen extends StatefulWidget {
 }
 
 class _MainNavbarTweetScreenState extends State<MainNavbarTweetScreen> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 1;
   bool isSelected = false;
   void _onTap(int index) {
     setState(() {
@@ -69,7 +70,7 @@ class _MainNavbarTweetScreenState extends State<MainNavbarTweetScreen> {
           ),
           Offstage(
             offstage: _selectedIndex != 1,
-            child: OtherScreen(text: screens[1]),
+            child: const SearchScreenTweet(),
           ),
           Offstage(
             offstage: _selectedIndex != 3,

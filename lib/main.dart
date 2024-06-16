@@ -16,8 +16,12 @@ class Myapp extends StatelessWidget {
     return MaterialApp(
       title: 'Tweets',
       theme: ThemeData(
+        splashColor: Colors.transparent,
         scaffoldBackgroundColor: Colors.white,
         primaryColor: const Color(0xff4E98E9),
+        textSelectionTheme: const TextSelectionThemeData(
+          cursorColor: Color(0xff4E98E9),
+        ),
         appBarTheme: const AppBarTheme(
           backgroundColor: Colors.white,
           foregroundColor: Colors.black,
@@ -30,8 +34,8 @@ class Myapp extends StatelessWidget {
           ),
         ),
       ),
-      // home: const MainNavbarTweetScreen(),
-      home: const MainNavigationScreen(),
+      home: const MainNavbarTweetScreen(),
+      // home: const MainNavigationScreen(),
     );
   }
 }

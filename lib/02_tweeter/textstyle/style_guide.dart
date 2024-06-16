@@ -31,7 +31,7 @@ class StyleGuide {
   static TextStyle explainStyle() {
     return baseStyle().copyWith(
       fontSize: 16.0,
-      color: Colors.grey[700],
+      color: Colors.grey[600],
     );
   }
 
@@ -60,6 +60,36 @@ class StyleGuide {
     return baseStyle().copyWith(
       fontSize: Sizes.size16 + Sizes.size2,
       fontWeight: FontWeight.w600,
+    );
+  }
+
+  static TextStyle listTileTitle() {
+    return baseStyle().copyWith(
+      fontSize: Sizes.size16,
+      fontWeight: FontWeight.w600,
+    );
+  }
+
+  static TextStyle listTileSub() {
+    return baseStyle().copyWith(
+      fontSize: Sizes.size16,
+      fontWeight: FontWeight.w600,
+      color: Colors.grey,
+    );
+  }
+
+  static TextStyle listTileFollower() {
+    return baseStyle().copyWith(
+      fontSize: Sizes.size16,
+    );
+  }
+
+  static TextStyle customeStyle(
+      double? fontSize, FontWeight? fontWeight, Color? color) {
+    return baseStyle().copyWith(
+      fontSize: fontSize,
+      fontWeight: fontWeight,
+      color: color,
     );
   }
 }
