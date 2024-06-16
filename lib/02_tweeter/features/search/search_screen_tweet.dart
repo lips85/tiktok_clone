@@ -13,7 +13,7 @@ class SearchScreenTweet extends StatefulWidget {
 class _SearchScreenTweetState extends State<SearchScreenTweet> {
   final TextEditingController _textEditingController = TextEditingController();
 
-  final fakerData = generateFakeData(20, 123);
+  final fakerData = generateFakeData(20, 12345);
   late var finalUser = fakerData;
   void _onSearchChanged(String text) {
     setState(() {

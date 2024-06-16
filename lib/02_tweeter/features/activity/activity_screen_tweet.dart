@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tiktok_clone/02_tweeter/features/activity/model/make_faker_activity.dart';
-import 'package:tiktok_clone/02_tweeter/features/activity/widgets/activity_tile_tweet.dart.dart';
+import 'package:tiktok_clone/02_tweeter/features/activity/widgets/activity_tile_tweet.dart';
 import 'package:tiktok_clone/02_tweeter/textstyle/style_guide.dart';
 
 final tabs = [
@@ -34,6 +34,14 @@ class _ActivityScreenState extends State<ActivityScreenTweet> {
     super.dispose();
   }
 
+  List<Map<String, dynamic>> _filterDataByType(String type) {
+    if (type == "All") {
+      return fakerData;
+    } else {
+      return fakerData.where((item) => item['type'] == type).toList();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -42,58 +50,76 @@ class _ActivityScreenState extends State<ActivityScreenTweet> {
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
           centerTitle: false,
-          elevation: 1,
           title: Text(
             "Activity",
             style: StyleGuide.titleStyle(),
           ),
           bottom: TabBar(
             splashFactory: NoSplash.splashFactory,
-            padding: const EdgeInsets.symmetric(
-              horizontal: 16,
+            indicatorWeight: 0,
+            indicatorPadding: EdgeInsets.zero,
+            indicatorSize: TabBarIndicatorSize.label,
+            indicator: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.black,
             ),
+            labelColor: Colors.white,
+            unselectedLabelColor: Colors.black,
             isScrollable: true,
             labelStyle: const TextStyle(
               fontWeight: FontWeight.w600,
               fontSize: 16,
             ),
-            indicatorColor: Colors.black,
-            labelColor: Colors.black,
-            unselectedLabelColor: Colors.grey.shade500,
+            unselectedLabelStyle: const TextStyle(
+              fontWeight: FontWeight.w600,
+              fontSize: 16,
+            ),
+            dividerColor: Colors.white,
             tabs: [
               for (var tab in tabs)
                 Tab(
-                  text: tab,
+                  child: FractionallySizedBox(
+                    heightFactor: 1,
+                    child: Container(
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(color: Colors.grey.shade300),
+                      ),
+                      child: SizedBox(
+                        width: 100,
+                        child: Center(
+                          child: Text(tab),
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
             ],
           ),
         ),
         body: TabBarView(
           children: [
-            ListView.separated(
-              itemCount: fakerData.length,
-              keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-              separatorBuilder: (BuildContext context, int index) {
-                return const SizedBox(
-                  height: 0,
-                );
-              },
-              itemBuilder: (context, index) => ActivityTileTweet(
-                nickName: fakerData[index]["nickName"].toString(),
-                subTitle: fakerData[index]["subTitle"].toString(),
-                avatar: fakerData[index]["avatar"].toString(),
-                type: fakerData[index]["type"].toString(),
-                dataTime: fakerData[index]["dataTime"].toString(),
-              ),
-            ),
-            for (var tab in tabs.skip(1))
-              Center(
-                child: Text(
-                  tab,
-                  style: const TextStyle(
-                    fontSize: 28,
-                  ),
-                ),
+            for (var tab in tabs)
+              ListView.separated(
+                itemCount: _filterDataByType(tab).length,
+                keyboardDismissBehavior:
+                    ScrollViewKeyboardDismissBehavior.onDrag,
+                separatorBuilder: (BuildContext context, int index) {
+                  return const SizedBox(
+                    height: 0,
+                  );
+                },
+                itemBuilder: (context, index) {
+                  var filteredData = _filterDataByType(tab);
+                  return ActivityTileTweet(
+                    nickName: filteredData[index]["nickName"].toString(),
+                    subTitle: filteredData[index]["subTitle"].toString(),
+                    avatar: filteredData[index]["avatar"].toString(),
+                    type: filteredData[index]["type"].toString(),
+                    dataTime: filteredData[index]["dataTime"].toString(),
+                  );
+                },
               ),
           ],
         ),
