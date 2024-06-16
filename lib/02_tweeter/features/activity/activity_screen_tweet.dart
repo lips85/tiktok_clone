@@ -1,13 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tiktok_clone/02_tweeter/features/activity/widgets/activity_tile_tweet.dart.dart';
+import 'package:tiktok_clone/02_tweeter/textstyle/style_guide.dart';
 import 'package:tiktok_clone/constants/make_faker.dart';
 
 final tabs = [
-  "Top",
-  "Users",
-  "Videos",
-  "Sounds",
+  "All",
+  "Replies",
+  "Mentions",
+  "Ve",
   "LIVE",
   "Shopping",
   "Brands",
@@ -59,13 +59,11 @@ class _ActivityScreenState extends State<ActivityScreenTweet> {
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
+          centerTitle: false,
           elevation: 1,
-          title: CupertinoSearchTextField(
-            controller: _textEditingController,
-            placeholder: "Serch Anything",
-            onChanged: _onSearchChanged,
-            onSubmitted: _onSearchSubmitted,
-            autocorrect: false,
+          title: Text(
+            "Activity",
+            style: StyleGuide.titleStyle(),
           ),
           bottom: TabBar(
             splashFactory: NoSplash.splashFactory,
