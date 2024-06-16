@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
 import 'package:tiktok_clone/02_tweeter/features/activity/widgets/activity_icon.dart';
 import 'package:tiktok_clone/02_tweeter/textstyle/style_guide.dart';

@@ -21,23 +21,7 @@ class ActivityScreenTweet extends StatefulWidget {
 class _ActivityScreenState extends State<ActivityScreenTweet> {
   final TextEditingController _textEditingController = TextEditingController();
 
-  final fakerData = generateActivityFakeData(5, 123);
-
-  void _onSearchChanged(String value) {
-    print(value);
-  }
-
-  void _onSearchSubmitted(String value) {
-    print("Submitted value $value");
-  }
-
-  bool isPrime(int num) {
-    if (num <= 1) return false;
-    for (int i = 2; i <= num ~/ 2; i++) {
-      if (num % i == 0) return false;
-    }
-    return true;
-  }
+  final fakerData = generateActivityFakeData(8, 123);
 
   @override
   void initState() {

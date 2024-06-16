@@ -14,13 +14,21 @@ class _SearchScreenTweetState extends State<SearchScreenTweet> {
   final TextEditingController _textEditingController = TextEditingController();
 
   final fakerData = generateFakeData(20, 123);
-
-  void _onSearchChanged(String value) {
-    print(value);
-  }
-
-  void _onSearchSubmitted(String value) {
-    print("Submitted value $value");
+  late var finalUser = fakerData;
+  void _onSearchChanged(String text) {
+    setState(() {
+      finalUser = fakerData
+          .where((element) =>
+              element["nickName"]
+                  .toString()
+                  .toLowerCase()
+                  .contains(text.toLowerCase()) ||
+              element["name"]
+                  .toString()
+                  .toLowerCase()
+                  .contains(text.toLowerCase()))
+          .toList();
+    });
   }
 
   bool isPrime(int num) {
@@ -52,28 +60,29 @@ class _SearchScreenTweetState extends State<SearchScreenTweet> {
           controller: _textEditingController,
           placeholder: "Serch Anything",
           onChanged: _onSearchChanged,
-          onSubmitted: _onSearchSubmitted,
           autocorrect: false,
         ),
       ),
       body: ListView.separated(
-        itemCount: fakerData.length,
+        itemCount: finalUser.length,
         keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
         separatorBuilder: (BuildContext context, int index) {
           return const SizedBox(
             height: 0,
           );
         },
-        itemBuilder: (context, index) => SearchListTile(
-          nickName: fakerData[index]["nickName"].toString(),
-          name: fakerData[index]["name"].toString(),
-          numOfFollower:
-              fakerData[index]["numOfFollower"].toString().substring(0, 4),
-          avatar: fakerData[index]["avatar"].toString(),
-          followAvatar: isPrime(index)
-              ? fakerData[index]["followAvatar"].toString()
-              : null,
-        ),
+        itemBuilder: (context, index) {
+          return SearchListTile(
+            nickName: finalUser[index]["nickName"].toString(),
+            name: finalUser[index]["name"].toString(),
+            numOfFollower:
+                finalUser[index]["numOfFollower"].toString().substring(0, 4),
+            avatar: finalUser[index]["avatar"].toString(),
+            followAvatar: isPrime(index)
+                ? finalUser[index]["followAvatar"].toString()
+                : null,
+          );
+        },
       ),
     );
   }
