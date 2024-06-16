@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
+import 'package:tiktok_clone/02_tweeter/features/activity/widgets/activity_icon.dart';
 import 'package:tiktok_clone/02_tweeter/textstyle/style_guide.dart';
 import 'package:tiktok_clone/constants/github_avatar.dart';
 
 class ActivityTileTweet extends StatelessWidget {
-  final String nickName, name, numOfFollower;
-  final String avatar;
-  final String? followAvatar;
+  final String nickName, subTitle, dataTime, avatar, type;
 
   const ActivityTileTweet({
     super.key,
     required this.nickName,
-    required this.name,
-    required this.numOfFollower,
+    required this.subTitle,
     required this.avatar,
-    this.followAvatar,
+    required this.type,
+    required this.dataTime,
   });
 
   @override
@@ -23,18 +22,32 @@ class ActivityTileTweet extends StatelessWidget {
     return Column(
       children: [
         ListTile(
+          horizontalTitleGap: 10,
           isThreeLine: true,
           dense: true,
-          leading: Container(
-            clipBehavior: Clip.hardEdge,
-            width: 40,
-            height: 40,
-            decoration: const BoxDecoration(shape: BoxShape.circle),
-            child: FadeInImage(
-              fit: BoxFit.cover,
-              placeholder: const NetworkImage(githubAvatar),
-              image: NetworkImage(avatar),
-            ),
+          leading: Stack(
+            children: [
+              Container(
+                clipBehavior: Clip.hardEdge,
+                width: 50,
+                height: 40,
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                ),
+                child: FadeInImage(
+                  height: 10,
+                  width: 10,
+                  fit: BoxFit.cover,
+                  placeholder: const NetworkImage(githubAvatar),
+                  image: NetworkImage(avatar),
+                ),
+              ),
+              Positioned(
+                right: 0,
+                bottom: -2,
+                child: ActivityIcon(type: type),
+              ),
+            ],
           ),
           title: Row(
             children: [
@@ -43,24 +56,33 @@ class ActivityTileTweet extends StatelessWidget {
                 style: StyleGuide.listTileTitle(),
               ),
               const Gap(5),
-              SvgPicture.asset("./assets/images/Twitter_Verified_Badge.svg"),
+              Text(
+                "${dataTime}h",
+                style: TextStyle(
+                  color: Colors.grey.shade600,
+                  fontSize: 16,
+                ),
+              ),
             ],
           ),
           subtitle: Text(
-            name,
+            subTitle,
             style: StyleGuide.listTileSub(),
           ),
-          trailing: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: Colors.grey.shade400, width: 1),
-            ),
-            child: Text(
-              "Follow",
-              style: StyleGuide.listTileTitle(),
-            ),
-          ),
+          trailing: type == "Follows"
+              ? Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: Colors.grey.shade400, width: 1),
+                  ),
+                  child: Text(
+                    "Following",
+                    style: StyleGuide.listTileSub(),
+                  ),
+                )
+              : null,
         ),
         Row(
           children: [
@@ -71,27 +93,6 @@ class ActivityTileTweet extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    children: [
-                      if (followAvatar != null && followAvatar!.isNotEmpty)
-                        Container(
-                          clipBehavior: Clip.hardEdge,
-                          width: 20,
-                          height: 20,
-                          decoration:
-                              const BoxDecoration(shape: BoxShape.circle),
-                          child: FadeInImage(
-                            fit: BoxFit.cover,
-                            placeholder: const NetworkImage(githubAvatar),
-                            image: NetworkImage(followAvatar!),
-                          ),
-                        ),
-                      Text(
-                        " ${numOfFollower}K followers",
-                        style: StyleGuide.listTileFollower(),
-                      ),
-                    ],
-                  ),
                   Divider(
                     thickness: 0.5,
                     color: Colors.grey.shade400,

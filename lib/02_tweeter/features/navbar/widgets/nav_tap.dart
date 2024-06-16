@@ -24,7 +24,7 @@ class NavTap extends StatelessWidget {
           color: Colors.white,
           child: AnimatedOpacity(
             duration: const Duration(milliseconds: 300),
-            opacity: isSelected ? 1 : 0.5,
+            opacity: isSelected ? 1 : 0.4,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

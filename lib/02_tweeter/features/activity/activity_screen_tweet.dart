@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:tiktok_clone/02_tweeter/features/activity/model/make_faker_activity.dart';
 import 'package:tiktok_clone/02_tweeter/features/activity/widgets/activity_tile_tweet.dart.dart';
 import 'package:tiktok_clone/02_tweeter/textstyle/style_guide.dart';
-import 'package:tiktok_clone/constants/make_faker.dart';
 
 final tabs = [
   "All",
   "Replies",
   "Mentions",
-  "Ve",
-  "LIVE",
-  "Shopping",
-  "Brands",
+  "Follows",
+  "Likes",
 ];
 
 class ActivityScreenTweet extends StatefulWidget {
@@ -23,7 +21,7 @@ class ActivityScreenTweet extends StatefulWidget {
 class _ActivityScreenState extends State<ActivityScreenTweet> {
   final TextEditingController _textEditingController = TextEditingController();
 
-  final fakerData = generateFakeData(20, 123);
+  final fakerData = generateActivityFakeData(5, 123);
 
   void _onSearchChanged(String value) {
     print(value);
@@ -98,14 +96,10 @@ class _ActivityScreenState extends State<ActivityScreenTweet> {
               },
               itemBuilder: (context, index) => ActivityTileTweet(
                 nickName: fakerData[index]["nickName"].toString(),
-                name: fakerData[index]["name"].toString(),
-                numOfFollower: fakerData[index]["numOfFollower"]
-                    .toString()
-                    .substring(0, 4),
+                subTitle: fakerData[index]["subTitle"].toString(),
                 avatar: fakerData[index]["avatar"].toString(),
-                followAvatar: isPrime(index)
-                    ? fakerData[index]["followAvatar"].toString()
-                    : null,
+                type: fakerData[index]["type"].toString(),
+                dataTime: fakerData[index]["dataTime"].toString(),
               ),
             ),
             for (var tab in tabs.skip(1))

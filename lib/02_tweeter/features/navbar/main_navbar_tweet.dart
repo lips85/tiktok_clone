@@ -16,7 +16,7 @@ class MainNavbarTweetScreen extends StatefulWidget {
 }
 
 class _MainNavbarTweetScreenState extends State<MainNavbarTweetScreen> {
-  int _selectedIndex = 1;
+  int _selectedIndex = 3;
   bool isSelected = false;
   void _onTap(int index) {
     setState(() {
@@ -35,21 +35,6 @@ class _MainNavbarTweetScreenState extends State<MainNavbarTweetScreen> {
       isSelected = !isSelected;
     });
   }
-  // void _onPostVideoButtonTap() {
-  //   Navigator.of(context).push(
-  //     MaterialPageRoute(
-  //       builder: (context) => Scaffold(
-  //         appBar: AppBar(
-  //           title: const Text("Record Video"),
-  //         ),
-  //         body: const Center(
-  //           child: Text("Post Video"),
-  //         ),
-  //       ),
-  //       fullscreenDialog: true,
-  //     ),
-  //   );
-  // }
 
   final List screens = [
     "Home",
@@ -108,7 +93,7 @@ class _MainNavbarTweetScreenState extends State<MainNavbarTweetScreen> {
                   color: Colors.white,
                   child: AnimatedOpacity(
                     duration: const Duration(milliseconds: 300),
-                    opacity: isSelected ? 1 : 0.5,
+                    opacity: isSelected ? 0.4 : 0.4,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
