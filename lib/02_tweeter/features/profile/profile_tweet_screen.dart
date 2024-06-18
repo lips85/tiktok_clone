@@ -1,20 +1,15 @@
-import 'package:faker_dart/faker_dart.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
-import 'package:tiktok_clone/02_tweeter/features/navbar/widgets/post_basic_form.dart';
+import 'package:tiktok_clone/02_tweeter/features/navbar/screens/tiktok_home_screen.dart';
+import 'package:tiktok_clone/02_tweeter/features/profile/dummyscreen/tiktok_dummy_screen.dart';
 import 'package:tiktok_clone/02_tweeter/features/profile/widgets/persistent_tab_bar.dart';
 import 'package:tiktok_clone/02_tweeter/features/profile/widgets/profile_button.dart';
 import 'package:tiktok_clone/02_tweeter/features/settings/settings_screen_tweet.dart';
 import 'package:tiktok_clone/02_tweeter/textstyle/style_guide.dart';
 
-import 'package:tiktok_clone/constants/gaps.dart';
 import 'package:tiktok_clone/constants/github_avatar.dart';
-import 'package:tiktok_clone/constants/sizes.dart';
 
 class ProfileTweetScreen extends StatefulWidget {
   const ProfileTweetScreen({super.key});
@@ -32,53 +27,13 @@ class _ProfileTweetScreenState extends State<ProfileTweetScreen> {
     );
   }
 
-  Map<String, dynamic> _makeFakerData(int seed) {
-    final faker = Faker.instance;
-
-    String makeFakerimage(seed) {
-      return faker.image.loremPicsum.image(
-        width: 100,
-        height: 100,
-        seed: seed.toString(),
-      );
-    }
-
-    final images = [
-      makeFakerimage(seed),
-      makeFakerimage(seed * 7),
-      makeFakerimage(seed * 11),
-      makeFakerimage(seed * 13),
-      makeFakerimage(seed * 17),
-      makeFakerimage(seed * 23),
-    ];
-    final post = faker.lorem.sentence();
-    final user = faker.name.lastName();
-
-    return {
-      'userIcon': images[0],
-      'postText': post,
-      'postTime': "${seed}m",
-      'userName': user,
-      'postImages': [
-        images[2],
-        images[1],
-      ],
-      'repNum': seed * 3,
-      'likeNum': seed * 7,
-      'avator1': images[3],
-      'avator2': images[4],
-      'avator3': images[5],
-    };
-  }
-
   @override
   Widget build(BuildContext context) {
-    final post1 = _makeFakerData(2);
     return SafeArea(
       child: DefaultTabController(
         length: 2,
-        child: CustomScrollView(
-          slivers: [
+        child: NestedScrollView(
+          headerSliverBuilder: (context, innerBoxIsScrolled) => [
             SliverAppBar(
               title: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -227,26 +182,13 @@ class _ProfileTweetScreenState extends State<ProfileTweetScreen> {
               delegate: PersistentTabBarTweet(),
               pinned: true,
             ),
-            TabBarView(
-              children: [
-                ListView.builder(
-                  itemBuilder: (context, index) => PostBasicForm(
-                    userIcon: post1['userIcon'],
-                    postText: "Just finished a great workout session!",
-                    postTime: post1['postTime'],
-                    userName: "john_doe",
-                    isImageUse: false,
-                    postImages: post1['postImages'],
-                    repNum: post1['repNum'],
-                    likeNum: post1['likeNum'],
-                    avator1: post1['avator1'],
-                    avator2: post1['avator2'],
-                    avator3: post1['avator3'],
-                  ),
-                ),
-              ],
-            ),
           ],
+          body: const TabBarView(
+            children: [
+              TiktokDummyScreen(text: "text"),
+              TiktokDummyScreen(text: "text"),
+            ],
+          ),
         ),
       ),
     );
