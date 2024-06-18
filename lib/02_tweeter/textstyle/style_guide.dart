@@ -84,6 +84,13 @@ class StyleGuide {
     );
   }
 
+  static TextStyle profileBody() {
+    return baseStyle().copyWith(
+      fontSize: 16,
+      color: Colors.black,
+    );
+  }
+
   static TextStyle customeStyle(
       double? fontSize, FontWeight? fontWeight, Color? color) {
     return baseStyle().copyWith(

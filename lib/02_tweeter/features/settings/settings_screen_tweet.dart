@@ -49,11 +49,13 @@ class _SettingsScreenTweetState extends State<SettingsScreenTweet> {
                 lastDate: DateTime(2030),
               );
               print(date);
+              if (!context.mounted) return;
               final time = await showTimePicker(
                 context: context,
                 initialTime: TimeOfDay.now(),
               );
               print(time);
+              if (!context.mounted) return;
               final booking = await showDateRangePicker(
                 context: context,
                 firstDate: DateTime(1980),
