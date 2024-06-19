@@ -35,8 +35,8 @@ class Myapp extends StatelessWidget {
           ),
         ),
       ),
-      home: const MainNavbarTweetScreen(),
-      // home: const MainNavigationScreen(),
+      // home: const MainNavbarTweetScreen(),
+      home: const MainNavigationScreen(),
     );
   }
 }

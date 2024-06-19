@@ -45,6 +45,8 @@ dependencies:
   video_player: 2.4.10
   visibility_detector: 0.3.3
   flutter_riverpod: ^2.5.1
+  camera: ^0.11.0+1
+  permission_handler: 10.2.0
 
 dev_dependencies:
   flutter_test:
