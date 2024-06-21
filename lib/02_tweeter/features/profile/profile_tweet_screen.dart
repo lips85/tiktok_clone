@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
-import 'package:tiktok_clone/02_tweeter/features/navbar/screens/tiktok_home_screen.dart';
 import 'package:tiktok_clone/02_tweeter/features/profile/dummyscreen/tiktok_dummy_screen.dart';
 import 'package:tiktok_clone/02_tweeter/features/profile/widgets/persistent_tab_bar.dart';
 import 'package:tiktok_clone/02_tweeter/features/profile/widgets/profile_button.dart';

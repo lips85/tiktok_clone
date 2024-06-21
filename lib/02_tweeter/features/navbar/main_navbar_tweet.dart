@@ -6,8 +6,7 @@ import 'package:tiktok_clone/02_tweeter/features/navbar/screens/tiktok_home_scre
 import 'package:tiktok_clone/02_tweeter/features/navbar/widgets/nav_tap.dart';
 import 'package:tiktok_clone/02_tweeter/features/profile/profile_tweet_screen.dart';
 import 'package:tiktok_clone/02_tweeter/features/search/search_screen_tweet.dart';
-import 'package:tiktok_clone/02_tweeter/features/settings/settings_screen_tweet.dart';
-import 'package:tiktok_clone/02_tweeter/features/thread/screens/write_screen.dart';
+import 'package:tiktok_clone/02_tweeter/features/write/write_screen.dart';
 
 class MainNavbarTweetScreen extends StatefulWidget {
   const MainNavbarTweetScreen({super.key});

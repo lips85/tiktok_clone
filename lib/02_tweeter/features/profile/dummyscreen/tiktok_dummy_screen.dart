@@ -1,7 +1,5 @@
 import 'package:faker_dart/faker_dart.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:gap/gap.dart';
 import 'package:tiktok_clone/02_tweeter/features/navbar/widgets/post_basic_form.dart';
 
 class TiktokDummyScreen extends StatefulWidget {

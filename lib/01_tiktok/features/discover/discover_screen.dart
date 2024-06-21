@@ -26,11 +26,11 @@ class DiscoverScreen extends StatefulWidget {
 class _DiscoverScreenState extends State<DiscoverScreen> {
   final TextEditingController _textEditingController = TextEditingController();
   void _onSearchChanged(String value) {
-    print(value);
+    // print(value);
   }
 
   void _onSearchSubmitted(String value) {
-    print("Submitted value $value");
+    // print("Submitted value $value");
   }
 
   @override
