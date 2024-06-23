@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:tiktok_clone/02_tweeter/features/thread/screens/report_screen.dart';
-import 'package:tiktok_clone/01_tiktok/textstyle/style_guide.dart';
+import 'package:tiktok_clone/utils.dart';
 
 class BottomButton extends StatefulWidget {
   final String upperText, bottomText;
@@ -31,7 +31,8 @@ class _BottomButtonState extends State<BottomButton> {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: Colors.grey.shade200,
+        color:
+            isDarkMode(context) ? Colors.grey.shade900 : Colors.grey.shade200,
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 20),
@@ -44,7 +45,7 @@ class _BottomButtonState extends State<BottomButton> {
                 const Gap(20),
                 Text(
                   widget.upperText,
-                  style: StyleGuide.reportStyle(),
+                  style: Theme.of(context).textTheme.bodyLarge,
                 ),
               ],
             ),
@@ -57,7 +58,7 @@ class _BottomButtonState extends State<BottomButton> {
                       const Gap(20),
                       Text(
                         widget.bottomText,
-                        style: StyleGuide.reportStyle(),
+                        style: Theme.of(context).textTheme.bodyLarge,
                       ),
                     ],
                   )
