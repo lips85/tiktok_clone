@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tiktok_clone/utils.dart';
 
 class ActivityIcon extends StatelessWidget {
   final String type;
@@ -48,9 +49,9 @@ class ActivityIcon extends StatelessWidget {
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         color: _iconTypeColor(type),
-        border: const Border.fromBorderSide(
+        border: Border.fromBorderSide(
           BorderSide(
-            color: Colors.white,
+            color: isDarkMode(context) ? Colors.black : Colors.white,
             width: 2,
           ),
         ),

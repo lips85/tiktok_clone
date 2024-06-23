@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
-import 'package:tiktok_clone/02_tweeter/textstyle/style_guide.dart';
+import 'package:tiktok_clone/01_tiktok/textstyle/style_guide.dart';
 import 'package:tiktok_clone/constants/github_avatar.dart';
 
 final tabs = [

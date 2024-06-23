@@ -25,12 +25,11 @@ class _PrivacyScreenTweetState extends State<PrivacyScreenTweet> {
         leadingWidth: 94,
         leading: TextButton.icon(
           icon: const Icon(Icons.arrow_back_ios),
-          label: const Text('Back'),
-          onPressed: () => Navigator.of(context).pop(),
-          style: TextButton.styleFrom(
-            backgroundColor: Colors.transparent,
-            foregroundColor: Colors.black,
+          label: Text(
+            'Back',
+            style: Theme.of(context).textTheme.bodyMedium,
           ),
+          onPressed: () => Navigator.of(context).pop(),
         ),
         title: const Text('Privacy'),
       ),

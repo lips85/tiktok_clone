@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
-import 'package:tiktok_clone/02_tweeter/textstyle/style_guide.dart';
+
 import 'package:tiktok_clone/constants/github_avatar.dart';
+import 'package:tiktok_clone/utils.dart';
 
 class SearchListTile extends StatelessWidget {
   final String nickName, name, numOfFollower;
@@ -29,7 +30,9 @@ class SearchListTile extends StatelessWidget {
             clipBehavior: Clip.hardEdge,
             width: 40,
             height: 40,
-            decoration: const BoxDecoration(shape: BoxShape.circle),
+            decoration: const BoxDecoration(
+              shape: BoxShape.circle,
+            ),
             child: FadeInImage(
               fit: BoxFit.cover,
               placeholder: const NetworkImage(githubAvatar),
@@ -40,7 +43,7 @@ class SearchListTile extends StatelessWidget {
             children: [
               Text(
                 nickName,
-                style: StyleGuide.listTileTitle(),
+                style: Theme.of(context).textTheme.titleLarge,
               ),
               const Gap(5),
               SvgPicture.asset("./assets/images/Twitter_Verified_Badge.svg"),
@@ -48,17 +51,24 @@ class SearchListTile extends StatelessWidget {
           ),
           subtitle: Text(
             name,
-            style: StyleGuide.listTileSub(),
+            style: Theme.of(context).textTheme.bodyLarge,
           ),
           trailing: Container(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: Colors.grey.shade400, width: 1),
+              border: Border.all(
+                  color: isDarkMode(context)
+                      ? Colors.grey.shade300
+                      : Colors.grey.shade700,
+                  width: 1),
             ),
             child: Text(
               "Follow",
-              style: StyleGuide.listTileTitle(),
+              style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                  color: isDarkMode(context)
+                      ? Colors.grey.shade300
+                      : Colors.grey.shade700),
             ),
           ),
         ),
@@ -88,7 +98,7 @@ class SearchListTile extends StatelessWidget {
                         ),
                       Text(
                         " ${numOfFollower}K followers",
-                        style: StyleGuide.listTileFollower(),
+                        style: Theme.of(context).textTheme.bodyMedium,
                       ),
                     ],
                   ),

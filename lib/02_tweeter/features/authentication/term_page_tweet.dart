@@ -190,9 +190,8 @@ class _TermsPageScreenState extends State<TermsPageScreen> {
               const Spacer(),
               GestureDetector(
                 onTap: _isSwitched ? () => _onCreateUserTap(context) : () {},
-                child: LoginFormButton(
+                child: const LoginFormButton(
                   text: "Next",
-                  validate: _isSwitched,
                 ),
               )
             ],

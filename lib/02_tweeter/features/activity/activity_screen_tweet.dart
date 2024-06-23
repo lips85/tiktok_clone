@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tiktok_clone/02_tweeter/features/activity/model/make_faker_activity.dart';
 import 'package:tiktok_clone/02_tweeter/features/activity/widgets/activity_tile_tweet.dart';
-import 'package:tiktok_clone/02_tweeter/textstyle/style_guide.dart';
+import 'package:tiktok_clone/utils.dart';
 
 final tabs = [
   "All",
@@ -52,7 +52,7 @@ class _ActivityScreenState extends State<ActivityScreenTweet> {
           centerTitle: false,
           title: Text(
             "Activity",
-            style: StyleGuide.titleStyle(),
+            style: Theme.of(context).textTheme.headlineMedium,
           ),
           bottom: TabBar(
             splashFactory: NoSplash.splashFactory,
@@ -61,20 +61,18 @@ class _ActivityScreenState extends State<ActivityScreenTweet> {
             indicatorSize: TabBarIndicatorSize.label,
             indicator: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: Colors.black,
+              color: Theme.of(context).tabBarTheme.indicatorColor,
             ),
-            labelColor: Colors.white,
-            unselectedLabelColor: Colors.black,
+            labelColor: Theme.of(context).tabBarTheme.labelColor,
             isScrollable: true,
-            labelStyle: const TextStyle(
-              fontWeight: FontWeight.w600,
-              fontSize: 16,
-            ),
-            unselectedLabelStyle: const TextStyle(
-              fontWeight: FontWeight.w600,
-              fontSize: 16,
-            ),
-            dividerColor: Colors.white,
+            labelStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                  fontWeight: FontWeight.w800,
+                ),
+            unselectedLabelStyle:
+                Theme.of(context).textTheme.bodyLarge!.copyWith(
+                      fontWeight: FontWeight.w500,
+                    ),
+            dividerColor: Theme.of(context).tabBarTheme.dividerColor,
             tabs: [
               for (var tab in tabs)
                 Tab(
@@ -84,7 +82,11 @@ class _ActivityScreenState extends State<ActivityScreenTweet> {
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        border: Border.all(color: Colors.grey.shade300),
+                        border: Border.all(
+                          color: isDarkMode(context)
+                              ? Colors.grey.shade700
+                              : Colors.grey.shade300,
+                        ),
                       ),
                       child: SizedBox(
                         width: 100,

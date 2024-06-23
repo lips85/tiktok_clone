@@ -3,7 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktok_clone/02_tweeter/features/authentication/interests_screen_tweet.dart';
 import 'package:tiktok_clone/02_tweeter/features/authentication/widgets/common_button.dart';
 import 'package:tiktok_clone/constants/gaps.dart';
-import 'package:tiktok_clone/02_tweeter/textstyle/style_guide.dart';
+import 'package:tiktok_clone/01_tiktok/textstyle/style_guide.dart';
 
 class PasswordScreenTweet extends StatefulWidget {
   const PasswordScreenTweet({super.key});

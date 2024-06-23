@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tiktok_clone/02_tweeter/features/privacy/privacy_screen_tweet.dart';
-import 'package:tiktok_clone/02_tweeter/textstyle/style_guide.dart';
 
 class SettingsScreenTweet extends StatefulWidget {
   const SettingsScreenTweet({super.key});
@@ -24,10 +23,8 @@ class _SettingsScreenTweetState extends State<SettingsScreenTweet> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text('Settings'),
-        backgroundColor: Colors.transparent,
       ),
       body: Column(
         children: [
@@ -124,8 +121,7 @@ class SettingListTile extends StatelessWidget {
         size: 30,
       ),
       title: Text(text),
-      textColor: Colors.black,
-      titleTextStyle: StyleGuide.threadBodyStyle(),
+      titleTextStyle: Theme.of(context).textTheme.bodyLarge,
       onTap: ontap,
     );
   }

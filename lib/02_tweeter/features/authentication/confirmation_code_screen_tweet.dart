@@ -6,7 +6,7 @@ import 'package:tiktok_clone/02_tweeter/features/authentication/password_creen_t
 import 'package:tiktok_clone/02_tweeter/features/authentication/widgets/common_button.dart';
 import 'package:tiktok_clone/constants/gaps.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
-import 'package:tiktok_clone/02_tweeter/textstyle/style_guide.dart';
+import 'package:tiktok_clone/01_tiktok/textstyle/style_guide.dart';
 
 class ConfirmationCodeScreenTweet extends StatefulWidget {
   const ConfirmationCodeScreenTweet({super.key});

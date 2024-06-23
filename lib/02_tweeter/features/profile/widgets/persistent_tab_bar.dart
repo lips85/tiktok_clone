@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
+import 'package:tiktok_clone/utils.dart';
 
 class PersistentTabBarTweet extends SliverPersistentHeaderDelegate {
   @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Container(
-      decoration: const BoxDecoration(
-        color: Colors.white,
+      decoration: BoxDecoration(
+        color: isDarkMode(context) ? Colors.black : Colors.white,
       ),
-      child: const TabBar(
+      child: TabBar(
         indicatorSize: TabBarIndicatorSize.tab,
         indicatorColor: Colors.black,
-        labelPadding: EdgeInsets.symmetric(
+        labelPadding: const EdgeInsets.symmetric(
           vertical: Sizes.size10,
         ),
-        labelColor: Colors.black,
-        tabs: [
+        labelColor: isDarkMode(context) ? Colors.white : Colors.black,
+        tabs: const [
           Padding(
             padding: EdgeInsets.symmetric(
               horizontal: Sizes.size20,
@@ -25,7 +26,6 @@ class PersistentTabBarTweet extends SliverPersistentHeaderDelegate {
               "Threads",
               style: TextStyle(
                 fontSize: 16,
-                color: Colors.black,
                 fontWeight: FontWeight.w600,
               ),
             ),
@@ -38,7 +38,6 @@ class PersistentTabBarTweet extends SliverPersistentHeaderDelegate {
               "Replies",
               style: TextStyle(
                 fontSize: 16,
-                color: Colors.black,
                 fontWeight: FontWeight.w600,
               ),
             ),

@@ -20,20 +20,16 @@ class NavTap extends StatelessWidget {
     return Expanded(
       child: GestureDetector(
         onTap: onTap,
-        child: Container(
-          color: Colors.white,
-          child: AnimatedOpacity(
-            duration: const Duration(milliseconds: 300),
-            opacity: isSelected ? 1 : 0.4,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                FaIcon(
-                  isSelected ? selectedIcon : icon,
-                  color: Colors.black,
-                ),
-              ],
-            ),
+        child: AnimatedOpacity(
+          duration: const Duration(milliseconds: 300),
+          opacity: isSelected ? 1 : 0.4,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              FaIcon(
+                isSelected ? selectedIcon : icon,
+              ),
+            ],
           ),
         ),
       ),

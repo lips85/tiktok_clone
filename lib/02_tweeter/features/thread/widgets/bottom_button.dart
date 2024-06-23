@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:tiktok_clone/02_tweeter/features/thread/screens/report_screen.dart';
-import 'package:tiktok_clone/02_tweeter/textstyle/style_guide.dart';
+import 'package:tiktok_clone/01_tiktok/textstyle/style_guide.dart';
 
 class BottomButton extends StatefulWidget {
   final String upperText, bottomText;

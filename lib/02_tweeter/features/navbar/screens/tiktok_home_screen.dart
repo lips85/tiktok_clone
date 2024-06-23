@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:tiktok_clone/02_tweeter/features/navbar/widgets/post_basic_form.dart';
+import 'package:tiktok_clone/utils.dart';
 
 class TiktokHomeScreen extends StatefulWidget {
   final String text;
@@ -72,6 +73,10 @@ class _TiktokHomeScreenState extends State<TiktokHomeScreen> {
                 'assets/images/threads.svg',
                 width: 34,
                 height: 34,
+                colorFilter: ColorFilter.mode(
+                  isDarkMode(context) ? Colors.white : Colors.black,
+                  BlendMode.srcIn,
+                ),
               ),
             ),
             const Gap(20),

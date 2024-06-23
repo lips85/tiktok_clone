@@ -55,12 +55,12 @@ class _SearchScreenTweetState extends State<SearchScreenTweet> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        elevation: 1,
         title: CupertinoSearchTextField(
           controller: _textEditingController,
           placeholder: "Serch Anything",
           onChanged: _onSearchChanged,
           autocorrect: false,
+          style: Theme.of(context).textTheme.bodyLarge,
         ),
       ),
       body: ListView.separated(

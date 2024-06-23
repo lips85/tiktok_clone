@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tiktok_clone/utils.dart';
 
 class ProfileButton extends StatelessWidget {
   final String text;
@@ -15,22 +16,22 @@ class ProfileButton extends StatelessWidget {
         vertical: 10,
       ),
       decoration: BoxDecoration(
-        color: Colors.white,
         borderRadius: const BorderRadius.all(
           Radius.circular(10),
         ),
         border: Border.all(
-          color: Colors.grey.shade300,
+          color:
+              isDarkMode(context) ? Colors.grey.shade700 : Colors.grey.shade300,
           width: 2,
         ),
       ),
       child: Text(
         text,
-        style: const TextStyle(
-          fontSize: 16,
-          color: Colors.black,
-          fontWeight: FontWeight.w600,
-        ),
+        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+              color: isDarkMode(context)
+                  ? Colors.grey.shade300
+                  : Colors.grey.shade700,
+            ),
         textAlign: TextAlign.center,
       ),
     );

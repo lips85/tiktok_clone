@@ -4,7 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
 import 'package:tiktok_clone/02_tweeter/features/navbar/widgets/image_viewer.dart';
 import 'package:tiktok_clone/02_tweeter/features/thread/screens/thread_coments.dart';
-import 'package:tiktok_clone/02_tweeter/textstyle/style_guide.dart';
+import 'package:tiktok_clone/utils.dart';
 
 class PostBasicForm extends StatefulWidget {
   final String userIcon;
@@ -70,13 +70,15 @@ class _PostBasicFormState extends State<PostBasicForm> {
                                   widget.userIcon,
                                 ),
                               ),
-                              const Positioned(
-                                right: -1,
-                                bottom: -1,
+                              Positioned(
+                                right: 0,
+                                bottom: 0,
                                 child: CircleAvatar(
-                                  backgroundColor: Colors.white,
+                                  backgroundColor: isDarkMode(context)
+                                      ? Colors.black
+                                      : Colors.white,
                                   radius: 9,
-                                  child: Icon(
+                                  child: const Icon(
                                     FontAwesomeIcons.circlePlus,
                                     size: 15,
                                   ),
@@ -87,9 +89,11 @@ class _PostBasicFormState extends State<PostBasicForm> {
                           const Gap(5),
                           Expanded(
                             child: SizedBox(
-                              width: 3,
+                              width: 1,
                               child: ColoredBox(
-                                color: Colors.grey.shade300,
+                                color: isDarkMode(context)
+                                    ? Colors.grey.shade700
+                                    : Colors.grey.shade300,
                               ),
                             ),
                           ),
@@ -110,7 +114,9 @@ class _PostBasicFormState extends State<PostBasicForm> {
                                     children: [
                                       Text(
                                         widget.userName,
-                                        style: StyleGuide.threadTitleStyle(),
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleLarge,
                                       ),
                                       const Gap(10),
                                       SvgPicture.asset(
@@ -125,8 +131,11 @@ class _PostBasicFormState extends State<PostBasicForm> {
                                     children: [
                                       Text(
                                         widget.postTime,
-                                        style:
-                                            StyleGuide.threadRepliesLikeStyle(),
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyLarge!
+                                            .copyWith(
+                                                color: Colors.grey.shade500),
                                       ),
                                       const Gap(10),
                                       GestureDetector(
@@ -134,6 +143,12 @@ class _PostBasicFormState extends State<PostBasicForm> {
                                         child: SvgPicture.asset(
                                           "assets/images/three-dots-svgrepo-com.svg",
                                           width: 20,
+                                          colorFilter: ColorFilter.mode(
+                                            isDarkMode(context)
+                                                ? Colors.white
+                                                : Colors.black,
+                                            BlendMode.srcIn,
+                                          ),
                                         ),
                                       )
                                     ],
@@ -143,7 +158,7 @@ class _PostBasicFormState extends State<PostBasicForm> {
                               const Gap(3),
                               Text(
                                 widget.postText,
-                                style: StyleGuide.threadBodyStyle(),
+                                style: Theme.of(context).textTheme.bodyLarge,
                               ),
                               if (widget.isImageUse)
                                 Padding(
@@ -208,7 +223,7 @@ class _PostBasicFormState extends State<PostBasicForm> {
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             border: Border.all(
-                              color: Colors.white,
+                              color: Colors.transparent,
                               width: 2,
                             ),
                           ),
@@ -254,11 +269,19 @@ class _PostBasicFormState extends State<PostBasicForm> {
                         children: [
                           Text(
                             "${widget.repNum} relies ",
-                            style: StyleGuide.threadRepliesLikeStyle(),
+                            style:
+                                Theme.of(context).textTheme.bodyLarge!.copyWith(
+                                      color: Colors.grey.shade500,
+                                      fontWeight: FontWeight.w600,
+                                    ),
                           ),
                           Text(
                             "• ${widget.likeNum} likes",
-                            style: StyleGuide.threadRepliesLikeStyle(),
+                            style:
+                                Theme.of(context).textTheme.bodyLarge!.copyWith(
+                                      color: Colors.grey.shade500,
+                                      fontWeight: FontWeight.w600,
+                                    ),
                           ),
                         ],
                       ),

@@ -5,9 +5,7 @@ class StyleGuide {
   // 기본 스타일
   static TextStyle baseStyle() {
     return const TextStyle(
-      fontFamily: "Helvetica Neue",
       fontSize: 14.0,
-      color: Colors.black,
     );
   }
 

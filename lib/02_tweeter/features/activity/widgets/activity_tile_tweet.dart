@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:tiktok_clone/02_tweeter/features/activity/widgets/activity_icon.dart';
-import 'package:tiktok_clone/02_tweeter/textstyle/style_guide.dart';
 import 'package:tiktok_clone/constants/github_avatar.dart';
+import 'package:tiktok_clone/utils.dart';
 
 class ActivityTileTweet extends StatelessWidget {
   final String nickName, subTitle, dataTime, avatar, type;
@@ -43,30 +43,34 @@ class ActivityTileTweet extends StatelessWidget {
               ),
               Positioned(
                 right: 0,
-                bottom: -2,
+                bottom: 0,
                 child: ActivityIcon(type: type),
               ),
             ],
           ),
           title: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
                 nickName,
-                style: StyleGuide.listTileTitle(),
+                style: Theme.of(context).textTheme.bodyLarge,
               ),
               const Gap(5),
-              Text(
-                "${dataTime}h",
-                style: TextStyle(
-                  color: Colors.grey.shade600,
-                  fontSize: 16,
+              Opacity(
+                opacity: 0.8,
+                child: Text(
+                  "${dataTime}h",
+                  style: Theme.of(context).textTheme.bodyMedium,
                 ),
               ),
             ],
           ),
-          subtitle: Text(
-            subTitle,
-            style: StyleGuide.listTileSub(),
+          subtitle: Opacity(
+            opacity: 0.8,
+            child: Text(
+              subTitle,
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
           ),
           trailing: type == "Follows"
               ? Container(
@@ -74,12 +78,17 @@ class ActivityTileTweet extends StatelessWidget {
                       const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: Colors.grey.shade400, width: 1),
+                    border: Border.all(
+                        color: isDarkMode(context)
+                            ? Colors.grey.shade300
+                            : Colors.grey.shade700,
+                        width: 1),
                   ),
-                  child: Text(
-                    "Following",
-                    style: StyleGuide.listTileSub(),
-                  ),
+                  child: Text("Following",
+                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                          color: isDarkMode(context)
+                              ? Colors.grey.shade300
+                              : Colors.grey.shade700)),
                 )
               : null,
         ),

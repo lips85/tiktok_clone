@@ -6,9 +6,8 @@ import 'package:tiktok_clone/02_tweeter/features/profile/dummyscreen/tiktok_dumm
 import 'package:tiktok_clone/02_tweeter/features/profile/widgets/persistent_tab_bar.dart';
 import 'package:tiktok_clone/02_tweeter/features/profile/widgets/profile_button.dart';
 import 'package:tiktok_clone/02_tweeter/features/settings/settings_screen_tweet.dart';
-import 'package:tiktok_clone/02_tweeter/textstyle/style_guide.dart';
-
 import 'package:tiktok_clone/constants/github_avatar.dart';
+import 'package:tiktok_clone/utils.dart';
 
 class ProfileTweetScreen extends StatefulWidget {
   const ProfileTweetScreen({super.key});
@@ -40,6 +39,10 @@ class _ProfileTweetScreenState extends State<ProfileTweetScreen> {
                   SvgPicture.asset(
                     "assets/images/reshot-icon-globe-PL5973EKAD.svg",
                     width: 25,
+                    colorFilter: ColorFilter.mode(
+                      isDarkMode(context) ? Colors.white : Colors.black,
+                      BlendMode.srcIn,
+                    ),
                   ),
                   Row(
                     children: [
@@ -76,17 +79,20 @@ class _ProfileTweetScreenState extends State<ProfileTweetScreen> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("Jane",
-                                style: StyleGuide.customeStyle(
-                                  25,
-                                  FontWeight.w800,
-                                  Colors.black,
-                                )),
+                            Text(
+                              "Jane",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headlineLarge!
+                                  .copyWith(
+                                    fontWeight: FontWeight.w800,
+                                  ),
+                            ),
                             Row(
                               children: [
                                 Text(
                                   "Jane_mobbin",
-                                  style: StyleGuide.profileBody(),
+                                  style: Theme.of(context).textTheme.bodyLarge,
                                 ),
                                 const Gap(5),
                                 Container(
@@ -96,15 +102,12 @@ class _ProfileTweetScreenState extends State<ProfileTweetScreen> {
                                   ),
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
-                                    color: Colors.grey.shade100,
+                                    color: isDarkMode(context)
+                                        ? Colors.grey.shade800
+                                        : Colors.grey.shade100,
                                   ),
-                                  child: Text(
+                                  child: const Text(
                                     "threads.net",
-                                    style: StyleGuide.customeStyle(
-                                      14,
-                                      null,
-                                      Colors.grey.shade600,
-                                    ),
                                   ),
                                 ),
                               ],
@@ -125,7 +128,7 @@ class _ProfileTweetScreenState extends State<ProfileTweetScreen> {
                     const Gap(5),
                     Text(
                       "Plant enthusiast!",
-                      style: StyleGuide.profileBody(),
+                      style: Theme.of(context).textTheme.bodyLarge,
                     ),
                     const Gap(20),
                     Row(
@@ -153,7 +156,10 @@ class _ProfileTweetScreenState extends State<ProfileTweetScreen> {
                         const Gap(10),
                         Text(
                           "2 followers",
-                          style: StyleGuide.explainStyle(),
+                          style:
+                              Theme.of(context).textTheme.bodyLarge!.copyWith(
+                                    color: Colors.grey,
+                                  ),
                         ),
                       ],
                     ),

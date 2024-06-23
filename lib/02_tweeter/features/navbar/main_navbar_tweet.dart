@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktok_clone/02_tweeter/features/activity/activity_screen_tweet.dart';
 import 'package:tiktok_clone/02_tweeter/features/navbar/screens/tiktok_home_screen.dart';
-
 import 'package:tiktok_clone/02_tweeter/features/navbar/widgets/nav_tap.dart';
 import 'package:tiktok_clone/02_tweeter/features/profile/profile_tweet_screen.dart';
 import 'package:tiktok_clone/02_tweeter/features/search/search_screen_tweet.dart';
@@ -69,7 +68,6 @@ class _MainNavbarTweetScreenState extends State<MainNavbarTweetScreen> {
         ],
       ),
       bottomNavigationBar: BottomAppBar(
-        color: Colors.white,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -88,22 +86,18 @@ class _MainNavbarTweetScreenState extends State<MainNavbarTweetScreen> {
             Expanded(
               child: GestureDetector(
                 onTap: _onWriteTap,
-                child: Container(
-                  color: Colors.white,
-                  child: AnimatedOpacity(
-                    duration: const Duration(milliseconds: 300),
-                    opacity: isSelected ? 0.4 : 0.4,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        FaIcon(
-                          isSelected
-                              ? FontAwesomeIcons.solidPenToSquare
-                              : FontAwesomeIcons.penToSquare,
-                          color: Colors.black,
-                        ),
-                      ],
-                    ),
+                child: AnimatedOpacity(
+                  duration: const Duration(milliseconds: 300),
+                  opacity: isSelected ? 0.4 : 0.4,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      FaIcon(
+                        isSelected
+                            ? FontAwesomeIcons.solidPenToSquare
+                            : FontAwesomeIcons.penToSquare,
+                      ),
+                    ],
                   ),
                 ),
               ),

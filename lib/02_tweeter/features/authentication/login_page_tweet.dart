@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import 'package:tiktok_clone/02_tweeter/features/authentication/tweet_create_account.dart';
 import 'package:tiktok_clone/02_tweeter/features/authentication/widgets/login_form_button.dart';
 import 'package:tiktok_clone/constants/gaps.dart';
@@ -33,7 +32,7 @@ class LoginPageTweet extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Flexible(
+            Flexible(
               flex: 5,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -42,25 +41,12 @@ class LoginPageTweet extends StatelessWidget {
                   FractionallySizedBox(
                     widthFactor: 1,
                     child: Text(
-                      "See what's happening",
+                      "See what's happening in the world right now.",
                       textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontFamily: "Helvetica Neue hevie",
-                        fontSize: Sizes.size28 + Sizes.size2,
-                        fontWeight: FontWeight.w800,
-                      ),
-                    ),
-                  ),
-                  FractionallySizedBox(
-                    widthFactor: 1,
-                    child: Text(
-                      "in the world right now.",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontFamily: "Helvetica Neue hevie",
-                        fontSize: Sizes.size28 + Sizes.size2,
-                        fontWeight: FontWeight.w800,
-                      ),
+                      style: Theme.of(context)
+                          .textTheme
+                          .headlineLarge!
+                          .copyWith(fontWeight: FontWeight.w800),
                     ),
                   ),
                 ],
@@ -73,13 +59,11 @@ class LoginPageTweet extends StatelessWidget {
                   const LoginFormButton(
                     assetPath: 'assets/images/google.svg',
                     text: "Continue with Google",
-                    validate: false,
                   ),
                   Gaps.v20,
                   const LoginFormButton(
                     assetPath: 'assets/images/apple.svg',
                     text: "Continue with Apple",
-                    validate: false,
                   ),
                   Gaps.v20,
                   Row(
@@ -111,13 +95,12 @@ class LoginPageTweet extends StatelessWidget {
                     onTap: () => _onCreateUserTap(context),
                     child: const LoginFormButton(
                       text: "Create account",
-                      validate: true,
                     ),
                   ),
                 ],
               ),
             ),
-            const Flexible(
+            Flexible(
               flex: 1,
               child: SizedBox(
                 width: double.infinity,
@@ -127,25 +110,16 @@ class LoginPageTweet extends StatelessWidget {
                     Text.rich(
                       TextSpan(
                         text: 'By signing up, you agree to our ',
-                        style: TextStyle(
-                          fontSize: Sizes.size16,
-                          fontFamily: "Helvetica Neue light",
-                        ),
-                        children: [
+                        style: Theme.of(context).textTheme.bodyLarge,
+                        children: const [
                           TextSpan(
                             text: 'Terms',
                             style: TextStyle(
                               color: Colors.blue,
-                              fontSize: Sizes.size16,
-                              fontFamily: "Helvetica Neue light",
                             ),
                           ),
                           TextSpan(
                             text: ', ',
-                            style: TextStyle(
-                              fontSize: Sizes.size16,
-                              fontFamily: "Helvetica Neue light",
-                            ),
                           ),
                         ],
                       ),
@@ -154,18 +128,12 @@ class LoginPageTweet extends StatelessWidget {
                     Text.rich(
                       TextSpan(
                         text: 'Privacy Policy',
-                        style: TextStyle(
-                          color: Colors.blue,
-                          fontSize: Sizes.size16,
-                          fontFamily: "Helvetica Neue light",
-                        ),
-                        children: [
+                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                              color: Colors.blue,
+                            ),
+                        children: const [
                           TextSpan(
                             text: ', and ',
-                            style: TextStyle(
-                              fontSize: Sizes.size16,
-                              fontFamily: "Helvetica Neue light",
-                            ),
                           ),
                           TextSpan(
                             text: 'Cookie Use',
@@ -178,7 +146,7 @@ class LoginPageTweet extends StatelessWidget {
                 ),
               ),
             ),
-            const Flexible(
+            Flexible(
               flex: 1,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -187,21 +155,15 @@ class LoginPageTweet extends StatelessWidget {
                     textAlign: TextAlign.start,
                     TextSpan(
                       text: 'Have an account already? ',
-                      style: TextStyle(
-                        fontSize: Sizes.size16,
-                        fontFamily: "Helvetica Neue light",
-                      ),
-                      children: [
+                      style: Theme.of(context).textTheme.bodyLarge,
+                      children: const [
                         TextSpan(
                           text: 'Log in                                  ',
                           style: TextStyle(
                             color: Colors.blue,
-                            fontSize: Sizes.size16,
-                            fontFamily: "Helvetica Neue light",
                           ),
                         )
                       ],
-                      // 클릭 시 처리 코드 추가 가능]
                     ),
                   ),
                 ],
