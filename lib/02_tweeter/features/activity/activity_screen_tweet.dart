@@ -52,7 +52,9 @@ class _ActivityScreenState extends State<ActivityScreenTweet> {
           centerTitle: false,
           title: Text(
             "Activity",
-            style: Theme.of(context).textTheme.headlineMedium,
+            style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+                  fontWeight: FontWeight.w700,
+                ),
           ),
           bottom: TabBar(
             splashFactory: NoSplash.splashFactory,

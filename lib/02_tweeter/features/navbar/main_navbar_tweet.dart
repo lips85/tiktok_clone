@@ -15,7 +15,7 @@ class MainNavbarTweetScreen extends StatefulWidget {
 }
 
 class _MainNavbarTweetScreenState extends State<MainNavbarTweetScreen> {
-  int _selectedIndex = 4;
+  int _selectedIndex = 0;
   bool isSelected = false;
   void _onTap(int index) {
     setState(() {
