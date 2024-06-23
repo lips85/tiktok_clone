@@ -38,7 +38,7 @@ class _ConfirmationCodeScreenTweetState
     if (_isCodeComplete) {
       Navigator.of(context).push(MaterialPageRoute(
         builder: (context) => const PasswordScreenTweet(),
-      ));
+      ),);
     }
   }
 

@@ -82,13 +82,13 @@ class ActivityTileTweet extends StatelessWidget {
                         color: isDarkMode(context)
                             ? Colors.grey.shade300
                             : Colors.grey.shade700,
-                        width: 1),
+                        width: 1,),
                   ),
                   child: Text("Following",
                       style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                           color: isDarkMode(context)
                               ? Colors.grey.shade300
-                              : Colors.grey.shade700)),
+                              : Colors.grey.shade700,),),
                 )
               : null,
         ),

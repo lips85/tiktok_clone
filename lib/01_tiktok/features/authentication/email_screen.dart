@@ -37,7 +37,7 @@ class _EmailScreenState extends State<EmailScreen> {
     if (_email.isEmpty) return null;
     // Check if email is valid
     final regExp = RegExp(
-        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
+        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",);
     if (!regExp.hasMatch(_email)) {
       return "맞는 형식이 아닙니다.";
     }
@@ -47,7 +47,7 @@ class _EmailScreenState extends State<EmailScreen> {
   void onSignUpTap(BuildContext context) {
     Navigator.of(context).push(MaterialPageRoute(
       builder: (context) => const SignUpScreen(),
-    ));
+    ),);
   }
 
   void _onScaffoldTap() {
@@ -120,7 +120,7 @@ class _EmailScreenState extends State<EmailScreen> {
                 onTap: _onSubmit,
                 child: FormButton(
                     disabled: _email.isEmpty || _isEmailValid() != null,
-                    text: 'Next'),
+                    text: 'Next',),
               ),
             ],
           ),

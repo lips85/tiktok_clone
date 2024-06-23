@@ -32,7 +32,7 @@ class PasswordScreenTweetState extends State<PasswordScreenTweet> {
   void _onNextTap() {
     Navigator.of(context).push(MaterialPageRoute(
       builder: (context) => const InterestsScreenTweet(),
-    ));
+    ),);
   }
 
   @override

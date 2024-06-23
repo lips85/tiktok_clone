@@ -102,7 +102,7 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
               GestureDetector(
                 onTap: _onSubmitTap,
                 child: const FormButton(text: "next", disabled: false),
-              )
+              ),
             ],
           ),
         ),

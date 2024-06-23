@@ -61,14 +61,14 @@ class SearchListTile extends StatelessWidget {
                   color: isDarkMode(context)
                       ? Colors.grey.shade300
                       : Colors.grey.shade700,
-                  width: 1),
+                  width: 1,),
             ),
             child: Text(
               "Follow",
               style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                   color: isDarkMode(context)
                       ? Colors.grey.shade300
-                      : Colors.grey.shade700),
+                      : Colors.grey.shade700,),
             ),
           ),
         ),

@@ -25,7 +25,7 @@ class InterestsScreenTweetState extends State<InterestsScreenTweet> {
     "Travel",
     "Entertainment",
     "Music",
-    "Gaming"
+    "Gaming",
   ];
   final Set<String> selectedInterests = {};
 
@@ -43,7 +43,7 @@ class InterestsScreenTweetState extends State<InterestsScreenTweet> {
     if (selectedInterests.length >= 3) {
       Navigator.of(context).push(MaterialPageRoute(
         builder: (context) => const InterestsSecondScreen(),
-      ));
+      ),);
     }
   }
 

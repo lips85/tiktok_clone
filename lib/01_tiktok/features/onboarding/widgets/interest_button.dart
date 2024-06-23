@@ -57,7 +57,7 @@ class _InterestButtonState extends State<InterestButton> {
           widget.interest,
           style: TextStyle(
               fontWeight: FontWeight.bold,
-              color: _isSelected ? Colors.white : Colors.black87),
+              color: _isSelected ? Colors.white : Colors.black87,),
         ),
       ),
     );

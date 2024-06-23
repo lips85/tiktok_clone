@@ -93,7 +93,7 @@ class _VideoPreviewScreenState extends State<VideoPreviewScreen> {
                     ? FontAwesomeIcons.check
                     : FontAwesomeIcons.download,
               ),
-            )
+            ),
         ],
       ),
       body: _videoPlayerController.value.isInitialized

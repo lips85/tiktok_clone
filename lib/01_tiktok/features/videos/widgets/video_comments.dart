@@ -87,11 +87,11 @@ class _VideoCommentsState extends State<VideoComments> {
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: Sizes.size14,
-                                  color: Colors.grey.shade500),
+                                  color: Colors.grey.shade500,),
                             ),
                             Gaps.v3,
                             const Text(
-                                "That's not it l've seen the same thing but also in a cave,")
+                                "That's not it l've seen the same thing but also in a cave,",),
                           ],
                         ),
                       ),
@@ -160,7 +160,7 @@ class _VideoCommentsState extends State<VideoComments> {
                                   ),
                                   suffixIcon: Padding(
                                     padding: const EdgeInsets.only(
-                                        right: Sizes.size14),
+                                        right: Sizes.size14,),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
@@ -190,15 +190,15 @@ class _VideoCommentsState extends State<VideoComments> {
                                           ),
                                       ],
                                     ),
-                                  )),
+                                  ),),
                             ),
                           ),
-                        )
+                        ),
                       ],
                     ),
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),

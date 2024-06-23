@@ -76,7 +76,7 @@ class _InterestsSecondScreenState extends State<InterestsSecondScreen> {
     if (selectedInterests.length >= 3) {
       Navigator.of(context).push(MaterialPageRoute(
         builder: (context) => const FinishScreen(),
-      ));
+      ),);
     }
   }
 

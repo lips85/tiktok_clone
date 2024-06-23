@@ -94,7 +94,7 @@ class _SettingsScreenTweetState extends State<SettingsScreenTweet> {
             trailing: _loggingOut
                 ? const CircularProgressIndicator.adaptive()
                 : const SizedBox(),
-          )
+          ),
         ],
       ),
     );

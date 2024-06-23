@@ -12,13 +12,13 @@ class SignUpScreen extends StatelessWidget {
   void _onLoginTap(BuildContext context) {
     Navigator.of(context).push(MaterialPageRoute(
       builder: (context) => const LoginScreen(),
-    ));
+    ),);
   }
 
   void _onUsernameTap(BuildContext context) {
     Navigator.of(context).push(MaterialPageRoute(
       builder: (context) => const UsernameScreen(),
-    ));
+    ),);
   }
 
   @override

@@ -17,7 +17,7 @@ class LoginScreen extends StatelessWidget {
   void _onUsernameTap(BuildContext context) {
     Navigator.of(context).push(MaterialPageRoute(
       builder: (context) => const LoginFormScreen(),
-    ));
+    ),);
   }
 
   @override

@@ -59,7 +59,7 @@ class PostVideoButton extends StatelessWidget {
               size: 18,
             ),
           ),
-        )
+        ),
       ],
     );
   }

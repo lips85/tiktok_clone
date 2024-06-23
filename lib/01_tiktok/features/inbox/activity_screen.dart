@@ -96,7 +96,7 @@ class _ActivityScreenState extends State<ActivityScreen>
                   FontAwesomeIcons.chevronDown,
                   size: Sizes.size14,
                 ),
-              )
+              ),
             ],
           ),
         ),
@@ -200,7 +200,7 @@ class _ActivityScreenState extends State<ActivityScreen>
                       size: Sizes.size16,
                     ),
                   ),
-                )
+                ),
             ],
           ),
           if (_showBarrier)

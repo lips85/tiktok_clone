@@ -144,7 +144,7 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                         ),
                       ],
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
@@ -156,7 +156,7 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                     fontSize: 28,
                   ),
                 ),
-              )
+              ),
           ],
         ),
       ),

@@ -41,7 +41,7 @@ class _TweetCreateAccountState extends State<TweetCreateAccount> {
           dateOfBirth: _birthdayController.text,
         ),
       ),
-    ));
+    ),);
   }
 
   void _onDateTextFieldFocusChanged(bool hasFocus) {
@@ -170,7 +170,7 @@ class _TweetCreateAccountState extends State<TweetCreateAccount> {
                   onTap: _onEmailTap,
                   focusNode: _phoneOrEmailFocusNode,
                   decoration: _inputDecoration("Phone number or email address",
-                      _isFieldValid(_phoneOrEmail)),
+                      _isFieldValid(_phoneOrEmail),),
                   cursorColor: Theme.of(context).primaryColor,
                   style: _txfieldStyle(context),
                 ),
@@ -180,7 +180,7 @@ class _TweetCreateAccountState extends State<TweetCreateAccount> {
                   onTap: _onBirthdayTap,
                   focusNode: _birthdayFocusNode,
                   decoration: _inputDecoration(
-                      "Date of birth", _isFieldValid(_birthday)),
+                      "Date of birth", _isFieldValid(_birthday),),
                   cursorColor: Theme.of(context).primaryColor,
                   style: _txfieldStyle(context),
                 ),

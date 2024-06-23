@@ -88,7 +88,7 @@ class _ReportScreenState extends State<ReportScreen> {
                           child: Icon(
                             Icons.arrow_forward_ios,
                             color: Colors.grey,
-                          ))
+                          ),),
                     ],
                   );
                 },

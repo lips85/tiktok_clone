@@ -73,7 +73,7 @@ class _CameraScreenState extends State<CameraScreen>
     if (cameras.isEmpty) return;
 
     _cameraController = CameraController(
-        cameras[_isSelfieMode ? 1 : 0], ResolutionPreset.ultraHigh);
+        cameras[_isSelfieMode ? 1 : 0], ResolutionPreset.ultraHigh,);
 
     await _cameraController.initialize();
 
@@ -255,7 +255,7 @@ class _CameraScreenState extends State<CameraScreen>
                   TabBar(
                     padding: EdgeInsets.only(
                         bottom: 4,
-                        left: MediaQuery.of(context).size.width * 0.5),
+                        left: MediaQuery.of(context).size.width * 0.5,),
                     controller: _tabController,
                     labelColor: Colors.white,
                     labelStyle: const TextStyle(

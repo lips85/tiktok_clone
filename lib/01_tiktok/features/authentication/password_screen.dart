@@ -158,7 +158,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
                         : Colors.grey.shade400,
                   ),
                   Gaps.h5,
-                  const Text("8 to 20 characters")
+                  const Text("8 to 20 characters"),
                 ],
               ),
               Gaps.v28,

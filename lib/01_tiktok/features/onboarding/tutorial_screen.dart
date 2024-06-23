@@ -122,7 +122,7 @@ class _TutorialScreenState extends State<TutorialScreen> {
                   color: Theme.of(context).primaryColor,
                   child: const Text('Enter the app!'),
                 ),
-              )),
+              ),),
         ),
       ),
     );

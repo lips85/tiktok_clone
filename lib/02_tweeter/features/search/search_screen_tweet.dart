@@ -26,7 +26,7 @@ class _SearchScreenTweetState extends State<SearchScreenTweet> {
               element["name"]
                   .toString()
                   .toLowerCase()
-                  .contains(text.toLowerCase()))
+                  .contains(text.toLowerCase()),)
           .toList();
     });
   }

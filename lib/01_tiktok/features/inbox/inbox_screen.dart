@@ -41,7 +41,7 @@ class _InboxScreenState extends State<InboxScreen> {
               FontAwesomeIcons.paperPlane,
               size: Sizes.size20,
             ),
-          )
+          ),
         ],
       ),
       body: ListView(
@@ -97,7 +97,7 @@ class _InboxScreenState extends State<InboxScreen> {
               size: Sizes.size14,
               color: Colors.black,
             ),
-          )
+          ),
         ],
       ),
     );

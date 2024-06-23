@@ -38,7 +38,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                       FontAwesomeIcons.gear,
                       size: Sizes.size20,
                     ),
-                  )
+                  ),
                 ],
               ),
               SliverToBoxAdapter(
@@ -47,7 +47,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                     const CircleAvatar(
                       radius: 50,
                       foregroundImage: NetworkImage(
-                          "https://avatars.githubusercontent.com/u/3612017"),
+                          "https://avatars.githubusercontent.com/u/3612017",),
                       child: Text("니꼬"),
                     ),
                     Gaps.v20,
@@ -66,7 +66,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                           FontAwesomeIcons.solidCircleCheck,
                           size: Sizes.size16,
                           color: Colors.blue.shade500,
-                        )
+                        ),
                       ],
                     ),
                     Gaps.v24,
@@ -88,7 +88,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                               Text("Following",
                                   style: TextStyle(
                                     color: Colors.grey.shade500,
-                                  ))
+                                  ),),
                             ],
                           ),
                           VerticalDivider(
@@ -113,7 +113,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                                 style: TextStyle(
                                   color: Colors.grey.shade500,
                                 ),
-                              )
+                              ),
                             ],
                           ),
                           VerticalDivider(
@@ -138,9 +138,9 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                                 style: TextStyle(
                                   color: Colors.grey.shade500,
                                 ),
-                              )
+                              ),
                             ],
-                          )
+                          ),
                         ],
                       ),
                     ),

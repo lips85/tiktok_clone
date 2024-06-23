@@ -134,9 +134,9 @@ class _InterestsScreenState extends State<InterestsScreen> {
                   spacing: 15,
                   children: [
                     for (var interest in interests)
-                      InterestButton(interest: interest)
+                      InterestButton(interest: interest),
                   ],
-                )
+                ),
               ],
             ),
           ),

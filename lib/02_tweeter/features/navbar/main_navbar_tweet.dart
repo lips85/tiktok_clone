@@ -64,7 +64,7 @@ class _MainNavbarTweetScreenState extends State<MainNavbarTweetScreen> {
           Offstage(
             offstage: _selectedIndex != 4,
             child: const ProfileTweetScreen(),
-          )
+          ),
         ],
       ),
       bottomNavigationBar: BottomAppBar(

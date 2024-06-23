@@ -75,7 +75,7 @@ class _PrivacyScreenTweetState extends State<PrivacyScreenTweet> {
             leading: Icon(Icons.heart_broken),
             title: Text('Hide likes'),
             trailing: Icon(FontAwesomeIcons.arrowUpRightFromSquare),
-          )
+          ),
         ],
       ),
     );

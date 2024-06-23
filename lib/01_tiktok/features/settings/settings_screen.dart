@@ -65,7 +65,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     data: ThemeData(
                         appBarTheme: const AppBarTheme(
                             foregroundColor: Colors.white,
-                            backgroundColor: Colors.black)),
+                            backgroundColor: Colors.black,),),
                     child: child!,
                   );
                 },
@@ -142,7 +142,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       isDestructiveAction: true,
                       onPressed: () => Navigator.of(context).pop(),
                       child: const Text("Yes plz."),
-                    )
+                    ),
                   ],
                 ),
               );

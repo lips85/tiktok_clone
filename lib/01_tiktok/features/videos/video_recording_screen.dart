@@ -192,7 +192,7 @@ class _VideoRecordingScreenState extends State<VideoRecordingScreen>
                         TextStyle(color: Colors.white, fontSize: Sizes.size20),
                   ),
                   Gaps.v20,
-                  CircularProgressIndicator.adaptive()
+                  CircularProgressIndicator.adaptive(),
                 ],
               )
             : Stack(
@@ -300,10 +300,10 @@ class _VideoRecordingScreenState extends State<VideoRecordingScreen>
                               ),
                             ),
                           ),
-                        )
+                        ),
                       ],
                     ),
-                  )
+                  ),
                 ],
               ),
       ),

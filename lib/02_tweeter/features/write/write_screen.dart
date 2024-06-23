@@ -159,7 +159,7 @@ class _WriteScreenState extends State<WriteScreen> {
                                       maxLines: null,
                                       cursorColor: Colors.blue,
                                       scrollPadding: const EdgeInsets.symmetric(
-                                          vertical: 96),
+                                          vertical: 96,),
                                       decoration: InputDecoration(
                                         hintText: "Start a thread...",
                                         hintStyle: TextStyle(
@@ -175,7 +175,7 @@ class _WriteScreenState extends State<WriteScreen> {
                                   IconButton(
                                     onPressed: _onAttachTap,
                                     icon: const Icon(FontAwesomeIcons.paperclip,
-                                        size: 20),
+                                        size: 20,),
                                     color: Colors.grey,
                                   ),
                                   const Gap(40),
@@ -204,9 +204,9 @@ class _WriteScreenState extends State<WriteScreen> {
                       style: TextStyle(
                           color: Colors.blue,
                           fontSize: 16,
-                          fontWeight: FontWeight.w600),
+                          fontWeight: FontWeight.w600,),
                     ),
-                  )
+                  ),
                 ],
               ),
               const Gap(16),

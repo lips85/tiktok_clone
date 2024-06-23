@@ -57,7 +57,7 @@ class _ProfileTweetScreenState extends State<ProfileTweetScreen> {
                           FontAwesomeIcons.bars,
                           size: 30,
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ],
@@ -122,7 +122,7 @@ class _ProfileTweetScreenState extends State<ProfileTweetScreen> {
                             ),
                             Gap(10),
                           ],
-                        )
+                        ),
                       ],
                     ),
                     const Gap(5),

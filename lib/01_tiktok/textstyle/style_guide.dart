@@ -90,7 +90,7 @@ class StyleGuide {
   }
 
   static TextStyle customeStyle(
-      double? fontSize, FontWeight? fontWeight, Color? color) {
+      double? fontSize, FontWeight? fontWeight, Color? color,) {
     return baseStyle().copyWith(
       fontSize: fontSize,
       fontWeight: fontWeight,

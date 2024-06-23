@@ -107,11 +107,11 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
                 children: [
                   Expanded(child: TextField()),
                   Gaps.h20,
-                  FaIcon(FontAwesomeIcons.paperPlane)
+                  FaIcon(FontAwesomeIcons.paperPlane),
                 ],
               ),
             ),
-          )
+          ),
         ],
       ),
     );

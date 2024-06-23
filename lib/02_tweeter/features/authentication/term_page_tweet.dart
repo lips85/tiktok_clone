@@ -24,7 +24,7 @@ class _TermsPageScreenState extends State<TermsPageScreen> {
   void _onCreateUserTap(BuildContext context) {
     Navigator.of(context).push(MaterialPageRoute(
         builder: (context) => TweetCreateAccountSign(
-            userData: widget.userData, isSwitched: _isSwitched)));
+            userData: widget.userData, isSwitched: _isSwitched,),),);
   }
 
   @override
@@ -136,7 +136,7 @@ class _TermsPageScreenState extends State<TermsPageScreen> {
                         _isSwitched = value;
                       });
                     },
-                  )
+                  ),
                 ],
               ),
               const Gap(24),
@@ -193,7 +193,7 @@ class _TermsPageScreenState extends State<TermsPageScreen> {
                 child: const LoginFormButton(
                   text: "Next",
                 ),
-              )
+              ),
             ],
           ),
         ),

@@ -135,7 +135,7 @@ class _PostBasicFormState extends State<PostBasicForm> {
                                             .textTheme
                                             .bodyLarge!
                                             .copyWith(
-                                                color: Colors.grey.shade500),
+                                                color: Colors.grey.shade500,),
                                       ),
                                       const Gap(10),
                                       GestureDetector(
@@ -150,7 +150,7 @@ class _PostBasicFormState extends State<PostBasicForm> {
                                             BlendMode.srcIn,
                                           ),
                                         ),
-                                      )
+                                      ),
                                     ],
                                   ),
                                 ],
@@ -176,7 +176,7 @@ class _PostBasicFormState extends State<PostBasicForm> {
                                               i++)
                                             TweetImageViewer(
                                                 assetPath:
-                                                    widget.postImages[i]),
+                                                    widget.postImages[i],),
                                       ],
                                     ),
                                   ),
@@ -287,12 +287,12 @@ class _PostBasicFormState extends State<PostBasicForm> {
                       ),
                     ),
                   ],
-                )
+                ),
               ],
             ),
           ),
           const Gap(10),
-          const Divider()
+          const Divider(),
         ],
       ),
     );

@@ -124,7 +124,7 @@ class _TweetCreateAccountSignState extends State<TweetCreateAccountSign> {
   void _onConfirmationTap(BuildContext context) {
     Navigator.of(context).push(MaterialPageRoute(
       builder: (context) => const ConfirmationCodeScreenTweet(),
-    ));
+    ),);
   }
 
   @override
@@ -162,7 +162,7 @@ class _TweetCreateAccountSignState extends State<TweetCreateAccountSign> {
                   onTap: _onNameTap,
                   focusNode: _usernameFocusNode,
                   decoration: _inputDecoration(
-                      widget.userData.name, _isFieldValid(_username)),
+                      widget.userData.name, _isFieldValid(_username),),
                   cursorColor: Theme.of(context).primaryColor,
                   style: _txfieldStyle(context),
                 ),
@@ -172,7 +172,7 @@ class _TweetCreateAccountSignState extends State<TweetCreateAccountSign> {
                   onTap: _onEmailTap,
                   focusNode: _phoneOrEmailFocusNode,
                   decoration: _inputDecoration(widget.userData.phoneOrEmail,
-                      _isFieldValid(_phoneOrEmail)),
+                      _isFieldValid(_phoneOrEmail),),
                   cursorColor: Theme.of(context).primaryColor,
                   style: _txfieldStyle(context),
                 ),
@@ -182,7 +182,7 @@ class _TweetCreateAccountSignState extends State<TweetCreateAccountSign> {
                   onTap: _onBirthdayTap,
                   focusNode: _birthdayFocusNode,
                   decoration: _inputDecoration(
-                      widget.userData.dateOfBirth, _isFieldValid(_birthday)),
+                      widget.userData.dateOfBirth, _isFieldValid(_birthday),),
                   cursorColor: Theme.of(context).primaryColor,
                   style: _txfieldStyle(context),
                 ),

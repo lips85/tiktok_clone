@@ -160,7 +160,7 @@ class _VideoPostState extends State<VideoPost>
                 Text(
                   "this is mine",
                   style: StyleGuide.explainStyle(),
-                )
+                ),
               ],
             ),
           ),
@@ -195,7 +195,7 @@ class _VideoPostState extends State<VideoPost>
                 const VideoButton(
                   icon: FontAwesomeIcons.share,
                   text: "Share",
-                )
+                ),
               ],
             ),
           ),

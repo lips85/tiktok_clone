@@ -11,7 +11,7 @@ class LoginPageTweet extends StatelessWidget {
   void _onCreateUserTap(BuildContext context) {
     Navigator.of(context).push(MaterialPageRoute(
       builder: (context) => const TweetCreateAccount(),
-    ));
+    ),);
   }
 
   @override
@@ -162,7 +162,7 @@ class LoginPageTweet extends StatelessWidget {
                           style: TextStyle(
                             color: Colors.blue,
                           ),
-                        )
+                        ),
                       ],
                     ),
                   ),

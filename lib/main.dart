@@ -24,31 +24,31 @@ class Myapp extends StatelessWidget {
         ),
         textTheme: TextTheme(
           displayLarge: GoogleFonts.nanumGothic(
-              fontSize: 94, fontWeight: FontWeight.w300, letterSpacing: -1.5),
+              fontSize: 94, fontWeight: FontWeight.w300, letterSpacing: -1.5,),
           displayMedium: GoogleFonts.nanumGothic(
-              fontSize: 59, fontWeight: FontWeight.w300, letterSpacing: -0.5),
+              fontSize: 59, fontWeight: FontWeight.w300, letterSpacing: -0.5,),
           displaySmall: GoogleFonts.nanumGothic(
-              fontSize: 47, fontWeight: FontWeight.w400),
+              fontSize: 47, fontWeight: FontWeight.w400,),
           headlineMedium: GoogleFonts.nanumGothic(
-              fontSize: 33, fontWeight: FontWeight.w600, letterSpacing: 0.25),
+              fontSize: 33, fontWeight: FontWeight.w600, letterSpacing: 0.25,),
           headlineSmall: GoogleFonts.nanumGothic(
-              fontSize: 24, fontWeight: FontWeight.w400),
+              fontSize: 24, fontWeight: FontWeight.w400,),
           titleLarge: GoogleFonts.nanumGothic(
-              fontSize: 20, fontWeight: FontWeight.w800, letterSpacing: 0.15),
+              fontSize: 20, fontWeight: FontWeight.w800, letterSpacing: 0.15,),
           titleMedium: GoogleFonts.nanumGothic(
-              fontSize: 16, fontWeight: FontWeight.w400, letterSpacing: 0.15),
+              fontSize: 16, fontWeight: FontWeight.w400, letterSpacing: 0.15,),
           titleSmall: GoogleFonts.nanumGothic(
-              fontSize: 14, fontWeight: FontWeight.w500, letterSpacing: 0.1),
+              fontSize: 14, fontWeight: FontWeight.w500, letterSpacing: 0.1,),
           bodyLarge: GoogleFonts.nanumGothic(
-              fontSize: 16, fontWeight: FontWeight.w600, letterSpacing: 0.5),
+              fontSize: 16, fontWeight: FontWeight.w600, letterSpacing: 0.5,),
           bodyMedium: GoogleFonts.nanumGothic(
-              fontSize: 14, fontWeight: FontWeight.w600, letterSpacing: 0.25),
+              fontSize: 14, fontWeight: FontWeight.w600, letterSpacing: 0.25,),
           labelLarge: GoogleFonts.nanumGothic(
-              fontSize: 14, fontWeight: FontWeight.w500, letterSpacing: 1.25),
+              fontSize: 14, fontWeight: FontWeight.w500, letterSpacing: 1.25,),
           bodySmall: GoogleFonts.nanumGothic(
-              fontSize: 12, fontWeight: FontWeight.w400, letterSpacing: 0.4),
+              fontSize: 12, fontWeight: FontWeight.w400, letterSpacing: 0.4,),
           labelSmall: GoogleFonts.nanumGothic(
-              fontSize: 10, fontWeight: FontWeight.w400, letterSpacing: 1.5),
+              fontSize: 10, fontWeight: FontWeight.w400, letterSpacing: 1.5,),
         ),
         textButtonTheme: TextButtonThemeData(
           style: ButtonStyle(
@@ -89,31 +89,31 @@ class Myapp extends StatelessWidget {
         ),
         textTheme: TextTheme(
           displayLarge: GoogleFonts.nanumGothic(
-              fontSize: 94, fontWeight: FontWeight.w300, letterSpacing: -1.5),
+              fontSize: 94, fontWeight: FontWeight.w300, letterSpacing: -1.5,),
           displayMedium: GoogleFonts.nanumGothic(
-              fontSize: 59, fontWeight: FontWeight.w300, letterSpacing: -0.5),
+              fontSize: 59, fontWeight: FontWeight.w300, letterSpacing: -0.5,),
           displaySmall: GoogleFonts.nanumGothic(
-              fontSize: 47, fontWeight: FontWeight.w400),
+              fontSize: 47, fontWeight: FontWeight.w400,),
           headlineMedium: GoogleFonts.nanumGothic(
-              fontSize: 33, fontWeight: FontWeight.w600, letterSpacing: 0.25),
+              fontSize: 33, fontWeight: FontWeight.w600, letterSpacing: 0.25,),
           headlineSmall: GoogleFonts.nanumGothic(
-              fontSize: 24, fontWeight: FontWeight.w400),
+              fontSize: 24, fontWeight: FontWeight.w400,),
           titleLarge: GoogleFonts.nanumGothic(
-              fontSize: 20, fontWeight: FontWeight.w800, letterSpacing: 0.15),
+              fontSize: 20, fontWeight: FontWeight.w800, letterSpacing: 0.15,),
           titleMedium: GoogleFonts.nanumGothic(
-              fontSize: 16, fontWeight: FontWeight.w400, letterSpacing: 0.15),
+              fontSize: 16, fontWeight: FontWeight.w400, letterSpacing: 0.15,),
           titleSmall: GoogleFonts.nanumGothic(
-              fontSize: 14, fontWeight: FontWeight.w500, letterSpacing: 0.1),
+              fontSize: 14, fontWeight: FontWeight.w500, letterSpacing: 0.1,),
           bodyLarge: GoogleFonts.nanumGothic(
-              fontSize: 16, fontWeight: FontWeight.w600, letterSpacing: 0.5),
+              fontSize: 16, fontWeight: FontWeight.w600, letterSpacing: 0.5,),
           bodyMedium: GoogleFonts.nanumGothic(
-              fontSize: 14, fontWeight: FontWeight.w600, letterSpacing: 0.25),
+              fontSize: 14, fontWeight: FontWeight.w600, letterSpacing: 0.25,),
           labelLarge: GoogleFonts.nanumGothic(
-              fontSize: 14, fontWeight: FontWeight.w500, letterSpacing: 1.25),
+              fontSize: 14, fontWeight: FontWeight.w500, letterSpacing: 1.25,),
           bodySmall: GoogleFonts.nanumGothic(
-              fontSize: 12, fontWeight: FontWeight.w400, letterSpacing: 0.4),
+              fontSize: 12, fontWeight: FontWeight.w400, letterSpacing: 0.4,),
           labelSmall: GoogleFonts.nanumGothic(
-              fontSize: 10, fontWeight: FontWeight.w400, letterSpacing: 1.5),
+              fontSize: 10, fontWeight: FontWeight.w400, letterSpacing: 1.5,),
         ),
         textButtonTheme: TextButtonThemeData(
           style: ButtonStyle(
