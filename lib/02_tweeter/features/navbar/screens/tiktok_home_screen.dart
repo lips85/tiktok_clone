@@ -6,8 +6,7 @@ import 'package:tiktok_clone/02_tweeter/features/navbar/widgets/post_basic_form.
 import 'package:tiktok_clone/utils.dart';
 
 class TiktokHomeScreen extends StatefulWidget {
-  final String text;
-  const TiktokHomeScreen({super.key, required this.text});
+  const TiktokHomeScreen({super.key});
 
   @override
   State<TiktokHomeScreen> createState() => _TiktokHomeScreenState();

@@ -51,7 +51,7 @@ class _MainNavbarTweetScreenState extends State<MainNavbarTweetScreen> {
         children: [
           Offstage(
             offstage: _selectedIndex != 0,
-            child: TiktokHomeScreen(text: screens[0]),
+            child: const TiktokHomeScreen(),
           ),
           Offstage(
             offstage: _selectedIndex != 1,
