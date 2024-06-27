@@ -5,7 +5,7 @@ import 'package:gap/gap.dart';
 import 'package:tiktok_clone/02_tweeter/features/profile/dummyscreen/tiktok_dummy_screen.dart';
 import 'package:tiktok_clone/02_tweeter/features/profile/widgets/persistent_tab_bar.dart';
 import 'package:tiktok_clone/02_tweeter/features/profile/widgets/profile_button.dart';
-import 'package:tiktok_clone/02_tweeter/features/settings/settings_screen_tweet.dart';
+import 'package:tiktok_clone/02_tweeter/features/settings/views/settings_screen_tweet.dart';
 import 'package:tiktok_clone/constants/github_avatar.dart';
 import 'package:tiktok_clone/utils.dart';
 

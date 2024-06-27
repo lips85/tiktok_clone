@@ -38,9 +38,10 @@ class _PrivacyScreenTweetState extends State<PrivacyScreenTweet> {
           const Divider(),
           SwitchListTile.adaptive(
             value: _isPrivate,
-            onChanged: (v) {
+            onChanged: (value) {
               setState(() {
-                _isPrivate = v;
+                _isPrivate = value;
+                print(value);
               });
             },
             secondary: const Icon(FontAwesomeIcons.lock),

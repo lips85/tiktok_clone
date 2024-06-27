@@ -103,115 +103,111 @@ class _PostBasicFormState extends State<PostBasicForm> {
                       Expanded(
                         child: Padding(
                           padding: const EdgeInsets.only(left: 10),
-                          child: Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.end,
-                                      children: [
-                                        Text(
-                                          widget.userName,
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .titleLarge,
-                                        ),
-                                        const Gap(10),
-                                        SvgPicture.asset(
-                                          alignment: Alignment.bottomCenter,
-                                          "assets/images/Twitter_Verified_Badge.svg",
-                                          width: 20,
-                                        ),
-                                      ],
-                                    ),
-                                    const Spacer(),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          widget.postTime,
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyLarge!
-                                              .copyWith(
-                                                color: Colors.grey.shade500,
-                                              ),
-                                        ),
-                                        const Gap(10),
-                                        GestureDetector(
-                                          onTap: _onThreadTap,
-                                          child: SvgPicture.asset(
-                                            "assets/images/three-dots-svgrepo-com.svg",
-                                            width: 20,
-                                            colorFilter: ColorFilter.mode(
-                                              isDarkMode(context)
-                                                  ? Colors.white
-                                                  : Colors.black,
-                                              BlendMode.srcIn,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: [
+                                      Text(
+                                        widget.userName,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleLarge,
+                                      ),
+                                      const Gap(10),
+                                      SvgPicture.asset(
+                                        alignment: Alignment.bottomCenter,
+                                        "assets/images/Twitter_Verified_Badge.svg",
+                                        width: 20,
+                                      ),
+                                    ],
+                                  ),
+                                  const Spacer(),
+                                  Row(
+                                    children: [
+                                      Text(
+                                        widget.postTime,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyLarge!
+                                            .copyWith(
+                                              color: Colors.grey.shade500,
                                             ),
+                                      ),
+                                      const Gap(10),
+                                      GestureDetector(
+                                        onTap: _onThreadTap,
+                                        child: SvgPicture.asset(
+                                          "assets/images/three-dots-svgrepo-com.svg",
+                                          width: 20,
+                                          colorFilter: ColorFilter.mode(
+                                            isDarkMode(context)
+                                                ? Colors.white
+                                                : Colors.black,
+                                            BlendMode.srcIn,
                                           ),
                                         ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              const Gap(3),
+                              Text(
+                                widget.postText,
+                                style: Theme.of(context).textTheme.bodyLarge,
+                              ),
+                              if (widget.isImageUse)
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    vertical: 10,
+                                  ),
+                                  child: SizedBox(
+                                    height:
+                                        MediaQuery.of(context).size.width * 0.5,
+                                    child: ListView(
+                                      scrollDirection: Axis.horizontal,
+                                      children: [
+                                        if (widget.isImageUse)
+                                          for (var i = 0;
+                                              i < widget.postImages.length;
+                                              i++)
+                                            TweetImageViewer(
+                                              assetPath: widget.postImages[i],
+                                            ),
                                       ],
                                     ),
-                                  ],
-                                ),
-                                const Gap(3),
-                                Text(
-                                  widget.postText,
-                                  style: Theme.of(context).textTheme.bodyLarge,
-                                ),
-                                if (widget.isImageUse)
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      vertical: 10,
-                                    ),
-                                    child: SizedBox(
-                                      height:
-                                          MediaQuery.of(context).size.width *
-                                              0.5,
-                                      child: ListView(
-                                        scrollDirection: Axis.horizontal,
-                                        children: [
-                                          if (widget.isImageUse)
-                                            for (var i = 0;
-                                                i < widget.postImages.length;
-                                                i++)
-                                              TweetImageViewer(
-                                                assetPath: widget.postImages[i],
-                                              ),
-                                        ],
-                                      ),
-                                    ),
                                   ),
-                                const Gap(5),
-                                const Row(
-                                  children: [
-                                    Icon(
-                                      FontAwesomeIcons.heart,
-                                      size: 20,
-                                    ),
-                                    Gap(10),
-                                    Icon(
-                                      FontAwesomeIcons.comment,
-                                      size: 20,
-                                    ),
-                                    Gap(10),
-                                    Icon(
-                                      FontAwesomeIcons.repeat,
-                                      size: 20,
-                                    ),
-                                    Gap(10),
-                                    Icon(
-                                      FontAwesomeIcons.paperPlane,
-                                      size: 20,
-                                    ),
-                                  ],
                                 ),
-                              ],
-                            ),
+                              const Gap(5),
+                              const Row(
+                                children: [
+                                  Icon(
+                                    FontAwesomeIcons.heart,
+                                    size: 20,
+                                  ),
+                                  Gap(10),
+                                  Icon(
+                                    FontAwesomeIcons.comment,
+                                    size: 20,
+                                  ),
+                                  Gap(10),
+                                  Icon(
+                                    FontAwesomeIcons.repeat,
+                                    size: 20,
+                                  ),
+                                  Gap(10),
+                                  Icon(
+                                    FontAwesomeIcons.paperPlane,
+                                    size: 20,
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
                         ),
                       ),

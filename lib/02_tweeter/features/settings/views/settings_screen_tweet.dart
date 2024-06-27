@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 import 'package:tiktok_clone/02_tweeter/features/privacy/privacy_screen_tweet.dart';
+import 'package:tiktok_clone/02_tweeter/features/settings/view_models/darkmode_config_vm.dart';
 
 class SettingsScreenTweet extends StatefulWidget {
   const SettingsScreenTweet({super.key});
@@ -29,6 +32,17 @@ class _SettingsScreenTweetState extends State<SettingsScreenTweet> {
       body: Column(
         children: [
           const Divider(),
+          SwitchListTile.adaptive(
+            value: context.watch<DarkmodeConfigViewModel>().darked,
+            onChanged: (value) =>
+                context.read<DarkmodeConfigViewModel>().setDark(value),
+            secondary: context.watch<DarkmodeConfigViewModel>().darked
+                ? const Icon(FontAwesomeIcons.moon)
+                : const Icon(FontAwesomeIcons.sun),
+            title: context.watch<DarkmodeConfigViewModel>().darked
+                ? const Text('Dark Mode (ON)')
+                : const Text('Dark Mode (OFF)'),
+          ),
           SettingListTile(
             icon: Icons.person_add,
             text: "Follow and invite friends",

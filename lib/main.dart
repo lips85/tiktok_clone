@@ -1,11 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:tiktok_clone/02_tweeter/features/authentication/login_page_tweet.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tiktok_clone/02_tweeter/features/navbar/main_navbar_tweet.dart';
-import 'package:tiktok_clone/router.dart';
+import 'package:tiktok_clone/02_tweeter/features/settings/repos/darkmode_config_repo.dart';
+import 'package:tiktok_clone/02_tweeter/features/settings/view_models/darkmode_config_vm.dart';
+import 'package:tiktok_clone/02_tweeter/features/settings/views/settings_screen_tweet.dart';
 
-void main() {
-  runApp(const Myapp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final preferences = await SharedPreferences.getInstance();
+  final repository = DarkmodeConfigRepository(preferences);
+
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => DarkmodeConfigViewModel(repository),
+        ),
+      ],
+      child: const Myapp(),
+    ),
+  );
 }
 
 class Myapp extends StatelessWidget {
@@ -17,7 +34,9 @@ class Myapp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Tweets',
-      themeMode: ThemeMode.system,
+      themeMode: context.watch<DarkmodeConfigViewModel>().darked
+          ? ThemeMode.dark
+          : ThemeMode.light,
       theme: ThemeData(
         brightness: Brightness.light,
         splashColor: Colors.transparent,

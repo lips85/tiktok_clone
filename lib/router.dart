@@ -4,7 +4,7 @@ import 'package:tiktok_clone/02_tweeter/features/navbar/screens/tiktok_home_scre
 import 'package:tiktok_clone/02_tweeter/features/privacy/privacy_screen_tweet.dart';
 import 'package:tiktok_clone/02_tweeter/features/profile/profile_tweet_screen.dart';
 import 'package:tiktok_clone/02_tweeter/features/search/search_screen_tweet.dart';
-import 'package:tiktok_clone/02_tweeter/features/settings/settings_screen_tweet.dart';
+import 'package:tiktok_clone/02_tweeter/features/settings/views/settings_screen_tweet.dart';
 
 final router = GoRouter(
   routes: [
