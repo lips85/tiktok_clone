@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
 import 'package:tiktok_clone/utils.dart';
 
-class InterestButton extends StatefulWidget {
+class InterestButton extends ConsumerStatefulWidget {
   const InterestButton({
     super.key,
     required this.interest,
@@ -11,10 +12,10 @@ class InterestButton extends StatefulWidget {
   final String interest;
 
   @override
-  State<InterestButton> createState() => _InterestButtonState();
+  InterestButtonState createState() => InterestButtonState();
 }
 
-class _InterestButtonState extends State<InterestButton> {
+class InterestButtonState extends ConsumerState<InterestButton> {
   bool _isSelected = false;
 
   void _onTap() {
@@ -36,7 +37,7 @@ class _InterestButtonState extends State<InterestButton> {
         decoration: BoxDecoration(
           color: _isSelected
               ? Theme.of(context).primaryColor
-              : isDarkMode(context)
+              : isDarkMode(ref)
                   ? Colors.grey.shade700
                   : Colors.white,
           borderRadius: BorderRadius.circular(
@@ -56,8 +57,9 @@ class _InterestButtonState extends State<InterestButton> {
         child: Text(
           widget.interest,
           style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: _isSelected ? Colors.white : Colors.black87,),
+            fontWeight: FontWeight.bold,
+            color: _isSelected ? Colors.white : Colors.black87,
+          ),
         ),
       ),
     );

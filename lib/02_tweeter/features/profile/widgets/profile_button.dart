@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tiktok_clone/utils.dart';
 
-class ProfileButton extends StatelessWidget {
+class ProfileButton extends ConsumerWidget {
   final String text;
   const ProfileButton({
     super.key,
@@ -9,7 +10,7 @@ class ProfileButton extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Container(
       width: MediaQuery.of(context).size.width * 0.45,
       padding: const EdgeInsets.symmetric(
@@ -20,17 +21,15 @@ class ProfileButton extends StatelessWidget {
           Radius.circular(10),
         ),
         border: Border.all(
-          color:
-              isDarkMode(context) ? Colors.grey.shade700 : Colors.grey.shade300,
+          color: isDarkMode(ref) ? Colors.grey.shade700 : Colors.grey.shade300,
           width: 2,
         ),
       ),
       child: Text(
         text,
         style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-              color: isDarkMode(context)
-                  ? Colors.grey.shade300
-                  : Colors.grey.shade700,
+              color:
+                  isDarkMode(ref) ? Colors.grey.shade300 : Colors.grey.shade700,
             ),
         textAlign: TextAlign.center,
       ),

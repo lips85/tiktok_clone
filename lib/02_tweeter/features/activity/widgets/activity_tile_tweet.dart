@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:tiktok_clone/02_tweeter/features/activity/widgets/activity_icon.dart';
 import 'package:tiktok_clone/constants/github_avatar.dart';
 import 'package:tiktok_clone/utils.dart';
 
-class ActivityTileTweet extends StatelessWidget {
+class ActivityTileTweet extends ConsumerWidget {
   final String nickName, subTitle, dataTime, avatar, type;
 
   const ActivityTileTweet({
@@ -17,7 +18,7 @@ class ActivityTileTweet extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Column(
       children: [
         ListTile(
@@ -79,16 +80,20 @@ class ActivityTileTweet extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     border: Border.all(
-                        color: isDarkMode(context)
-                            ? Colors.grey.shade300
-                            : Colors.grey.shade700,
-                        width: 1,),
+                      color: isDarkMode(ref)
+                          ? Colors.grey.shade300
+                          : Colors.grey.shade700,
+                      width: 1,
+                    ),
                   ),
-                  child: Text("Following",
-                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                          color: isDarkMode(context)
+                  child: Text(
+                    "Following",
+                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                          color: isDarkMode(ref)
                               ? Colors.grey.shade300
-                              : Colors.grey.shade700,),),
+                              : Colors.grey.shade700,
+                        ),
+                  ),
                 )
               : null,
         ),

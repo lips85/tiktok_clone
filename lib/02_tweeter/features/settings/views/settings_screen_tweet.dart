@@ -1,30 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:provider/provider.dart';
 import 'package:tiktok_clone/02_tweeter/features/privacy/privacy_screen_tweet.dart';
 import 'package:tiktok_clone/02_tweeter/features/settings/view_models/darkmode_config_vm.dart';
 
-class SettingsScreenTweet extends StatefulWidget {
+class SettingsScreenTweet extends ConsumerWidget {
   const SettingsScreenTweet({super.key});
 
   @override
-  State<SettingsScreenTweet> createState() => _SettingsScreenTweetState();
-}
-
-class _SettingsScreenTweetState extends State<SettingsScreenTweet> {
-  void _onPrivacyTap() {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => const PrivacyScreenTweet(),
-      ),
-    );
-  }
-
-  bool _loggingOut = false;
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Settings'),
@@ -33,13 +18,13 @@ class _SettingsScreenTweetState extends State<SettingsScreenTweet> {
         children: [
           const Divider(),
           SwitchListTile.adaptive(
-            value: context.watch<DarkmodeConfigViewModel>().darked,
+            value: ref.watch(darkModeConfigProvider).isDarkMode,
             onChanged: (value) =>
-                context.read<DarkmodeConfigViewModel>().setDark(value),
-            secondary: context.watch<DarkmodeConfigViewModel>().darked
+                ref.read(darkModeConfigProvider.notifier).setDark(value),
+            secondary: ref.watch(darkModeConfigProvider).isDarkMode
                 ? const Icon(FontAwesomeIcons.moon)
                 : const Icon(FontAwesomeIcons.sun),
-            title: context.watch<DarkmodeConfigViewModel>().darked
+            title: ref.watch(darkModeConfigProvider).isDarkMode
                 ? const Text('Dark Mode (ON)')
                 : const Text('Dark Mode (OFF)'),
           ),
@@ -53,11 +38,17 @@ class _SettingsScreenTweetState extends State<SettingsScreenTweet> {
             text: "Notifications",
             ontap: () {},
           ),
-          SettingListTile(
-            icon: Icons.lock,
-            text: "Privacy",
-            ontap: _onPrivacyTap,
-          ),
+          // SettingListTile(
+          //   icon: Icons.lock,
+          //   text: "Privacy",
+          //   ontap: (context) => {
+          //     Navigator.of(context).push(
+          //       MaterialPageRoute(
+          //         builder: (context) => const PrivacyScreenTweet(),
+          //       ),
+          //     ),
+          //   },
+          // ),
           SettingListTile(
             icon: Icons.person,
             text: "Account",
@@ -80,9 +71,6 @@ class _SettingsScreenTweetState extends State<SettingsScreenTweet> {
               style: TextStyle(color: Colors.blue, fontSize: 16),
             ),
             onTap: () {
-              setState(() {
-                _loggingOut = true;
-              });
               showCupertinoDialog(
                 context: context,
                 builder: (context) => CupertinoAlertDialog(
@@ -99,13 +87,9 @@ class _SettingsScreenTweetState extends State<SettingsScreenTweet> {
                     ),
                   ],
                 ),
-              ).then(
-                (value) => setState(() {
-                  _loggingOut = false;
-                }),
               );
             },
-            trailing: _loggingOut
+            trailing: false
                 ? const CircularProgressIndicator.adaptive()
                 : const SizedBox(),
           ),

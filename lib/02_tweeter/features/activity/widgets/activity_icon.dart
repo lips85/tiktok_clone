@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktok_clone/utils.dart';
 
-class ActivityIcon extends StatelessWidget {
+class ActivityIcon extends ConsumerWidget {
   final String type;
   const ActivityIcon({
     super.key,
@@ -40,7 +41,7 @@ class ActivityIcon extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Container(
       alignment: Alignment.center,
       clipBehavior: Clip.hardEdge,
@@ -51,7 +52,7 @@ class ActivityIcon extends StatelessWidget {
         color: _iconTypeColor(type),
         border: Border.fromBorderSide(
           BorderSide(
-            color: isDarkMode(context) ? Colors.black : Colors.white,
+            color: isDarkMode(ref) ? Colors.black : Colors.white,
             width: 2,
           ),
         ),

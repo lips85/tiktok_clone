@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:tiktok_clone/02_tweeter/features/thread/screens/report_screen.dart';
 import 'package:tiktok_clone/utils.dart';
 
-class BottomButton extends StatefulWidget {
+class BottomButton extends ConsumerStatefulWidget {
   final String upperText, bottomText;
 
   const BottomButton({
@@ -13,10 +14,10 @@ class BottomButton extends StatefulWidget {
   });
 
   @override
-  State<BottomButton> createState() => _BottomButtonState();
+  BottomButtonState createState() => BottomButtonState();
 }
 
-class _BottomButtonState extends State<BottomButton> {
+class BottomButtonState extends ConsumerState<BottomButton> {
   void _onReportTap() async {
     Navigator.of(context).pop();
     await showModalBottomSheet(
@@ -31,8 +32,7 @@ class _BottomButtonState extends State<BottomButton> {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color:
-            isDarkMode(context) ? Colors.grey.shade900 : Colors.grey.shade200,
+        color: isDarkMode(ref) ? Colors.grey.shade900 : Colors.grey.shade200,
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 20),

@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
 import 'package:tiktok_clone/02_tweeter/features/profile/dummyscreen/tiktok_dummy_screen.dart';
 import 'package:tiktok_clone/02_tweeter/features/profile/widgets/persistent_tab_bar.dart';
 import 'package:tiktok_clone/02_tweeter/features/profile/widgets/profile_button.dart';
+import 'package:tiktok_clone/02_tweeter/features/settings/view_models/darkmode_config_vm.dart';
 import 'package:tiktok_clone/02_tweeter/features/settings/views/settings_screen_tweet.dart';
 import 'package:tiktok_clone/constants/github_avatar.dart';
 import 'package:tiktok_clone/utils.dart';
 
-class ProfileTweetScreen extends StatefulWidget {
+class ProfileTweetScreen extends ConsumerStatefulWidget {
   const ProfileTweetScreen({super.key});
 
   @override
-  State<ProfileTweetScreen> createState() => _ProfileTweetScreenState();
+  ProfileTweetScreenState createState() => ProfileTweetScreenState();
 }
 
-class _ProfileTweetScreenState extends State<ProfileTweetScreen> {
+class ProfileTweetScreenState extends ConsumerState<ProfileTweetScreen> {
   void _onBarPressed() {
     Navigator.of(context).push(
       MaterialPageRoute(
@@ -40,7 +42,7 @@ class _ProfileTweetScreenState extends State<ProfileTweetScreen> {
                     "assets/images/reshot-icon-globe-PL5973EKAD.svg",
                     width: 25,
                     colorFilter: ColorFilter.mode(
-                      isDarkMode(context) ? Colors.white : Colors.black,
+                      isDarkMode(ref) ? Colors.white : Colors.black,
                       BlendMode.srcIn,
                     ),
                   ),
@@ -102,7 +104,7 @@ class _ProfileTweetScreenState extends State<ProfileTweetScreen> {
                                   ),
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
-                                    color: isDarkMode(context)
+                                    color: isDarkMode(ref)
                                         ? Colors.grey.shade800
                                         : Colors.grey.shade100,
                                   ),
@@ -184,7 +186,9 @@ class _ProfileTweetScreenState extends State<ProfileTweetScreen> {
               ),
             ),
             SliverPersistentHeader(
-              delegate: PersistentTabBarTweet(),
+              delegate: PersistentTabBarTweet(
+                isDark: ref.watch(darkModeConfigProvider).isDarkMode,
+              ),
               pinned: true,
             ),
           ],

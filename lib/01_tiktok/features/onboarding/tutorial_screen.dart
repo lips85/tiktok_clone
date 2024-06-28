@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tiktok_clone/01_tiktok/features/main_navigation/main_navigation_screen.dart';
 import 'package:tiktok_clone/constants/gaps.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
@@ -9,14 +10,14 @@ enum Direction { right, left }
 
 enum Page { first, second }
 
-class TutorialScreen extends StatefulWidget {
+class TutorialScreen extends ConsumerStatefulWidget {
   const TutorialScreen({super.key});
 
   @override
-  State<TutorialScreen> createState() => _TutorialScreenState();
+  TutorialScreenState createState() => TutorialScreenState();
 }
 
-class _TutorialScreenState extends State<TutorialScreen> {
+class TutorialScreenState extends ConsumerState<TutorialScreen> {
   Direction _direction = Direction.right;
   Page _showingPage = Page.first;
 
@@ -109,20 +110,21 @@ class _TutorialScreenState extends State<TutorialScreen> {
           ),
         ),
         bottomNavigationBar: BottomAppBar(
-          color: isDarkMode(context) ? Colors.black : Colors.white,
+          color: isDarkMode(ref) ? Colors.black : Colors.white,
           child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: Sizes.size24,
+            padding: const EdgeInsets.symmetric(
+              horizontal: Sizes.size24,
+            ),
+            child: AnimatedOpacity(
+              duration: const Duration(milliseconds: 300),
+              opacity: _showingPage == Page.first ? 0 : 1,
+              child: CupertinoButton(
+                onPressed: _onEnterAppTap,
+                color: Theme.of(context).primaryColor,
+                child: const Text('Enter the app!'),
               ),
-              child: AnimatedOpacity(
-                duration: const Duration(milliseconds: 300),
-                opacity: _showingPage == Page.first ? 0 : 1,
-                child: CupertinoButton(
-                  onPressed: _onEnterAppTap,
-                  color: Theme.of(context).primaryColor,
-                  child: const Text('Enter the app!'),
-                ),
-              ),),
+            ),
+          ),
         ),
       ),
     );

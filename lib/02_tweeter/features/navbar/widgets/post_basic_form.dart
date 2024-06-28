@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
@@ -6,7 +7,7 @@ import 'package:tiktok_clone/02_tweeter/features/navbar/widgets/image_viewer.dar
 import 'package:tiktok_clone/02_tweeter/features/thread/screens/thread_coments.dart';
 import 'package:tiktok_clone/utils.dart';
 
-class PostBasicForm extends StatefulWidget {
+class PostBasicForm extends ConsumerStatefulWidget {
   final String userIcon;
   final String userName;
   final String postText;
@@ -33,10 +34,10 @@ class PostBasicForm extends StatefulWidget {
   });
 
   @override
-  State<PostBasicForm> createState() => _PostBasicFormState();
+  PostBasicFormState createState() => PostBasicFormState();
 }
 
-class _PostBasicFormState extends State<PostBasicForm> {
+class PostBasicFormState extends ConsumerState<PostBasicForm> {
   void _onThreadTap() async {
     await showModalBottomSheet(
       context: context,
@@ -75,7 +76,7 @@ class _PostBasicFormState extends State<PostBasicForm> {
                                 right: 0,
                                 bottom: 0,
                                 child: CircleAvatar(
-                                  backgroundColor: isDarkMode(context)
+                                  backgroundColor: isDarkMode(ref)
                                       ? Colors.black
                                       : Colors.white,
                                   radius: 9,
@@ -92,7 +93,7 @@ class _PostBasicFormState extends State<PostBasicForm> {
                             child: SizedBox(
                               width: 1,
                               child: ColoredBox(
-                                color: isDarkMode(context)
+                                color: isDarkMode(ref)
                                     ? Colors.grey.shade700
                                     : Colors.grey.shade300,
                               ),
@@ -145,7 +146,7 @@ class _PostBasicFormState extends State<PostBasicForm> {
                                           "assets/images/three-dots-svgrepo-com.svg",
                                           width: 20,
                                           colorFilter: ColorFilter.mode(
-                                            isDarkMode(context)
+                                            isDarkMode(ref)
                                                 ? Colors.white
                                                 : Colors.black,
                                             BlendMode.srcIn,

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 
 import 'package:tiktok_clone/constants/github_avatar.dart';
 import 'package:tiktok_clone/utils.dart';
 
-class SearchListTile extends StatelessWidget {
+class SearchListTile extends ConsumerWidget {
   final String nickName, name, numOfFollower;
   final String avatar;
   final String? followAvatar;
@@ -20,7 +21,7 @@ class SearchListTile extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Column(
       children: [
         ListTile(
@@ -58,17 +59,19 @@ class SearchListTile extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               border: Border.all(
-                  color: isDarkMode(context)
-                      ? Colors.grey.shade300
-                      : Colors.grey.shade700,
-                  width: 1,),
+                color: isDarkMode(ref)
+                    ? Colors.grey.shade300
+                    : Colors.grey.shade700,
+                width: 1,
+              ),
             ),
             child: Text(
               "Follow",
               style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                  color: isDarkMode(context)
-                      ? Colors.grey.shade300
-                      : Colors.grey.shade700,),
+                    color: isDarkMode(ref)
+                        ? Colors.grey.shade300
+                        : Colors.grey.shade700,
+                  ),
             ),
           ),
         ),

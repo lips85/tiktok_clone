@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tiktok_clone/02_tweeter/features/activity/model/make_faker_activity.dart';
 import 'package:tiktok_clone/02_tweeter/features/activity/widgets/activity_tile_tweet.dart';
 import 'package:tiktok_clone/utils.dart';
@@ -11,14 +12,14 @@ final tabs = [
   "Likes",
 ];
 
-class ActivityScreenTweet extends StatefulWidget {
+class ActivityScreenTweet extends ConsumerStatefulWidget {
   const ActivityScreenTweet({super.key});
 
   @override
-  State<ActivityScreenTweet> createState() => _ActivityScreenState();
+  ActivityScreenState createState() => ActivityScreenState();
 }
 
-class _ActivityScreenState extends State<ActivityScreenTweet> {
+class ActivityScreenState extends ConsumerState<ActivityScreenTweet> {
   final TextEditingController _textEditingController = TextEditingController();
 
   final fakerData = generateActivityFakeData(8, 123);
@@ -85,7 +86,7 @@ class _ActivityScreenState extends State<ActivityScreenTweet> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(
-                          color: isDarkMode(context)
+                          color: isDarkMode(ref)
                               ? Colors.grey.shade700
                               : Colors.grey.shade300,
                         ),

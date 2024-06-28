@@ -1,18 +1,19 @@
 import 'package:faker_dart/faker_dart.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:tiktok_clone/02_tweeter/features/navbar/widgets/post_basic_form.dart';
 import 'package:tiktok_clone/utils.dart';
 
-class TiktokHomeScreen extends StatefulWidget {
+class TiktokHomeScreen extends ConsumerStatefulWidget {
   const TiktokHomeScreen({super.key});
 
   @override
-  State<TiktokHomeScreen> createState() => _TiktokHomeScreenState();
+  TiktokHomeScreenState createState() => TiktokHomeScreenState();
 }
 
-class _TiktokHomeScreenState extends State<TiktokHomeScreen> {
+class TiktokHomeScreenState extends ConsumerState<TiktokHomeScreen> {
   final faker2 = Faker.instance;
   Map<String, dynamic> _makeFakerData(int seed) {
     final faker = Faker.instance;
@@ -73,7 +74,7 @@ class _TiktokHomeScreenState extends State<TiktokHomeScreen> {
                 width: 34,
                 height: 34,
                 colorFilter: ColorFilter.mode(
-                  isDarkMode(context) ? Colors.white : Colors.black,
+                  isDarkMode(ref) ? Colors.white : Colors.black,
                   BlendMode.srcIn,
                 ),
               ),

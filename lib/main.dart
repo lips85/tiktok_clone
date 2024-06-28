@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -14,10 +15,12 @@ void main() async {
   final repository = DarkmodeConfigRepository(preferences);
 
   runApp(
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-          create: (context) => DarkmodeConfigViewModel(repository),
+    ProviderScope(
+      overrides: [
+        darkModeConfigProvider.overrideWith(
+          () => DarkmodeConfigViewModel(
+            repository,
+          ),
         ),
       ],
       child: const Myapp(),
@@ -25,16 +28,16 @@ void main() async {
   );
 }
 
-class Myapp extends StatelessWidget {
+class Myapp extends ConsumerWidget {
   const Myapp({super.key});
 
   // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Tweets',
-      themeMode: context.watch<DarkmodeConfigViewModel>().darked
+      themeMode: ref.watch(darkModeConfigProvider).isDarkMode
           ? ThemeMode.dark
           : ThemeMode.light,
       theme: ThemeData(
