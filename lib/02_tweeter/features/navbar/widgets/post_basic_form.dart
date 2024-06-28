@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
 import 'package:tiktok_clone/02_tweeter/features/navbar/widgets/image_viewer.dart';
-import 'package:tiktok_clone/02_tweeter/features/thread/screens/thread_coments.dart';
+import 'package:tiktok_clone/02_tweeter/features/thread/views/thread_coments.dart';
 import 'package:tiktok_clone/utils.dart';
 
 class PostBasicForm extends ConsumerStatefulWidget {

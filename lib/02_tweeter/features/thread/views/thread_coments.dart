@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:tiktok_clone/02_tweeter/features/thread/widgets/bottom_button.dart';
+import 'package:tiktok_clone/02_tweeter/features/thread/views/widgets/bottom_button.dart';
 
 class ThreadComments extends StatefulWidget {
   const ThreadComments({super.key});

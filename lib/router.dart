@@ -1,6 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:tiktok_clone/02_tweeter/features/activity/activity_screen_tweet.dart';
-import 'package:tiktok_clone/02_tweeter/features/navbar/screens/tiktok_home_screen.dart';
+import 'package:tiktok_clone/02_tweeter/features/thread/views/thread_home_screen.dart';
 import 'package:tiktok_clone/02_tweeter/features/privacy/privacy_screen_tweet.dart';
 import 'package:tiktok_clone/02_tweeter/features/profile/profile_tweet_screen.dart';
 import 'package:tiktok_clone/02_tweeter/features/search/search_screen_tweet.dart';
@@ -10,7 +10,7 @@ final router = GoRouter(
   routes: [
     GoRoute(
       path: "/",
-      builder: (context, state) => const TiktokHomeScreen(),
+      builder: (context, state) => const ThreadHomeScreen(),
     ),
     GoRoute(
       path: "/search",
