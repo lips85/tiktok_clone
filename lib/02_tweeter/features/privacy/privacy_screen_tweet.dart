@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 
 class PrivacyScreenTweet extends StatefulWidget {
   const PrivacyScreenTweet({super.key});
-  static const routeName = 'privacy';
-  static const routeUrl = 'privacy';
+  static const routeName = "Privacy";
+  static const routeUrl = '/settings/privacy';
 
   @override
   State<PrivacyScreenTweet> createState() => _PrivacyScreenTweetState();
@@ -29,7 +30,7 @@ class _PrivacyScreenTweetState extends State<PrivacyScreenTweet> {
             'Back',
             style: Theme.of(context).textTheme.bodyMedium,
           ),
-          onPressed: () => Navigator.of(context).pop(),
+          onPressed: () => context.pop(),
         ),
         title: const Text('Privacy'),
       ),
@@ -41,7 +42,6 @@ class _PrivacyScreenTweetState extends State<PrivacyScreenTweet> {
             onChanged: (value) {
               setState(() {
                 _isPrivate = value;
-                print(value);
               });
             },
             secondary: const Icon(FontAwesomeIcons.lock),

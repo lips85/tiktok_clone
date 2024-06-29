@@ -2,11 +2,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:tiktok_clone/02_tweeter/features/privacy/privacy_screen_tweet.dart';
 import 'package:tiktok_clone/02_tweeter/features/settings/view_models/darkmode_config_vm.dart';
 
 class SettingsScreenTweet extends ConsumerWidget {
+  static String routeName = "settings";
+  static String routeURL = "/settings";
+
   const SettingsScreenTweet({super.key});
+
+  void privacyTap(BuildContext context) =>
+      context.push(PrivacyScreenTweet.routeUrl);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -38,17 +45,11 @@ class SettingsScreenTweet extends ConsumerWidget {
             text: "Notifications",
             ontap: () {},
           ),
-          // SettingListTile(
-          //   icon: Icons.lock,
-          //   text: "Privacy",
-          //   ontap: (context) => {
-          //     Navigator.of(context).push(
-          //       MaterialPageRoute(
-          //         builder: (context) => const PrivacyScreenTweet(),
-          //       ),
-          //     ),
-          //   },
-          // ),
+          SettingListTile(
+            icon: Icons.lock,
+            text: "Privacy",
+            ontap: () => privacyTap(context),
+          ),
           SettingListTile(
             icon: Icons.person,
             text: "Account",
@@ -77,11 +78,11 @@ class SettingsScreenTweet extends ConsumerWidget {
                   title: const Text("Are you sure?"),
                   actions: [
                     CupertinoDialogAction(
-                      onPressed: () => Navigator.of(context).pop(),
+                      onPressed: () => context.pop(),
                       child: const Text("No"),
                     ),
                     CupertinoDialogAction(
-                      onPressed: () => Navigator.of(context).pop(),
+                      onPressed: () => context.pop(),
                       isDestructiveAction: true,
                       child: const Text("Yes"),
                     ),
@@ -102,7 +103,7 @@ class SettingsScreenTweet extends ConsumerWidget {
 class SettingListTile extends StatelessWidget {
   final IconData icon;
   final String text;
-  final dynamic ontap;
+  final VoidCallback? ontap;
 
   const SettingListTile({
     super.key,

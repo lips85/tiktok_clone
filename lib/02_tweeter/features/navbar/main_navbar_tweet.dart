@@ -8,6 +8,9 @@ import 'package:tiktok_clone/02_tweeter/features/search/search_screen_tweet.dart
 import 'package:tiktok_clone/02_tweeter/features/write/write_screen.dart';
 
 class MainNavbarTweetScreen extends StatefulWidget {
+  static String routeName = "Home";
+  static String routeURL = "/";
+
   const MainNavbarTweetScreen({super.key});
 
   @override

@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 import 'package:tiktok_clone/02_tweeter/features/profile/dummyscreen/tiktok_dummy_screen.dart';
 import 'package:tiktok_clone/02_tweeter/features/profile/widgets/persistent_tab_bar.dart';
 import 'package:tiktok_clone/02_tweeter/features/profile/widgets/profile_button.dart';
@@ -12,6 +13,9 @@ import 'package:tiktok_clone/constants/github_avatar.dart';
 import 'package:tiktok_clone/utils.dart';
 
 class ProfileTweetScreen extends ConsumerStatefulWidget {
+  static String routeName = "Profile";
+  static String routeURL = "/profile";
+
   const ProfileTweetScreen({super.key});
 
   @override
@@ -20,183 +24,182 @@ class ProfileTweetScreen extends ConsumerStatefulWidget {
 
 class ProfileTweetScreenState extends ConsumerState<ProfileTweetScreen> {
   void _onBarPressed() {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => const SettingsScreenTweet(),
-      ),
-    );
+    context.push(SettingsScreenTweet.routeURL);
   }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: DefaultTabController(
-        length: 2,
-        child: NestedScrollView(
-          headerSliverBuilder: (context, innerBoxIsScrolled) => [
-            SliverAppBar(
-              title: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SvgPicture.asset(
-                    "assets/images/reshot-icon-globe-PL5973EKAD.svg",
-                    width: 25,
-                    colorFilter: ColorFilter.mode(
-                      isDarkMode(ref) ? Colors.white : Colors.black,
-                      BlendMode.srcIn,
-                    ),
-                  ),
-                  Row(
-                    children: [
-                      const FaIcon(
-                        FontAwesomeIcons.instagram,
-                        size: 30,
+      child: Scaffold(
+        body: DefaultTabController(
+          length: 2,
+          child: NestedScrollView(
+            headerSliverBuilder: (context, innerBoxIsScrolled) => [
+              SliverAppBar(
+                title: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SvgPicture.asset(
+                      "assets/images/reshot-icon-globe-PL5973EKAD.svg",
+                      width: 25,
+                      colorFilter: ColorFilter.mode(
+                        isDarkMode(ref) ? Colors.white : Colors.black,
+                        BlendMode.srcIn,
                       ),
-                      const Gap(20),
-                      IconButton(
-                        onPressed: _onBarPressed,
-                        icon: const FaIcon(
-                          FontAwesomeIcons.bars,
+                    ),
+                    Row(
+                      children: [
+                        const FaIcon(
+                          FontAwesomeIcons.instagram,
                           size: 30,
                         ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: const EdgeInsets.only(
-                  top: 10,
-                  left: 10,
-                  right: 10,
+                        const Gap(20),
+                        IconButton(
+                          onPressed: _onBarPressed,
+                          icon: const FaIcon(
+                            FontAwesomeIcons.bars,
+                            size: 30,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Jane",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headlineLarge!
-                                  .copyWith(
-                                    fontWeight: FontWeight.w800,
+              ),
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    top: 10,
+                    left: 10,
+                    right: 10,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Jane",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headlineLarge!
+                                    .copyWith(
+                                      fontWeight: FontWeight.w800,
+                                    ),
+                              ),
+                              Row(
+                                children: [
+                                  Text(
+                                    "Jane_mobbin",
+                                    style:
+                                        Theme.of(context).textTheme.bodyLarge,
                                   ),
-                            ),
-                            Row(
+                                  const Gap(5),
+                                  Container(
+                                    padding: const EdgeInsets.symmetric(
+                                      vertical: 5,
+                                      horizontal: 10,
+                                    ),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                      color: isDarkMode(ref)
+                                          ? Colors.grey.shade800
+                                          : Colors.grey.shade100,
+                                    ),
+                                    child: const Text(
+                                      "threads.net",
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                          const Row(
+                            children: [
+                              CircleAvatar(
+                                foregroundImage: NetworkImage(githubAvatar),
+                                radius: 35,
+                              ),
+                              Gap(10),
+                            ],
+                          ),
+                        ],
+                      ),
+                      const Gap(5),
+                      Text(
+                        "Plant enthusiast!",
+                        style: Theme.of(context).textTheme.bodyLarge,
+                      ),
+                      const Gap(20),
+                      Row(
+                        children: [
+                          const SizedBox(
+                            width: 30,
+                            child: Stack(
+                              alignment: Alignment.centerLeft,
                               children: [
-                                Text(
-                                  "Jane_mobbin",
-                                  style: Theme.of(context).textTheme.bodyLarge,
+                                CircleAvatar(
+                                  foregroundImage: NetworkImage(githubAvatar),
+                                  radius: 10,
                                 ),
-                                const Gap(5),
-                                Container(
-                                  padding: const EdgeInsets.symmetric(
-                                    vertical: 5,
-                                    horizontal: 10,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
-                                    color: isDarkMode(ref)
-                                        ? Colors.grey.shade800
-                                        : Colors.grey.shade100,
-                                  ),
-                                  child: const Text(
-                                    "threads.net",
+                                Positioned(
+                                  right: 0,
+                                  child: CircleAvatar(
+                                    foregroundImage:
+                                        AssetImage("assets/images/nerd.jpg"),
+                                    radius: 10,
                                   ),
                                 ),
                               ],
                             ),
-                          ],
-                        ),
-                        const Row(
-                          children: [
-                            CircleAvatar(
-                              foregroundImage: NetworkImage(githubAvatar),
-                              radius: 35,
-                            ),
-                            Gap(10),
-                          ],
-                        ),
-                      ],
-                    ),
-                    const Gap(5),
-                    Text(
-                      "Plant enthusiast!",
-                      style: Theme.of(context).textTheme.bodyLarge,
-                    ),
-                    const Gap(20),
-                    Row(
-                      children: [
-                        const SizedBox(
-                          width: 30,
-                          child: Stack(
-                            alignment: Alignment.centerLeft,
-                            children: [
-                              CircleAvatar(
-                                foregroundImage: NetworkImage(githubAvatar),
-                                radius: 10,
-                              ),
-                              Positioned(
-                                right: 0,
-                                child: CircleAvatar(
-                                  foregroundImage:
-                                      AssetImage("assets/images/nerd.jpg"),
-                                  radius: 10,
-                                ),
-                              ),
-                            ],
                           ),
-                        ),
-                        const Gap(10),
-                        Text(
-                          "2 followers",
-                          style:
-                              Theme.of(context).textTheme.bodyLarge!.copyWith(
-                                    color: Colors.grey,
-                                  ),
-                        ),
-                      ],
-                    ),
-                    const Gap(20),
-                    const Padding(
-                      padding: EdgeInsets.all(6.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          ProfileButton(
-                            text: "Edit profile",
-                          ),
-                          ProfileButton(
-                            text: "Share profile",
+                          const Gap(10),
+                          Text(
+                            "2 followers",
+                            style:
+                                Theme.of(context).textTheme.bodyLarge!.copyWith(
+                                      color: Colors.grey,
+                                    ),
                           ),
                         ],
                       ),
-                    ),
-                    const Gap(5),
-                  ],
+                      const Gap(20),
+                      const Padding(
+                        padding: EdgeInsets.all(6.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            ProfileButton(
+                              text: "Edit profile",
+                            ),
+                            ProfileButton(
+                              text: "Share profile",
+                            ),
+                          ],
+                        ),
+                      ),
+                      const Gap(5),
+                    ],
+                  ),
                 ),
               ),
-            ),
-            SliverPersistentHeader(
-              delegate: PersistentTabBarTweet(
-                isDark: ref.watch(darkModeConfigProvider).isDarkMode,
+              SliverPersistentHeader(
+                delegate: PersistentTabBarTweet(
+                  isDark: ref.watch(darkModeConfigProvider).isDarkMode,
+                ),
+                pinned: true,
               ),
-              pinned: true,
-            ),
-          ],
-          body: const TabBarView(
-            children: [
-              TiktokDummyScreen(text: "text"),
-              TiktokDummyScreen(text: "text"),
             ],
+            body: const TabBarView(
+              children: [
+                TiktokDummyScreen(text: "text"),
+                TiktokDummyScreen(text: "text"),
+              ],
+            ),
           ),
         ),
       ),

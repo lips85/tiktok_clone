@@ -13,6 +13,8 @@ final tabs = [
 ];
 
 class ActivityScreenTweet extends ConsumerStatefulWidget {
+  static String routeName = "Activity";
+  static String routeURL = "/activity";
   const ActivityScreenTweet({super.key});
 
   @override

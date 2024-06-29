@@ -3,11 +3,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:tiktok_clone/02_tweeter/features/navbar/widgets/post_basic_form.dart';
-import 'package:tiktok_clone/02_tweeter/features/thread/utils/fake_data_generater.dart';
 import 'package:tiktok_clone/02_tweeter/features/thread/view_models/thread_view_model.dart';
 import 'package:tiktok_clone/utils.dart';
 
 class ThreadHomeScreen extends ConsumerStatefulWidget {
+  static String routeName = "Thread";
+  static String routeURL = "/thread";
+
   const ThreadHomeScreen({super.key});
 
   @override
@@ -17,8 +19,6 @@ class ThreadHomeScreen extends ConsumerStatefulWidget {
 class ThreadHomeScreenState extends ConsumerState<ThreadHomeScreen> {
   @override
   Widget build(BuildContext context) {
-    final posts = generatePosts();
-
     return ref.watch(threadProvider).when(
           loading: () => const Center(
             child: CircularProgressIndicator(),
@@ -51,18 +51,19 @@ class ThreadHomeScreenState extends ConsumerState<ThreadHomeScreen> {
                     physics: const NeverScrollableScrollPhysics(),
                     itemCount: threads.length,
                     itemBuilder: (BuildContext context, int index) {
+                      final thread = threads[index];
                       return PostBasicForm(
-                        userIcon: posts[index]['userIcon'],
-                        postText: postTexts[index],
-                        postTime: posts[index]['postTime'],
-                        userName: userNames[index],
+                        userIcon: thread.userIcon,
+                        postText: thread.postText,
+                        postTime: thread.postTime,
+                        userName: thread.userName,
                         isImageUse: true,
-                        postImages: posts[index]['postImages'],
-                        repNum: posts[index]['repNum'],
-                        likeNum: posts[index]['likeNum'],
-                        avator1: posts[index]['avator1'],
-                        avator2: posts[index]['avator2'],
-                        avator3: posts[index]['avator3'],
+                        postImages: thread.postImages,
+                        repNum: thread.repNum,
+                        likeNum: thread.likeNum,
+                        avator1: thread.avator1,
+                        avator2: thread.avator2,
+                        avator3: thread.avator3,
                       );
                     },
                   ),

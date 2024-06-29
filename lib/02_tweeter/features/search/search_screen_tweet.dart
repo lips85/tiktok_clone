@@ -4,6 +4,9 @@ import 'package:tiktok_clone/02_tweeter/features/search/widgets/search_list_tile
 import 'package:tiktok_clone/constants/make_faker.dart';
 
 class SearchScreenTweet extends StatefulWidget {
+  static String routeName = "Search";
+  static String routeURL = "/search";
+
   const SearchScreenTweet({super.key});
 
   @override
@@ -18,15 +21,17 @@ class _SearchScreenTweetState extends State<SearchScreenTweet> {
   void _onSearchChanged(String text) {
     setState(() {
       finalUser = fakerData
-          .where((element) =>
-              element["nickName"]
-                  .toString()
-                  .toLowerCase()
-                  .contains(text.toLowerCase()) ||
-              element["name"]
-                  .toString()
-                  .toLowerCase()
-                  .contains(text.toLowerCase()),)
+          .where(
+            (element) =>
+                element["nickName"]
+                    .toString()
+                    .toLowerCase()
+                    .contains(text.toLowerCase()) ||
+                element["name"]
+                    .toString()
+                    .toLowerCase()
+                    .contains(text.toLowerCase()),
+          )
           .toList();
     });
   }

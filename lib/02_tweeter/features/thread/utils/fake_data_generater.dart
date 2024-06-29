@@ -1,7 +1,7 @@
 import 'package:tiktok_clone/02_tweeter/features/thread/utils/make_fakerimage.dart';
 
 List<Map<String, dynamic>> generatePosts() {
-  final List<int> seeds = [2, 7, 11, 14, 17, 19];
+  final List<int> seeds = [2, 9, 11, 14, 17, 18];
   return seeds.map((seed) => makeFakerData(seed)).toList();
 }
 

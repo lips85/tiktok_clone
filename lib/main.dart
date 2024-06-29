@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -7,9 +8,15 @@ import 'package:tiktok_clone/02_tweeter/features/navbar/main_navbar_tweet.dart';
 import 'package:tiktok_clone/02_tweeter/features/settings/repos/darkmode_config_repo.dart';
 import 'package:tiktok_clone/02_tweeter/features/settings/view_models/darkmode_config_vm.dart';
 import 'package:tiktok_clone/02_tweeter/features/settings/views/settings_screen_tweet.dart';
+import 'package:tiktok_clone/firebase_options.dart';
+import 'package:tiktok_clone/router.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   final preferences = await SharedPreferences.getInstance();
   final repository = DarkmodeConfigRepository(preferences);
@@ -34,7 +41,8 @@ class Myapp extends ConsumerWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: router,
       debugShowCheckedModeBanner: false,
       title: 'Tweets',
       themeMode: ref.watch(darkModeConfigProvider).isDarkMode
@@ -227,7 +235,6 @@ class Myapp extends ConsumerWidget {
           dividerColor: Colors.black,
         ),
       ),
-      home: const MainNavbarTweetScreen(),
     );
   }
 }
