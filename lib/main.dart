@@ -2,12 +2,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:tiktok_clone/02_tweeter/features/navbar/main_navbar_tweet.dart';
 import 'package:tiktok_clone/02_tweeter/features/settings/repos/darkmode_config_repo.dart';
 import 'package:tiktok_clone/02_tweeter/features/settings/view_models/darkmode_config_vm.dart';
-import 'package:tiktok_clone/02_tweeter/features/settings/views/settings_screen_tweet.dart';
 import 'package:tiktok_clone/firebase_options.dart';
 import 'package:tiktok_clone/router.dart';
 
