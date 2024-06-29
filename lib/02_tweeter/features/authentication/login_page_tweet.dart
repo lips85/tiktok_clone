@@ -6,12 +6,16 @@ import 'package:tiktok_clone/constants/gaps.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
 
 class LoginPageTweet extends StatelessWidget {
+  static const routeName = "Login";
+  static const routeURL = "/login";
   const LoginPageTweet({super.key});
 
   void _onCreateUserTap(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(
-      builder: (context) => const TweetCreateAccount(),
-    ),);
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => const TweetCreateAccount(),
+      ),
+    );
   }
 
   @override
