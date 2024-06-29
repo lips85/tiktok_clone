@@ -94,7 +94,7 @@ class Myapp extends ConsumerWidget {
           ),
           bodyLarge: GoogleFonts.nanumGothic(
             fontSize: 16,
-            fontWeight: FontWeight.w600,
+            fontWeight: FontWeight.w800,
             letterSpacing: 0.5,
           ),
           bodyMedium: GoogleFonts.nanumGothic(
@@ -196,7 +196,7 @@ class Myapp extends ConsumerWidget {
           ),
           bodyLarge: GoogleFonts.nanumGothic(
             fontSize: 16,
-            fontWeight: FontWeight.w600,
+            fontWeight: FontWeight.w800,
             letterSpacing: 0.5,
           ),
           bodyMedium: GoogleFonts.nanumGothic(
