@@ -7,6 +7,9 @@ import 'package:tiktok_clone/02_tweeter/features/authentication/widgets/confirm_
 import 'package:tiktok_clone/02_tweeter/models/user_data.dart';
 
 class TweetCreateAccount extends StatefulWidget {
+  static String routeName = "CreateAccount";
+  static String routeURL = "/createaccount";
+
   const TweetCreateAccount({
     super.key,
   });
@@ -33,15 +36,17 @@ class _TweetCreateAccountState extends State<TweetCreateAccount> {
   bool _isBirthdaySet = false;
 
   void _onTermsTap(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(
-      builder: (context) => TermsPageScreen(
-        userData: UserData(
-          name: _usernameController.text,
-          phoneOrEmail: _phoneOrEmailController.text,
-          dateOfBirth: _birthdayController.text,
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => TermsPageScreen(
+          userData: UserData(
+            name: _usernameController.text,
+            phoneOrEmail: _phoneOrEmailController.text,
+            dateOfBirth: _birthdayController.text,
+          ),
         ),
       ),
-    ),);
+    );
   }
 
   void _onDateTextFieldFocusChanged(bool hasFocus) {
@@ -169,8 +174,10 @@ class _TweetCreateAccountState extends State<TweetCreateAccount> {
                   controller: _phoneOrEmailController,
                   onTap: _onEmailTap,
                   focusNode: _phoneOrEmailFocusNode,
-                  decoration: _inputDecoration("Phone number or email address",
-                      _isFieldValid(_phoneOrEmail),),
+                  decoration: _inputDecoration(
+                    "Phone number or email address",
+                    _isFieldValid(_phoneOrEmail),
+                  ),
                   cursorColor: Theme.of(context).primaryColor,
                   style: _txfieldStyle(context),
                 ),
@@ -180,7 +187,9 @@ class _TweetCreateAccountState extends State<TweetCreateAccount> {
                   onTap: _onBirthdayTap,
                   focusNode: _birthdayFocusNode,
                   decoration: _inputDecoration(
-                      "Date of birth", _isFieldValid(_birthday),),
+                    "Date of birth",
+                    _isFieldValid(_birthday),
+                  ),
                   cursorColor: Theme.of(context).primaryColor,
                   style: _txfieldStyle(context),
                 ),
