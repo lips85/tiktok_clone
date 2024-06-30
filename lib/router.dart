@@ -1,9 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tiktok_clone/02_tweeter/features/activity/activity_screen_tweet.dart';
-import 'package:tiktok_clone/02_tweeter/features/authentication/login_page_tweet.dart';
-import 'package:tiktok_clone/02_tweeter/features/authentication/tweet_create_account.dart';
 import 'package:tiktok_clone/02_tweeter/features/authentication_tread/repos/authentication_repository.dart';
+import 'package:tiktok_clone/02_tweeter/features/authentication_tread/views/thread_create_account_page.dart';
 import 'package:tiktok_clone/02_tweeter/features/authentication_tread/views/thread_login_page.dart';
 
 import 'package:tiktok_clone/02_tweeter/features/navbar/main_navbar_tweet.dart';
@@ -15,11 +14,11 @@ import 'package:tiktok_clone/02_tweeter/features/settings/views/settings_screen_
 
 final routerProvider = Provider((ref) {
   return GoRouter(
-    initialLocation: "/home",
+    initialLocation: "/",
     redirect: (context, state) {
       final isLoggedIn = ref.read(authRepo).isLoggedIn;
       if (!isLoggedIn) {
-        if (state.subloc != TweetCreateAccount.routeURL &&
+        if (state.subloc != ThreadCreateAccountPage.routeURL &&
             state.subloc != ThreadLogInPage.routeURL) {
           return "/login";
         }
@@ -33,9 +32,9 @@ final routerProvider = Provider((ref) {
         builder: (context, state) => const ThreadLogInPage(),
       ),
       GoRoute(
-        name: TweetCreateAccount.routeName,
-        path: TweetCreateAccount.routeURL,
-        builder: (context, state) => const TweetCreateAccount(),
+        name: ThreadCreateAccountPage.routeName,
+        path: ThreadCreateAccountPage.routeURL,
+        builder: (context, state) => const ThreadCreateAccountPage(),
       ),
       GoRoute(
         name: MainNavbarTweetScreen.routeName,

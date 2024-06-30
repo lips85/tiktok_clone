@@ -3,7 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
-import 'package:tiktok_clone/02_tweeter/features/authentication/tweet_create_account.dart';
+import 'package:tiktok_clone/02_tweeter/features/authentication_tread/view_models/signin_view_model.dart';
+import 'package:tiktok_clone/02_tweeter/features/authentication_tread/views/thread_create_account_page.dart';
+import 'package:tiktok_clone/02_tweeter/features/navbar/main_navbar_tweet.dart';
 import 'package:tiktok_clone/utils.dart';
 
 class ThreadLogInPage extends ConsumerStatefulWidget {
@@ -12,18 +14,55 @@ class ThreadLogInPage extends ConsumerStatefulWidget {
   const ThreadLogInPage({super.key});
 
   @override
-  ThreadLogInPageState createState() => ThreadLogInPageState();
+  ConsumerState<ConsumerStatefulWidget> createState() => ThreadLogInPageState();
 }
 
 class ThreadLogInPageState extends ConsumerState<ThreadLogInPage> {
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  String _email = "";
+  String _password = "";
+
+  @override
+  void initState() {
+    super.initState();
+    _emailController.addListener(() {
+      setState(() {
+        _email = _emailController.text;
+      });
+    });
+    _passwordController.addListener(() {
+      setState(() {
+        _password = _passwordController.text;
+      });
+    });
+  }
 
   @override
   void dispose() {
-    emailController.dispose();
-    passwordController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
     super.dispose();
+  }
+
+  // void _onScaffoldTap() {
+  //   FocusScope.of(context).unfocus();
+  // }
+
+  void _onSignInPressed() async {
+    if (_email.isEmpty || _password.isEmpty) {
+      return;
+    }
+
+    await ref.read(signInProvider.notifier).signInWithEmailAndPassword(
+          email: _email,
+          password: _password,
+        );
+
+    if (mounted) {
+      context.go(MainNavbarTweetScreen.routeURL);
+    }
   }
 
   @override
@@ -62,25 +101,25 @@ class ThreadLogInPageState extends ConsumerState<ThreadLogInPage> {
             ),
             const Gap(120),
             TextField(
-              controller: emailController,
-              decoration: const InputDecoration(
-                labelText: 'Mobile number or email',
+              controller: _emailController,
+              decoration: InputDecoration(
+                hintText: 'Mobile number or email',
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(
+                  borderRadius: const BorderRadius.all(
                     Radius.circular(5),
                   ),
                   borderSide: BorderSide(
-                    color: Colors.red,
+                    color: Theme.of(context).primaryColor,
                   ),
                 ),
               ),
             ),
             const Gap(20),
             TextField(
-              controller: passwordController,
+              controller: _passwordController,
               obscureText: true,
               decoration: const InputDecoration(
-                labelText: 'Password',
+                hintText: 'Password',
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(
                     Radius.circular(5),
@@ -90,7 +129,7 @@ class ThreadLogInPageState extends ConsumerState<ThreadLogInPage> {
             ),
             const Gap(20),
             TextButton(
-              onPressed: () {},
+              onPressed: _onSignInPressed,
               style: TextButton.styleFrom(
                 foregroundColor: Colors.white,
                 backgroundColor: Theme.of(context).primaryColor,
@@ -115,7 +154,7 @@ class ThreadLogInPageState extends ConsumerState<ThreadLogInPage> {
             ),
             const Spacer(),
             TextButton(
-              onPressed: () => context.push(TweetCreateAccount.routeURL),
+              onPressed: () => context.push(ThreadCreateAccountPage.routeURL),
               style: TextButton.styleFrom(
                 minimumSize: const Size(double.infinity, 50),
                 shape: RoundedRectangleBorder(

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
+import 'package:tiktok_clone/02_tweeter/features/authentication_tread/repos/authentication_repository.dart';
 import 'package:tiktok_clone/02_tweeter/features/privacy/privacy_screen_tweet.dart';
 import 'package:tiktok_clone/02_tweeter/features/settings/view_models/darkmode_config_vm.dart';
 
@@ -82,7 +83,10 @@ class SettingsScreenTweet extends ConsumerWidget {
                       child: const Text("No"),
                     ),
                     CupertinoDialogAction(
-                      onPressed: () => context.pop(),
+                      onPressed: () {
+                        ref.read(authRepo).signOut();
+                        context.go("/login");
+                      },
                       isDestructiveAction: true,
                       child: const Text("Yes"),
                     ),
@@ -90,9 +94,6 @@ class SettingsScreenTweet extends ConsumerWidget {
                 ),
               );
             },
-            trailing: false
-                ? const CircularProgressIndicator.adaptive()
-                : const SizedBox(),
           ),
         ],
       ),

@@ -43,7 +43,7 @@ class CommonButton extends StatelessWidget {
                   color: Colors.grey.shade300,
                   width: 1,
                 ),
-                borderRadius: BorderRadius.circular(Sizes.size40),
+                borderRadius: BorderRadius.circular(5),
               ),
               child: AnimatedDefaultTextStyle(
                 duration: const Duration(milliseconds: 300),
