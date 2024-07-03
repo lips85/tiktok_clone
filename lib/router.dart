@@ -11,6 +11,9 @@ import 'package:tiktok_clone/02_tweeter/features/privacy/privacy_screen_tweet.da
 import 'package:tiktok_clone/02_tweeter/features/profile/profile_tweet_screen.dart';
 import 'package:tiktok_clone/02_tweeter/features/search/search_screen_tweet.dart';
 import 'package:tiktok_clone/02_tweeter/features/settings/views/settings_screen_tweet.dart';
+import 'package:tiktok_clone/02_tweeter/features/write/views/camera_preview_screen.dart';
+import 'package:tiktok_clone/02_tweeter/features/write/views/camera_screen.dart';
+import 'package:tiktok_clone/02_tweeter/features/write/views/write_screen.dart';
 
 final routerProvider = Provider((ref) {
   return GoRouter(
@@ -50,6 +53,16 @@ final routerProvider = Provider((ref) {
         name: SearchScreenTweet.routeName,
         path: SearchScreenTweet.routeURL,
         builder: (context, state) => const SearchScreenTweet(),
+      ),
+      GoRoute(
+        name: WriteScreen.routeName,
+        path: WriteScreen.routeURL,
+        builder: (context, state) => const WriteScreen(),
+      ),
+      GoRoute(
+        name: CameraScreen.routeName,
+        path: CameraScreen.routeURL,
+        builder: (context, state) => const CameraScreen(),
       ),
       GoRoute(
         name: ActivityScreenTweet.routeName,

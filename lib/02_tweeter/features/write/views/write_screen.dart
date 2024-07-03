@@ -3,9 +3,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
 
 import 'package:tiktok_clone/01_tiktok/textstyle/style_guide.dart';
-import 'package:tiktok_clone/02_tweeter/features/write/views/camera_screen1.dart';
+import 'package:tiktok_clone/02_tweeter/features/write/views/camera_screen.dart';
 
 class WriteScreen extends StatefulWidget {
+  static String routeName = "Write";
+  static String routeURL = "/writes";
+
   const WriteScreen({super.key});
 
   @override
