@@ -5,7 +5,7 @@ import 'package:tiktok_clone/02_tweeter/features/thread/views/thread_home_screen
 import 'package:tiktok_clone/02_tweeter/features/navbar/widgets/nav_tap.dart';
 import 'package:tiktok_clone/02_tweeter/features/profile/profile_tweet_screen.dart';
 import 'package:tiktok_clone/02_tweeter/features/search/search_screen_tweet.dart';
-import 'package:tiktok_clone/02_tweeter/features/write/write_screen.dart';
+import 'package:tiktok_clone/02_tweeter/features/write/views/write_screen.dart';
 
 class MainNavbarTweetScreen extends StatefulWidget {
   static String routeName = "Home";

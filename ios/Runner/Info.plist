@@ -3,9 +3,15 @@
 <plist version="1.0">
 	<dict>
 		<key>NSCameraUsageDescription</key>
-		<string>your usage description here</string>
+		<string>Your own description</string>
 		<key>NSMicrophoneUsageDescription</key>
-		<string>your usage description here</string>
+		<string>To enable microphone access when recording video</string>
+		<key>NSLocationWhenInUseUsageDescription</key>
+		<string>To enable GPS location access for Exif data</string>
+		<key>NSPhotoLibraryUsageDescription</key>
+		<string>Plz let me see your photos</string>
+		<key>UIApplicationSupportsIndirectInputEvents</key>
+		<true/>
 		<key>CADisableMinimumFrameDurationOnPhone</key>
 		<true/>
 		<key>CFBundleDevelopmentRegion</key>

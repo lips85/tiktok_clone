@@ -24,7 +24,7 @@ class _CameraScreenState extends State<CameraScreen>
   bool _hasPermission = false;
   bool _isSelfieMode = false;
 
-  late CameraController _cameraController;
+  late final CameraController _cameraController;
   late final TabController _tabController = TabController(
     length: 2,
     vsync: this,
@@ -33,13 +33,13 @@ class _CameraScreenState extends State<CameraScreen>
 
   Future<void> initPermissions() async {
     final cameraPermission = await Permission.camera.request();
-    final audioPermission = await Permission.audio.request();
+    final micPermission = await Permission.microphone.request();
 
     final cameraDenied =
         cameraPermission.isDenied || cameraPermission.isPermanentlyDenied;
 
     final audioDenied =
-        audioPermission.isDenied || audioPermission.isPermanentlyDenied;
+        micPermission.isDenied || micPermission.isPermanentlyDenied;
 
     if (!cameraDenied || !audioDenied) {
       _hasPermission = true;
@@ -73,7 +73,9 @@ class _CameraScreenState extends State<CameraScreen>
     if (cameras.isEmpty) return;
 
     _cameraController = CameraController(
-        cameras[_isSelfieMode ? 1 : 0], ResolutionPreset.ultraHigh,);
+      cameras[_isSelfieMode ? 1 : 0],
+      ResolutionPreset.veryHigh,
+    );
 
     await _cameraController.initialize();
 
@@ -254,8 +256,9 @@ class _CameraScreenState extends State<CameraScreen>
                   ),
                   TabBar(
                     padding: EdgeInsets.only(
-                        bottom: 4,
-                        left: MediaQuery.of(context).size.width * 0.5,),
+                      bottom: 4,
+                      left: MediaQuery.of(context).size.width * 0.5,
+                    ),
                     controller: _tabController,
                     labelColor: Colors.white,
                     labelStyle: const TextStyle(

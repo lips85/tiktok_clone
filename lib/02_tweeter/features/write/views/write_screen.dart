@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
-import 'package:tiktok_clone/02_tweeter/features/write/camera_screen.dart';
+
 import 'package:tiktok_clone/01_tiktok/textstyle/style_guide.dart';
+import 'package:tiktok_clone/02_tweeter/features/write/views/camera_screen1.dart';
 
 class WriteScreen extends StatefulWidget {
   const WriteScreen({super.key});
@@ -159,7 +160,8 @@ class _WriteScreenState extends State<WriteScreen> {
                                       maxLines: null,
                                       cursorColor: Colors.blue,
                                       scrollPadding: const EdgeInsets.symmetric(
-                                          vertical: 96,),
+                                        vertical: 96,
+                                      ),
                                       decoration: InputDecoration(
                                         hintText: "Start a thread...",
                                         hintStyle: TextStyle(
@@ -174,8 +176,10 @@ class _WriteScreenState extends State<WriteScreen> {
                                   const Gap(6),
                                   IconButton(
                                     onPressed: _onAttachTap,
-                                    icon: const Icon(FontAwesomeIcons.paperclip,
-                                        size: 20,),
+                                    icon: const Icon(
+                                      FontAwesomeIcons.paperclip,
+                                      size: 20,
+                                    ),
                                     color: Colors.grey,
                                   ),
                                   const Gap(40),
@@ -202,9 +206,10 @@ class _WriteScreenState extends State<WriteScreen> {
                     child: Text(
                       "POST  ",
                       style: TextStyle(
-                          color: Colors.blue,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,),
+                        color: Colors.blue,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                 ],
